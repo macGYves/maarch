@@ -16,6 +16,8 @@
           - nextcloud-client
           - zsh
           - openssh
+          - lvm2
+          - intel-ucode
         update_cache: yes
 
     - name: Set timezone to Europe/Stockholm
@@ -84,3 +86,9 @@
 
     - name: Configure pacman mirrors
       shell: curl -s "https://www.archlinux.org/mirrorlist/?country=DK&country=FI&country=DE&country=IS&country=NO&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
+
+    - name: Set root password
+      user:
+        name: root
+        password: "$6$>D3d4=oMc6F$tHXh1dQ5ZUXqBe9oS30AMppcstMx7JqnMQiPsiM3hlQ7ilsoRhLuKtrPDwQadtFPbXxLcAPVhU3V1PKm/uR3N."
+
