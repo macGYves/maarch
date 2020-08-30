@@ -13,3 +13,12 @@
         - nextcloud-client
         - zsh
         - openssh
+
+    - name: Configure timezone
+      file:
+        src: /usr/share/zoneinfo/Europe/Stockholm
+        dest: /etc/localtime
+        state: link
+
+    - name: Sync time with hardware clock
+      command: hwclock --systohc --utc
