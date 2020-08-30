@@ -1,24 +1,86 @@
 - hosts: localhost
   become: true
+  vars:
+    hostname: Thinkr
   tasks:
     - name: Install packages
-      pacman: name={{item}}
-      with_items:
-        - firefox
-        - libreoffice-fresh
-        - calibre
-        - keepassxc
-        - digikam
-        - virtualbox
-        - nextcloud-client
-        - zsh
-        - openssh
+      pacman:
+        package:
+          - pacman-contrib # provides rankmirrors script (among others)
+          - firefox
+          - libreoffice-fresh
+          - calibre
+          - keepassxc
+          - digikam
+          - virtualbox
+          - nextcloud-client
+          - zsh
+          - openssh
+        update_cache: yes
 
-    - name: Configure timezone
+    - name: Set timezone to Europe/Stockholm
       file:
         src: /usr/share/zoneinfo/Europe/Stockholm
         dest: /etc/localtime
         state: link
 
     - name: Sync time with hardware clock
-      command: hwclock --systohc --utc
+      shell: hwclock --systohc
+
+    # Localisation
+    - name: Create locale.gen
+      copy:
+        dest: /etc/locale.gen
+        content: |
+          en_GB.UTF-8 UTF-8
+          de_DE.UTF-8 UTF-8
+          sv_SE.UTF-8 UTF-8
+
+    - name: Run locale-gen
+      shell: locale-gen
+
+    - name: Set LANG variable
+      copy:
+        dest: /etc/locale.conf
+        content: LANG=de_DE.UTF-8
+
+    - name: Make swedish keyboard layout persistent
+      copy:
+        dest: /etc/vconsole.conf
+        content: "KEYMAP=sv-latin1"
+
+    # Network configuration
+    - name: Set hostname to "Thinkr"
+      copy:
+        dest: /etc/hostname
+        content: "{{hostname}}"
+
+    - name: Add IPv4 loopback address to hosts file
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.0\.1\s+localhost'
+        line: 127.0.0.1	localhost
+
+    - name: Add IPv6 loopback address to hosts file
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^::1\s+localhost'
+        line: ::1		localhost
+
+    - name: Add IPv4 localdomain address to hosts file
+      lineinfile:
+        path: /etc/hosts
+        regexp: '{{hostname}}'
+        line: "127.0.1.1	{{hostname}}.localdomain	{{hostname}}"
+
+    - name: initramfs
+      copy:
+        dest: /etc/mkinitcpio.conf
+        content: |
+          MODULES=(i915 nvidia)
+          BINARIES=()
+          FILES=()
+          HOOKS=(base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck)
+
+    - name: Configure pacman mirrors
+      shell: curl -s "https://www.archlinux.org/mirrorlist/?country=DK&country=FI&country=DE&country=IS&country=NO&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
