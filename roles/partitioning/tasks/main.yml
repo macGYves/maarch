@@ -1,0 +1,73 @@
+---
+- name: "Read device information"
+  parted:
+    device: "{{ disk_dev }}"
+    unit: MiB
+  register: disk_dev_info
+
+- name: "Remove all partitions from disk"
+  parted:
+    device: "{{ disk_dev }}"
+    number: "{{ item.num }}"
+    state: absent
+  loop: "{{ disk_dev_info.partitions }}"
+
+#    - name: "Zeroize {{ disk_dev }}"
+#      command: "blkdiscard {{ disk_dev }}"
+
+- name: Create UEFI partition
+  parted:
+    device: "{{ disk_dev }}"
+    name: EFI System Partition
+    number: 1
+    label: gpt
+    flags: [ esp, boot ]
+    state: present
+    part_end: 551MiB
+
+- name: Create a FAT32 filesystem on {{ disk_dev }}1
+  filesystem:
+    fstype: vfat
+    dev: "{{ disk_dev }}1"
+    opts: -F32 -n EFI
+
+- name: Create system partition
+  parted:
+    device: "{{ disk_dev }}"
+    name: system
+    number: 2
+    label: gpt
+    state: present
+    part_start: 551MiB
+
+
+- name: Encrypt system partition
+  shell: printf {{ root_password }} |cryptsetup luksFormat --type luks2 {{ disk_dev }}2 -
+
+- name: Open encrypted partition
+  shell: 'echo -n {{ root_password }} |cryptsetup open {{ disk_dev }}2 cryptlvm -'
+
+- name: Create LVM volume group "vg.main"
+  lvg:
+    vg: vg.main
+    pvs: /dev/mapper/cryptlvm
+
+- name: Create logical volume vg.main-swap
+  lvol:
+    vg: vg.main
+    lv: swap
+    size: "{{ 2 * ansible_memtotal_mb }}"
+
+- name: Create logical volume vg.main-root
+  lvol:
+    vg: vg.main
+    lv: root
+    size: 100%FREE
+
+- name: Format vg.main-swap
+  command: mkswap /dev/vg.main/swap
+
+- name: Format vg.main-root
+  filesystem:
+    fstype: ext4
+    dev : /dev/vg.main/root
