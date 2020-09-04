@@ -1,0 +1,80 @@
+---
+- name: fstab
+  shell: "genfstab -U /mnt >> /mnt/etc/fstab"
+
+- name: time zone
+  file:
+    src: /mnt/usr/share/zoneinfo/Europe/Stockholm
+    dest: /mnt/etc/localtime
+    state: link
+
+- name: Sync time with hardware clock
+  shell: arch-chroot /mnt hwclock --systohc
+
+- name: Create locale.gen
+  copy:
+    dest: /mnt/etc/locale.gen
+    content: |
+      en_GB.UTF-8 UTF-8
+      de_DE.UTF-8 UTF-8
+      sv_SE.UTF-8 UTF-8
+    mode: 0644
+
+- name: Run locale-gen
+  shell: arch-chroot /mnt locale-gen
+
+- name: Set LANG variable
+  copy:
+    dest: /mnt/etc/locale.conf
+    content: LANG=de_DE.UTF-8
+    mode: 0644
+
+- name: Make swedish keyboard layout persistent
+  copy:
+    dest: /mnt/etc/vconsole.conf
+    content: "KEYMAP=sv-latin1"
+    mode: 0644
+
+- name: Set hostname
+  copy:
+    dest: /mnt/etc/hostname
+    content: "{{hostname}}"
+    mode: 0644
+
+- name: Add IPv4 loopback address to hosts file
+  lineinfile:
+    path: /mnt/etc/hosts
+    regexp: '^127\.0\.0\.1\s+localhost'
+    line: 127.0.0.1	localhost
+
+- name: Add IPv6 loopback address to hosts file
+  lineinfile:
+    path: /mnt/etc/hosts
+    regexp: '^::1\s+localhost'
+    line: ::1		localhost
+
+- name: Add IPv4 localdomain address to hosts file
+  lineinfile:
+    path: /mnt/etc/hosts
+    regexp: '{{hostname}}'
+    line: "127.0.1.1	{{hostname}}.localdomain	{{hostname}}"
+
+- name: Create mkinitcpio.conf
+  copy:
+    dest: /mnt/etc/mkinitcpio.conf
+    content: |
+      MODULES=(i915)
+      BINARIES=()
+      FILES=()
+      HOOKS=(base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck)
+
+- name: mkinitcpio
+  command: arch-chroot /mnt mkinitcpio -P
+
+#- name: Configure pacman mirrors
+#  shell: curl -s "https://www.archlinux.org/mirrorlist/?country=DK&country=FI&country=DE&country=IS&country=NO&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /mnt/etc/pacman.d/mirrorlist
+
+- name: Set root password
+  user:
+    name: root
+    password: "{{ root_password }}"

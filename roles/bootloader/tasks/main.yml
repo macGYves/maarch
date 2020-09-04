@@ -1,0 +1,29 @@
+---
+- name: Install systemd-boot
+  command: arch-chroot {{chroot_dir}} bootctl install
+  args:
+    creates: /mnt/boot/EFI/systemd/systemd-bootx64.efi
+
+- name: Get root's UUID
+  command: lsblk -n -o UUID /dev/sda2
+  register: _uuid
+  changed_when: false
+
+- name: Create systemd-boot loader.conf
+  copy:
+    src: files/loader.conf
+    dest: /mnt/boot/loader/loader.conf
+    mode: 0644
+
+- name: Install systemd-boot entry arch.conf
+  vars:
+    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  template:
+    src: templates/arch.conf.j2
+    dest: /mnt/boot/loader/entries/arch.conf
+
+#- name: Add pacman hook for systemd-boot
+#  copy:
+#    src: files/100-systemd-boot.hook
+#    dest: /mnt/etc/pacman.d/hooks/100-systemd-boot.hook
+#    mode: 0644
