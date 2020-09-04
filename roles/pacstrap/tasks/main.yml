@@ -1,3 +1,0 @@
----
-- name: Install essential packages
-  command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2"

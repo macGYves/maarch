@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  user: root
+  vars_prompt:
+    - name: luks_password
+      prompt: "luks password"
+      private: yes
+      confirm: yes
+    - name: install_disk
+      prompt: 'Installation target device (e.g. /dev/sda)'
+  roles:
+    - { role: partitioning, tags: partitioning }
+    - { role: pacstrap, tags: pacstrap }
+    - fstab
+
+
+- hosts: /mnt
+  user: root
+  connection: chroot
+  vars:
+    ansible_chroot_exe: arch-chroot
+  vars_prompt:
+    - name: root_password
+      prompt: 'root password'
+      private: yes
+      encrypt: "sha512_crypt"
+      salt_size: 10
+      confirm: yes
+  roles:
+    - { role: bootloader, tags: bootloader }
+    - { role: system-config, tags: configure }
+
