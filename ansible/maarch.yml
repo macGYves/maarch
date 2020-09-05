@@ -8,6 +8,7 @@
       confirm: yes
     - name: install_disk
       prompt: 'Installation target device (e.g. /dev/sda)'
+      private: no
   roles:
     - { role: partitioning, tags: partitioning }
     - { role: pacstrap, tags: pacstrap }
