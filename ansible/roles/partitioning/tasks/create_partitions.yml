@@ -1,0 +1,19 @@
+---
+- name: Create ESP
+  parted:
+    device: "{{ install_disk }}"
+    name: EFI System Partition
+    number: 1
+    label: gpt
+    flags: [ esp, boot ]
+    state: present
+    part_end: 551MiB
+
+- name: Create system partition
+  parted:
+    device: "{{ install_disk }}"
+    name: system
+    number: 2
+    label: gpt
+    state: present
+    part_start: 551MiB

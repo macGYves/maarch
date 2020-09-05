@@ -1,0 +1,9 @@
+---
+- name: time zone
+  file:
+    src: /usr/share/zoneinfo/Europe/Stockholm
+    dest: /etc/localtime
+    state: link
+
+- name: Sync time with hardware clock
+  shell: hwclock --systohc
