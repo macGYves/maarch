@@ -14,7 +14,7 @@
     - fstab
 
 
-- hosts: /mnt
+- hosts: localhost_chroot
   user: root
   connection: chroot
   vars:
