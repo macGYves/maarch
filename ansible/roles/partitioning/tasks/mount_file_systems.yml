@@ -9,6 +9,6 @@
 - name: Mount ESP
   mount:
     name: /mnt/boot
-    src: "{{ efi_system_partition.uuid }}"
+    src: "/dev/disk/by-partlabel/{{ partitions.esp }}"
     fstype: vfat
     state: mounted

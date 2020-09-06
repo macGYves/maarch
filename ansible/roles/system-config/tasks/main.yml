@@ -4,11 +4,4 @@
 - import_tasks: localisation.yml
 - import_tasks: network.yml
 - import_tasks: initramfs.yml
-
-#- name: Configure pacman mirrors
-#  shell: curl -s "https://www.archlinux.org/mirrorlist/?country=DK&country=FI&country=DE&country=IS&country=NO&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /mnt/etc/pacman.d/mirrorlist
-
-- name: Set root password
-  user:
-    name: root
-    password: "{{ root_password }}"
+- import_tasks: passwd.yml

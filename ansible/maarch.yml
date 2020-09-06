@@ -10,14 +10,13 @@
       prompt: 'Installation target device (e.g. /dev/sda)'
       private: no
   roles:
-    - { role: partitioning, tags: partitioning }
-    - { role: pacstrap, tags: pacstrap }
-    - fstab
-
+    - partitioning
+    - pacstrap
 
 - hosts: localhost_chroot
   user: root
   connection: chroot
+  gather_facts: false
   vars:
     ansible_chroot_exe: arch-chroot
   vars_prompt:
@@ -28,6 +27,5 @@
       salt_size: 10
       confirm: yes
   roles:
-    - { role: bootloader, tags: bootloader }
-    - { role: system-config, tags: configure }
-
+    - bootloader
+    - {role: system-config, tags: 'configure'}

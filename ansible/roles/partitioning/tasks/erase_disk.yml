@@ -5,7 +5,7 @@
     unit: MiB
   register: install_disk_info
 
-- name: "Remove all partitions from disk"
+- name: "Remove all partitions from {{ install_disk }}"
   parted:
     device: "{{ install_disk }}"
     number: "{{ item.num }}"

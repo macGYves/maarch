@@ -1,18 +1,18 @@
 ---
-- name: Create ESP
+- name: Create EFI System Partition
   parted:
     device: "{{ install_disk }}"
-    name: EFI System Partition
+    name: "{{ partitions.esp }}"
     number: 1
     label: gpt
     flags: [ esp, boot ]
     state: present
     part_end: 551MiB
 
-- name: Create system partition
+- name: Create LUKS2 encrypted partition
   parted:
     device: "{{ install_disk }}"
-    name: system
+    name: "{{ partitions.luks2_encrypted_partition }}"
     number: 2
     label: gpt
     state: present
