@@ -1,5 +1,0 @@
----
-- name: Install essential packages
-  command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2 python ansible wpa_supplicant"
-
-- import_tasks: fstab.yml

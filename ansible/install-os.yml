@@ -10,8 +10,7 @@
       prompt: 'Installation target device (e.g. /dev/sda)'
       private: no
   roles:
-    - partitioning
-    - pacstrap
+    - os-install
 
 - hosts: localhost_chroot
   user: root
@@ -24,8 +23,7 @@
       prompt: 'root password'
       private: yes
       encrypt: "sha512_crypt"
-      salt_size: 10
       confirm: yes
   roles:
+    - os-install--config
     - bootloader
-    - {role: system-config, tags: 'configure'}
