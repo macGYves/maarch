@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: bootstrap Arch Linux system
+  hosts: localhost
   user: root
   vars_prompt:
     - name: luks_password
@@ -9,21 +10,24 @@
     - name: install_disk
       prompt: 'Installation target device (e.g. /dev/sda)'
       private: no
-  roles:
-    - os-install
-
-- hosts: localhost_chroot
-  user: root
-  connection: chroot
-  gather_facts: false
-  vars:
-    ansible_chroot_exe: arch-chroot
-  vars_prompt:
     - name: root_password
       prompt: 'root password'
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
   roles:
+    - os-install
+
+
+- name: configure bootstrapped Arch Linux installation
+  hosts: localhost_chroot
+  user: root
+  connection: chroot
+  gather_facts: false
+  vars:
+    ansible_chroot_exe: arch-chroot
+  roles:
+    - { role: localisation, tags: 'localisation' }
     - os-install--config
     - bootloader
+  tags: ['configure-base-os']
