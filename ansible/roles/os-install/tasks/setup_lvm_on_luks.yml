@@ -1,9 +1,13 @@
 ---
 - name: Encrypt system partition
-  shell: printf {{ luks_password }} |cryptsetup luksFormat --type luks2 "/dev/disk/by-partlabel/{{ partitions.encrypted }}" -
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q luksFormat --type luks2 "/dev/disk/by-partlabel/{{ partitions.encrypted }}"
 
 - name: Open encrypted system partition
-  shell: echo -n {{ luks_password }} |cryptsetup open "/dev/disk/by-partlabel/{{ partitions.encrypted }}" cryptlvm -
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q open "/dev/disk/by-partlabel/{{ partitions.encrypted }}" cryptlvm
 
 - name: Create LVM volume group "vg.main"
   lvg:
@@ -14,7 +18,7 @@
   lvol:
     vg: vg.main
     lv: swap
-    size: "{{ ansible_memtotal_mb }}"
+    size: "{{ ansible_memtotal_mb | string }}"
 
 - name: Create logical volume "vg.main-root"
   lvol:

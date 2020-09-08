@@ -1,4 +1,5 @@
 ---
+
 - name: Create EFI System Partition
   parted:
     device: "{{ install_disk }}"
