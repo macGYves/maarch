@@ -1,0 +1,4 @@
+---
+
+- name: Generate pacman mirrorlist
+  command: reflector --country Sweden --country Norway --country Danmark --country Germany --country Finland --age 12 --protocol https --sort rate -n 5 --save /etc/pacman.d/mirrorlist

@@ -5,10 +5,10 @@
     dev: "/dev/disk/by-partlabel/{{ partitions.esp }}"
     opts: -F32 -n EFI
 
-- name: Format vg.main-swap
-  command: mkswap /dev/vg.main/swap
+- name: Set swap volume as swap area
+  command: mkswap "/dev/{{lvm.vg_main}}/{{lvm.lv_swap}}"
 
-- name: Format vg.main-root
+- name: Format root volume
   filesystem:
     fstype: ext4
-    dev : /dev/vg.main/root
+    dev : "/dev/{{lvm.vg_main}}/{{lvm.lv_root}}"

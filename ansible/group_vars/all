@@ -9,6 +9,10 @@ partitions:
     esp: 'EFI_SYSTEM_PARTITION'
     encrypted: 'LUKS2_ENCRYPTED_PARTITION'
 
+lvm:
+    vg_main: 'vg.main'
+    lv_root: 'root'
+    lv_swap: 'swap'
 
 user:
     name: macgyves
