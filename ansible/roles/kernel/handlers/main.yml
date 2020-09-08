@@ -1,0 +1,4 @@
+---
+
+- name: regenerate initramfs
+  command: mkinitcpio -P

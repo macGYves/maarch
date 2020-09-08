@@ -19,3 +19,5 @@
     dest: /etc/vconsole.conf
     src: files/vconsole.conf
     mode: 0644
+
+- import_tasks: timezone.yml

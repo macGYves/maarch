@@ -1,6 +1,4 @@
 ---
-- name: Update the system clock
-  command: timedatectl set-ntp true
 
 - import_tasks: erase_disk.yml
 - import_tasks: create_partitions.yml

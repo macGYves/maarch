@@ -15,12 +15,14 @@
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
-  roles:
-    - os-install
   pre_tasks:
     - set_fact:
         root_password: "{{ root_password }}"
-      tags: ['configure-base-os']
+    - name: Update the system clock
+      command: timedatectl set-ntp true
+  roles:
+    - os-install
+
 
 
 - name: configure bootstrapped Arch Linux installation
@@ -31,6 +33,11 @@
     ansible_chroot_exe: arch-chroot
   roles:
     - { role: localisation, tags: 'localisation' }
-    - os-install--config
-    - bootloader
-  tags: ['configure-base-os']
+    - { role: kernel, tags: 'kernel' }
+    - { role: network, tags: 'network' }
+    - { role: bootloader, tags: 'bootloader' }
+  tasks:
+    - name: Set root password
+      user:
+        name: root
+        password: "{{ hostvars.localhost.root_password }}"

@@ -1,0 +1,13 @@
+---
+
+- name: Set hostname
+  copy:
+    dest: /etc/hostname
+    content: "{{ hostname }}"
+    mode: 0644
+
+- name: Init /etc/hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    mode: 0644
