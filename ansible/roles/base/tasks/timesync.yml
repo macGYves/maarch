@@ -1,0 +1,13 @@
+---
+
+- name: Copy systemd-timesyncd.conf
+  copy:
+    dest: /etc/systemd/timesyncd.conf
+    src: timesyncd.conf
+
+- name: Enable systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    state: started
+    enabled: yes
+

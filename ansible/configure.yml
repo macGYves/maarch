@@ -1,0 +1,8 @@
+---
+
+- name: Customises a basic arch linux installation
+  hosts: localhost
+  user: root
+  roles:
+    - network
+    - base
