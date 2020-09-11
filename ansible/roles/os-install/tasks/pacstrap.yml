@@ -7,7 +7,7 @@
     state: absent
 
 - name: Install essential packages
-  command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2 ansible wpa_supplicant neovim"
+  command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2 ansible wpa_supplicant neovim networkmanager"
   retries: 3
   delay: 2
   tags: 'pacstrap'

@@ -27,3 +27,39 @@ base_packages:
     - openssh
     - rsync
     - zsh
+
+# tmp
+more_packages:
+    - kate
+    - dolphin
+    - konsole
+    - okular
+    - gwenview
+    - spectacle
+    - ark
+    - unzip
+    - zip
+    - openssh
+    - baobab
+    - gramps
+    - firefox
+    - chromium
+    - vlc
+    - libreoffice-fresh
+    - calibre
+    - keepassxc
+    - digikam
+    - freemind
+    - gimp
+    - ttf-hack
+    - docker
+    - docker-compose
+    # 3G modem
+    - modem-manager-gui
+    # smartcard
+    - ccid
+    - opensc
+    - xloadimage
+    # firewall
+    - ufw
+    - nextcloud-client

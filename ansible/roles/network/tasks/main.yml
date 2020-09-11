@@ -14,12 +14,6 @@
     mode: 0644
 
 
-- name: Install NetworkManager
-  pacman:
-    name: networkmanager
-    state: present
-
-
 - name: Enable NetworkManager
   systemd:
     name: NetworkManager.service
