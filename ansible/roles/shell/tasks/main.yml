@@ -1,25 +1,22 @@
 ---
 
-- name: "Ensure /home/{{user.name}}/.oh-my-zsh does not exist"
-  file:
-    path: "/home/{{user.name}}/.oh-my-zsh"
-    state: absent
-
-
-- name: Install oh-my-zsh
+- name: Install antibody (zsh plugin manager)
   aur:
-    name: oh-my-zsh-git
-#        - mytourbook_bin
-      #          - tor-browser
-#        -
+    name: antibody
     use: makepkg
     state: present
   become: yes
   become_user: aur_builder
-  tags: 'aur-packages'
 
-- name: "Use oh-my-zsh in {{user.name}}'s zsh"
-  command: /usr/share/oh-my-zsh/tools/install.sh
+- name: Copy zsh_plugins
+  copy:
+    dest: "/home/{{ user.name }}/.zsh_plugins.txt"
+    src: .zsh_plugins.txt
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Generate .zsh_plugins.sh for static loading
+  shell: "antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
   become: yes
   become_user: "{{ user.name }}"
 
@@ -27,12 +24,4 @@
   copy:
     dest: /home/{{ user.name }}/.zshrc
     src: .zshrc
-#      add "asdf" to oh-my-zsh plugins
 
-
-- name: Install fish-like syntax highlighting and autosuggestions
-  pacman:
-    name:
-      - zsh-syntax-highlighting
-      - zsh-autosuggestions
-    state: present
