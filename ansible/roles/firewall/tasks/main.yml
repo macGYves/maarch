@@ -1,0 +1,15 @@
+---
+
+- name: Install Uncomplicated Firewall
+  pacman:
+    name: ufw
+    state: present
+
+- name: Start and enable ufw systemd service
+  systemd:
+    name: ufw.service
+    state: started
+    enabled: yes
+
+- name: Start ufw
+  command: ufw enable

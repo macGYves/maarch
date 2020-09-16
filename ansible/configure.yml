@@ -15,6 +15,7 @@
     - { role: plasma, tags: 'plasma' }
     - { role: shell, tags: 'shell' }
     - { role: dev-tools, tags: 'dev-tools' }
+    - { role: firewall, tags: 'firewall' }
   tasks:
     - name: Install more packages
       pacman:
