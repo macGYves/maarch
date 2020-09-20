@@ -33,6 +33,6 @@
 
 - name: Install plasma
   pacman:
-    name: plasma
+    name: plasma-desktop
     state: present
 
