@@ -1,0 +1,15 @@
+PROMPT 1
+TIMEOUT 50
+DEFAULT arch
+
+LABEL arch
+	LINUX ../vmlinuz-linux
+	APPEND cryptdevice=UUID={{root_uuid}}:cryptlvm root=/dev/{{lvm.vg_main}}/{{lvm.lv_root}} resume=/dev/{{lvm.vg_main}}/{{lvm.lv_swap}} rw
+	INITRD ../intel-ucode.img
+	INITRD ../initramfs-linux.img
+
+LABEL archfallback
+	LINUX ../vmlinuz-linux
+	APPEND cryptdevice=UUID={{root_uuid}}:cryptlvm root=/dev/{{lvm.vg_main}}/{{lvm.lv_root}} resume=/dev/{{lvm.vg_main}}/{{lvm.lv_swap}} rw
+	INITRD ../intel-ucode.img
+	INITRD ../initramfs-linux-fallback.img

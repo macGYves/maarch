@@ -22,9 +22,3 @@
     src: templates/arch.conf.j2
     dest: /boot/loader/entries/arch.conf
     mode: 0644
-
-#- name: Add pacman hook for systemd-boot
-#  copy:
-#    src: files/100-systemd-boot.hook
-#    dest: /etc/pacman.d/hooks/100-systemd-boot.hook
-#    mode: 0644

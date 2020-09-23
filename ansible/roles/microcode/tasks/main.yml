@@ -5,3 +5,5 @@
     name: intel-ucode
     state: present
   when: "'GenuineIntel' in ansible_processor"
+  notify:
+    - regenerate initramfs
