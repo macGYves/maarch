@@ -1,0 +1,62 @@
+---
+
+- name: Create EFI System Partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.boot.label }}"
+    number: 1
+    label: gpt
+    flags: [ esp ]
+    state: present
+    part_end: 551MiB
+  when: boot_mode == 'uefi'
+
+- name: Create Legacy Boot Partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.boot.label }}"
+    number: 1
+    label: gpt
+    flags: [ legacy_boot ]
+    state: present
+    part_end: 551MiB
+  when: boot_mode == 'bios'
+
+
+- name: Create LUKS partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.luks.label }}"
+    number: 2
+    label: gpt
+    state: present
+    part_start: 551MiB
+
+- name: Encrypt LUKS partition
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q luksFormat --type luks2 --label "{{ partitions.luks.label }}" "{{ partitions.luks.dev }}"
+  no_log: true
+
+- name: Open LUKS partition
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q open "{{ partitions.luks.dev }}" cryptlvm
+  no_log: true
+
+- name: Create main LVM volume group
+  lvg:
+    vg: "{{ lvm.vg_main }}"
+    pvs: /dev/mapper/cryptlvm
+
+- name: Create logical volume for swap
+  lvol:
+    vg: "{{ lvm.vg_main }}"
+    lv: "{{ lvm.lv_swap.name }}"
+    size: "{{ ansible_memtotal_mb | string }}"
+
+- name: Create logical volume for root
+  lvol:
+    vg: "{{ lvm.vg_main }}"
+    lv: "{{ lvm.lv_root.name }}"
+    size: 100%FREE

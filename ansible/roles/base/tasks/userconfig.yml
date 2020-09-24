@@ -22,6 +22,7 @@
     home: /home/{{ user.name }}
     password: "{{ macgyves_password }}"
   when: user.name is defined
+  no_log: true
 
 
 - name: Give sudo rights to users in wheel group

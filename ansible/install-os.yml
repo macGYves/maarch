@@ -22,17 +22,20 @@
     - name: Update the system clock
       command: timedatectl set-ntp true
   roles:
+    - facts
     - os-install
 
 
-- name: configure bootstrapped Arch Linux installation
+- name: Continue Arch Linux installation in chroot
   hosts: localhost_chroot
+  vars:
+    boot_mode: "{{ hostvars.localhost.boot_mode }}"
   roles:
     - { role: localisation, tags: 'localisation' }
     - { role: kernel, tags: 'kernel' }
     - { role: network, tags: 'network' }
-    - { role: systemd-boot, tags: 'bootloader', when: system.boot_mode == 'uefi' }
-    - { role: syslinux, tags: 'bootloader', when: system.boot_mode == 'bios' }
+    - { role: systemd-boot, tags: 'bootloader', when: boot_mode == 'uefi' }
+    - { role: syslinux, tags: 'bootloader', when: boot_mode == 'bios' }
     - { role: microcode, tags: 'microcode' }
   tasks:
     - name: Set root password
@@ -42,9 +45,25 @@
 
 - name: Finish installation
   hosts: localhost
+  become: yes
+  connection: local
   tasks:
-    - name: unmount partitions with the new system
+    - name: Unmount partitions
       command: umount -Rf /mnt
+      tags: 'cleanup'
 
     - name: unmount swap
       command: swapoff -a
+      tags: 'cleanup'
+
+    - name: close LUKS swap
+      luks_device:
+        device: "{{ lvm.lv_root.dev }}"
+        state: closed
+      tags: 'cleanup'
+
+    - name: close LUKS root
+      luks_device:
+        device: "{{ lvm.lv_swap.dev }}"
+        state: closed
+      tags: 'cleanup'

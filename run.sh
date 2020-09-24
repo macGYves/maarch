@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# mount -o remount,size=1G /run/archiso/cowspace
+# pacman -S ansible
+
 # = set keyboard layout
 loadkeys sv-latin1
 
@@ -11,17 +14,18 @@ timedatectl set-ntp true
 ###################################################
 # = Partition the disks
 #
-# +-----------------------------------------------+
-# | Logical volume 1      | Logical volume 2      |
-# |                       |                       |
-# | [SWAP]                | /                     |
-# |                       |                       |
-# | /dev/tank/swap        | /dev/tank/root        |
-# |_ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _|
-# |                                               |
-# |           LUKS2 encrypted partition           |
-# |           $CRYPTROOT_PARTITION                |
-# +-----------------------------------------------+
+# +-----------------------------------------------+ +----------------+
+# | Logical volume 1      | Logical volume 2      | | Boot partition |
+# |                       |                       | |                |
+# | [SWAP]                | /                     | | /boot          |
+# |                       |                       | |                |
+# | /dev/vg.main/swap     | /dev/vg.main/root     | |                |
+# |_ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _| |                |
+# |                                               | |                |
+# |       LUKS2 encrypted partition               | |                |
+# |           /dev/sda2                           | | /dev/sda1      |
+# +-----------------------------------------------+ +----------------+
+
 
 DISK=/dev/sda
 BOOT_PARTITION="${DISK}1"

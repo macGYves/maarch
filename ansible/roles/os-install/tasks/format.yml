@@ -1,0 +1,27 @@
+---
+- name: Format ESP as FAT32
+  filesystem:
+    fstype: vfat
+    dev: "{{ partitions.boot.dev }}"
+    opts: -F32 -L "{{ partitions.boot.label }}"
+  when: boot_mode == 'uefi'
+
+- name: Format boot partition as ext4
+  filesystem:
+    fstype: ext4
+    dev: "{{ partitions.boot.dev }}"
+    opts: -L "{{ partitions.boot.label }}"
+    force: yes
+  when: boot_mode == 'bios'
+
+- name: Set swap volume as swap area
+  filesystem:
+    fstype: swap
+    dev: "{{ lvm.lv_swap.dev }}"
+    opts: -L "{{ lvm.lv_swap.label }}"
+
+- name: Format root volume
+  filesystem:
+    fstype: ext4
+    dev : "{{ lvm.lv_root.dev }}"
+    opts: -L "{{ lvm.lv_root.label }}"

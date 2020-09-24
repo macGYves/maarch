@@ -1,0 +1,26 @@
+---
+- name: Mount root volume
+  mount:
+    path: /mnt
+    src: "{{ lvm.lv_root.dev }}"
+    fstype: ext4
+    state: mounted
+
+- name: Mount ESP
+  mount:
+    name: /mnt/boot
+    src: "{{ partitions.boot.dev }}"
+    fstype: vfat
+    state: mounted
+  when: boot_mode == 'uefi'
+
+- name: Mount legacy Boot partition
+  mount:
+    name: /mnt/boot
+    src: "{{ partitions.boot.dev }}"
+    fstype: ext4
+    state: mounted
+  when: boot_mode == 'bios'
+
+- name: Activate swapping on swap volume
+  command: "swapon {{ lvm.lv_swap.dev }}"
