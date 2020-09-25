@@ -2,6 +2,9 @@
 
 - import_tasks: erase_install_disk.yml
 - import_tasks: partition.yml
+- import_tasks: encrypt.yml
+- import_tasks: lvm.yml
+
 - import_tasks: format.yml
 - import_tasks: mount.yml
 

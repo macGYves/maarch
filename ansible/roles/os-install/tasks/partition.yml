@@ -31,37 +31,3 @@
     label: gpt
     state: present
     part_start: 551MiB
-
-- name: Create LUKS container
-  community.crypto.luks_device:
-    device: "{{ partitions.luks.dev }}"
-    label: "{{ partitions.luks.label }}"
-    state: 'present'
-    passphrase: "{{ luks_password }}"
-    type: luks2
-  no_log: true
-
-- name: Open the LUKS container
-  community.crypto.luks_device:
-    device: "{{ partitions.luks.dev }}"
-    state: 'opened'
-    name: "{{ partitions.luks.mapper_name }}"
-    passphrase: "{{ luks_password }}"
-  no_log: true
-
-- name: Create main LVM volume group
-  lvg:
-    vg: "{{ lvm.vg_main }}"
-    pvs: "/dev/mapper/{{ partitions.luks.mapper_name }}"
-
-- name: Create logical volume for swap
-  lvol:
-    vg: "{{ lvm.vg_main }}"
-    lv: "{{ lvm.lv_swap.name }}"
-    size: "{{ ansible_memtotal_mb | string }}"
-
-- name: Create logical volume for root
-  lvol:
-    vg: "{{ lvm.vg_main }}"
-    lv: "{{ lvm.lv_root.name }}"
-    size: 100%FREE
