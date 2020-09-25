@@ -1,14 +1,14 @@
 ---
 - name: Mount root volume
   mount:
-    path: /mnt
+    path: "{{ arch_root }}"
     src: "{{ lvm.lv_root.dev }}"
     fstype: ext4
     state: mounted
 
 - name: Mount ESP
   mount:
-    name: /mnt/boot
+    name: "{{ arch_root }}/boot"
     src: "{{ partitions.boot.dev }}"
     fstype: vfat
     state: mounted
@@ -16,7 +16,7 @@
 
 - name: Mount legacy Boot partition
   mount:
-    name: /mnt/boot
+    name: "{{ arch_root }}/boot"
     src: "{{ partitions.boot.dev }}"
     fstype: ext4
     state: mounted

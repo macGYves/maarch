@@ -3,11 +3,11 @@
 # pacstrap fails if intel-ucode exists on boot partition.
 - name: Delete intel-ucode.img
   file:
-    path: /mnt/boot/intel-ucode.img
+    path: "{{ arch_root }}/boot/intel-ucode.img"
     state: absent
 
 - name: Install essential packages
-  command: "pacstrap /mnt base linux linux-firmware lvm2 ansible wpa_supplicant neovim"
+  command: "pacstrap {{ arch_root }} base linux linux-firmware lvm2 ansible wpa_supplicant neovim"
   retries: 3
   delay: 2
   tags: 'pacstrap'
