@@ -7,7 +7,7 @@
     state: absent
 
 - name: Install essential packages
-  command: "pacstrap {{ arch_root }} base linux linux-firmware lvm2 ansible wpa_supplicant neovim"
+  command: "pacstrap {{ arch_root }} {{ packages.essential }}"
   retries: 3
   delay: 2
   tags: 'pacstrap'
