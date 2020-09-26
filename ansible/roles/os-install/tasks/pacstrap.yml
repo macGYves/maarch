@@ -7,7 +7,7 @@
     state: absent
 
 - name: Install essential packages
-  command: "pacstrap {{ arch_root }} {{ packages.essential }}"
+  command: "pacstrap {{ arch_root }} {{ packages.essential | join(' ')}}"
   retries: 3
   delay: 2
   tags: 'pacstrap'
