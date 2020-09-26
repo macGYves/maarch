@@ -33,6 +33,7 @@ user:
 packages:
     essential:
         - base
+        - base-devel
         - linux
         - linux-firmware
         - lvm2
