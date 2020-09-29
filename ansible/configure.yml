@@ -16,6 +16,7 @@
     - { role: shell, tags: 'shell' }
     - { role: dev-tools, tags: 'dev-tools' }
     - { role: firewall, tags: 'firewall' }
+    - { role: ssd, tags: 'ssd' }
   tasks:
     - name: Install more packages
       pacman:
