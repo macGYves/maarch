@@ -1,0 +1,11 @@
+---
+
+- name: Install iwd
+  pacman:
+    name: iwd
+    state: present
+
+- name: Start and enable iwd systemd service
+  systemd:
+    name: iwd.service
+    enabled: yes

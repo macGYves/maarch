@@ -1,0 +1,17 @@
+---
+
+- name: Ensure waybar config directory exists
+  file:
+    path: "/home/{{ user.name }}/.config/waybar"
+    state: directory
+    owner: "{{ user.name }}"
+    mode: 0750
+
+- name: Copy waybar config files
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ user.name }}/.config/waybar/"
+    owner: "{{ user.name }}"
+    mode: 0740
+  with_fileglob:
+    - "waybar/*"

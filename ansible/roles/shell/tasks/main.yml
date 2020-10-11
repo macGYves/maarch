@@ -11,7 +11,7 @@
 - name: Copy zsh_plugins
   copy:
     dest: "/home/{{ user.name }}/.zsh_plugins.txt"
-    src: .zsh_plugins.txt
+    src: '.zsh_plugins.txt'
   become: yes
   become_user: "{{ user.name }}"
 
@@ -22,6 +22,15 @@
 
 - name: Copy .zshrc
   copy:
-    dest: /home/{{ user.name }}/.zshrc
-    src: .zshrc
+    dest: "/home/{{ user.name }}/.zshrc"
+    src: '.zshrc'
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Copy .zlogin
+  copy:
+    dest: "/home/{{ user.name }}/.zlogin"
+    src: '.zlogin'
+  become: yes
+  become_user: "{{ user.name }}"
 

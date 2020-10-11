@@ -1,0 +1,8 @@
+[Match]
+Type=ether
+
+[Network]
+DHCP=yes
+
+[DHCP]
+RouteMetric=10

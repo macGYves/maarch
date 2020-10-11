@@ -1,0 +1,15 @@
+---
+
+- name: Ensure swaylock config directory exists
+  file:
+    path: "/home/{{ user.name }}/.config/swaylock"
+    state: directory
+    owner: "{{ user.name }}"
+    mode: 0750
+
+- name: Copy swaylock config file
+  copy:
+    dest: "/home/{{ user.name }}/.config/swaylock/"
+    src: "swaylock/config"
+    owner: "{{ user.name }}"
+    mode: 0640

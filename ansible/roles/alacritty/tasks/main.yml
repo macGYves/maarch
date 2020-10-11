@@ -1,0 +1,20 @@
+---
+
+- name: Install alacritty
+  pacman:
+    name: alacritty
+    state: present
+
+- name: Ensure alacritty config folder exists
+  file:
+    path: "/home/{{ user.name }}/.config/alacritty/"
+    state: directory
+    owner: "{{ user.name }}"
+    mode: 0750
+
+- name: Copy alacritty config file
+  copy:
+    dest: "/home/{{ user.name }}/.config/alacritty/alacritty.yml"
+    src: 'alacritty.yml'
+    owner: "{{ user.name }}"
+    mode: 0600
