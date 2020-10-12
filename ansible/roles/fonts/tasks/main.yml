@@ -3,7 +3,7 @@
 - name: Install fonts
   pacman:
     name:
-      - text-gyre-fonts
+      - tex-gyre-fonts
       - ttf-dejavu
       - ttf-linux-libertine
       - ttf-hack
