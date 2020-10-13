@@ -221,7 +221,7 @@ font pango:monospace 16px
 
 exec firefox
 exec gammastep-indicator
-
+exec autotiling
 
 set $Locker swaylock && sleep 1
 

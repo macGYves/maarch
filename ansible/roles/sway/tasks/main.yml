@@ -18,9 +18,10 @@
 - name: Install sway dependencies from AUR
   aur:
     name:
-      - swappy
-      - azote
-      - nwg-launchers
+      - swappy        # screenshot-manipulating tool
+      - azote         # wallpaper manager
+      - nwg-launchers # grid/bar launchers
+      - autotiling    # script for opening new windows more space-efficiently
     use: makepkg
     state: present
   become: yes
