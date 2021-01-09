@@ -20,6 +20,7 @@
     - { role: sway, tags: 'sway' }
     - { role: bluetooth, tags: 'bluetooth' }
     - { role: themes, tags: 'themes' }
+    - { role: yubikey, tags: 'yubikey' }
   tasks:
     - name: Install more packages
       pacman:

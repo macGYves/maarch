@@ -9,5 +9,5 @@ alias mcp="mvn clean package"
 alias open="xdg-open"
 
 alias pip="pip2"
-alias vim="nvim"
+alias e="nvim"
 
