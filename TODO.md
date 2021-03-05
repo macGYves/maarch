@@ -11,3 +11,4 @@ rkhunter
 
 kanshi-git ?
 wdisplays?
+taskwarrior
