@@ -38,7 +38,6 @@ packages:
         - linux-firmware
         - lvm2
         - ansible
-#        - wpa_supplicant
         - neovim
         - git
         - zsh
