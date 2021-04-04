@@ -1,5 +1,4 @@
 ---
-
 # pacstrap fails if intel-ucode exists on boot partition.
 - name: Delete intel-ucode.img
   file:
@@ -10,4 +9,4 @@
   command: "pacstrap {{ arch_root }} {{ packages.essential | join(' ')}}"
   retries: 3
   delay: 2
-  tags: 'pacstrap'
+  tags: "pacstrap"

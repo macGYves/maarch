@@ -1,5 +1,4 @@
 ---
-
 - name: Enable systemd-networkd
   command: "systemctl enable systemd-networkd.service"
 

@@ -1,5 +1,4 @@
 ---
-
 - name: Create main LVM volume group
   lvg:
     vg: "{{ lvm.vg_main }}"

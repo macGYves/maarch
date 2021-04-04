@@ -1,5 +1,4 @@
 ---
-
 - name: Install alacritty
   pacman:
     name: alacritty
@@ -15,6 +14,6 @@
 - name: Copy alacritty config file
   copy:
     dest: "/home/{{ user.name }}/.config/alacritty/alacritty.yml"
-    src: 'alacritty.yml'
+    src: "alacritty.yml"
     owner: "{{ user.name }}"
     mode: 0600

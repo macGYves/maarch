@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure waybar config directory exists
   file:
     path: "/home/{{ user.name }}/.config/waybar"

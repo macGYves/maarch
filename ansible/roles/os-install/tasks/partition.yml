@@ -1,12 +1,11 @@
 ---
-
 - name: Create EFI System Partition
   parted:
     device: "{{ install_disk }}"
     name: "{{ partitions.boot.label }}"
     number: 1
     label: gpt
-    flags: [ esp ]
+    flags: [esp]
     state: present
     part_end: 551MiB
   when: boot_mode == 'uefi'
@@ -17,11 +16,10 @@
     name: "{{ partitions.boot.label }}"
     number: 1
     label: gpt
-    flags: [ legacy_boot ]
+    flags: [legacy_boot]
     state: present
     part_end: 551MiB
   when: boot_mode == 'bios'
-
 
 - name: Create LUKS partition
   parted:

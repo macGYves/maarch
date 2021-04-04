@@ -1,4 +1,3 @@
 ---
-
 - import_tasks: locales.yml
 - import_tasks: timezone.yml

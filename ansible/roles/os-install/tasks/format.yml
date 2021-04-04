@@ -23,5 +23,5 @@
 - name: Format root volume
   filesystem:
     fstype: ext4
-    dev : "{{ lvm.lv_root.dev }}"
+    dev: "{{ lvm.lv_root.dev }}"
     opts: -L "{{ lvm.lv_root.label }}"

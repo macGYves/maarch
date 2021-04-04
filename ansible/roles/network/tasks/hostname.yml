@@ -1,5 +1,4 @@
 ---
-
 - name: Set hostname
   copy:
     dest: /etc/hostname

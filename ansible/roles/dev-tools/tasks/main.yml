@@ -1,5 +1,4 @@
 ---
-
 - name: Install asdf-vm and use it to install dev-tools for {{ user.name }}
   block:
     - name: "Ensure /home/{{user.name}}/.asdf does not exist"

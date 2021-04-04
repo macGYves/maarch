@@ -1,4 +1,3 @@
 ---
-
 - import_tasks: device_uuids.yml
 - import_tasks: boot_mode.yml

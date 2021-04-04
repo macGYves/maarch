@@ -1,5 +1,4 @@
 ---
-
 - name: Push mkinitcpio configuration and regenerate initramfs
   template:
     src: mkinitcpio.conf.j2

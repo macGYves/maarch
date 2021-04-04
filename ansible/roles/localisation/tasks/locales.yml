@@ -1,5 +1,4 @@
 ---
-
 - name: create locale.gen
   copy:
     dest: /etc/locale.gen

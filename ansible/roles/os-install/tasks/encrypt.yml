@@ -1,10 +1,9 @@
 ---
-
 - name: Create LUKS container
   community.crypto.luks_device:
     device: "{{ partitions.luks.dev }}"
     label: "{{ partitions.luks.label }}"
-    state: 'present'
+    state: "present"
     passphrase: "{{ luks_password }}"
     type: luks2
   no_log: true
@@ -12,7 +11,7 @@
 - name: Open the LUKS container
   community.crypto.luks_device:
     device: "{{ partitions.luks.dev }}"
-    state: 'opened'
+    state: "opened"
     name: "{{ partitions.luks.mapper_name }}"
     passphrase: "{{ luks_password }}"
   no_log: true

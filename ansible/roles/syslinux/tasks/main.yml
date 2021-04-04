@@ -1,5 +1,4 @@
 ---
-
 - name: Install syslinux
   package:
     name: syslinux gptfdisk
@@ -30,8 +29,8 @@
 #  changed_when: false
 
 - name: Copy syslinux.cfg
-#  vars:
-#    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  #  vars:
+  #    root_uuid: "{{ _uuid.stdout_lines[0] }}"
   template:
     src: syslinux.cfg.j2
     dest: /boot/syslinux/syslinux.cfg

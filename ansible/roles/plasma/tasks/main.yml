@@ -1,5 +1,4 @@
 ---
-
 - name: Install sddm
   pacman:
     name:
@@ -44,4 +43,3 @@
       - gwenview
       - spectacle
     state: present
-

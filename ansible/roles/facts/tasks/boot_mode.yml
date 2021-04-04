@@ -1,5 +1,4 @@
 ---
-
 - name: Check if efivars folder exists
   stat:
     path: /sys/firmware/efi/efivars
@@ -7,10 +6,10 @@
 
 - name: Set boot mode to BIOS
   set_fact:
-    boot_mode: 'bios'
+    boot_mode: "bios"
   when: not efivars_info.stat.exists
 
 - name: Set boot mode to UEFI
   set_fact:
-    boot_mode: 'uefi'
+    boot_mode: "uefi"
   when: efivars_info.stat.exists

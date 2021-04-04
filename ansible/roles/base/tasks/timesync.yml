@@ -1,5 +1,4 @@
 ---
-
 - name: Copy systemd-timesyncd.conf
   copy:
     dest: /etc/systemd/timesyncd.conf
@@ -10,4 +9,3 @@
     name: systemd-timesyncd.service
     state: started
     enabled: yes
-
