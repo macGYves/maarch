@@ -9,6 +9,8 @@
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
+  vars:
+    ansible_become_pass: "{{ macgyves_password }}"
   roles:
     - { role: network, tags: 'network' }
     - base
@@ -21,6 +23,7 @@
     - { role: bluetooth, tags: 'bluetooth' }
     - { role: themes, tags: 'themes' }
     - { role: yubikey, tags: 'yubikey' }
+    - { role: office, tags: 'office' }
   tasks:
     - name: Install more packages
       pacman:

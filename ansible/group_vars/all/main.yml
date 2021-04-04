@@ -68,5 +68,3 @@ packages:
 #        - ccid
 #        - opensc
 #        - xloadimage
-#        # firewall
-#        - nextcloud-client
