@@ -1,10 +1,12 @@
 ---
 - name: Install YubiKey Personalization GUI
+  become: yes
   pacman:
     name: yubikey-personalization-gui
     state: present
 
 - name: Install smartcard libs/tools
+  become: yes
   pacman:
     name:
       - pcsclite

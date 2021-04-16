@@ -1,20 +1,24 @@
 ---
-- name: create locale.gen
+- name: Init /etc/locale.gen
+  become: yes
   copy:
     dest: /etc/locale.gen
     src: files/locale.gen
     mode: 0644
 
 - name: run locale-gen
-  shell: locale-gen
+  become: yes
+  command: locale-gen
 
-- name: create locale.conf
+- name: Init /etc/locale.conf
+  become: yes
   copy:
     dest: /etc/locale.conf
     src: files/locale.conf
     mode: 0644
 
-- name: create vconsole.conf
+- name: Init /etc/vconsole.conf
+  become: yes
   copy:
     dest: /etc/vconsole.conf
     src: files/vconsole.conf

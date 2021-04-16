@@ -1,17 +1,20 @@
 ---
 - name: Install bluetooth protocol stack
+  become: yes
   pacman:
     name:
       - bluez
       - bluez-utils
 
 - name: Start/Enable bluetooth systemd service
+  become: yes
   systemd:
     name: bluetooth.service
     state: started
     enabled: yes
 
-- name: Copy bluetooth config files
+- name: Init /etc/bluetooth/main.conf
+  become: yes
   copy:
     dest: /etc/bluetooth/main.conf
     src: main.conf

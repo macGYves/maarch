@@ -1,10 +1,12 @@
 ---
 - name: Install util-linux package
+  become: yes
   pacman:
     name: util-linux
     state: present
 
 - name: Schedule weekly SSD TRIM
+  become: yes
   systemd:
     name: fstrim.timer
     enabled: yes

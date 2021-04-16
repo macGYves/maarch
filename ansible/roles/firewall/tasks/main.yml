@@ -1,14 +1,17 @@
 ---
 - name: Install Uncomplicated Firewall
+  become: yes
   pacman:
     name: ufw
     state: present
 
 - name: Start and enable ufw systemd service
+  become: yes
   systemd:
     name: ufw.service
     state: started
     enabled: yes
 
 - name: Start ufw
+  become: yes
   command: ufw enable

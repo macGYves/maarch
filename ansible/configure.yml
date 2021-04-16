@@ -8,8 +8,8 @@
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
-  vars:
-    ansible_become_pass: "{{ macgyves_password }}"
+  # vars:
+  #   ansible_become_pass: "{{ macgyves_password }}"
   roles:
     - { role: network, tags: "network" }
     - base
@@ -29,21 +29,3 @@
         name: "{{ packages.more }}"
         state: present
       tags: "install-packages"
-# Grafikkartentreiber
-#idea
-# git-extras
-
-# kde hotkeys
-# bluetooth
-# kde tastaturen
-
-# yubikey
-# ssh-key
-
-# localectl set-x11-keymap sv-latin1
-# git config
-# git signing config
-
-# security
-# https://wiki.archlinux.org/index.php/Docker
-# https://wiki.archlinux.org/index.php/TLP

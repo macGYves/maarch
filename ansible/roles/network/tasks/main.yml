@@ -3,4 +3,3 @@
 - import_tasks: hostsfile.yml
 - import_tasks: iwd.yml
 - import_tasks: systemd-network.yml
-#- import_tasks: networkmanager.yml

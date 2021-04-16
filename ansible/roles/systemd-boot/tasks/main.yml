@@ -1,23 +1,19 @@
 ---
 - name: Install systemd-boot
+  become: yes
   command: bootctl install
   args:
     creates: /boot/EFI/systemd/systemd-bootx64.efi
 
-#- name: Get root's UUID
-#  command: blkid "/dev/disk/by-partlabel/{{ partitions.encrypted }}" -s UUID -o value
-#  register: _uuid
-#  changed_when: false
-
 - name: Create systemd-boot loader.conf
+  become: yes
   copy:
     src: files/loader.conf
     dest: /boot/loader/loader.conf
     mode: 0644
 
 - name: Install systemd-boot entry arch.conf
-  #  vars:
-  #    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  become: yes
   template:
     src: templates/arch.conf.j2
     dest: /boot/loader/entries/arch.conf

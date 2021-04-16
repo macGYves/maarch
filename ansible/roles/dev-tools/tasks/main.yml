@@ -1,39 +1,26 @@
 ---
-- name: Install asdf-vm and use it to install dev-tools for {{ user.name }}
-  block:
-    - name: "Ensure /home/{{user.name}}/.asdf does not exist"
-      file:
-        path: "${HOME}/.asdf"
-        state: absent
+- name: "Ensure ~/.asdf does not exist"
+  file:
+    path: "~/.asdf"
+    state: absent
 
-    - name: Clone asdf repository
-      git:
-        repo: https://github.com/asdf-vm/asdf.git
-        dest: "${HOME}/.asdf"
-        version: v0.8.0
+- name: Clone asdf repository
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: "~/.asdf"
+    version: v0.8.0
 
-    - name: Add java plugin to asdf
-      command: "${HOME}/.asdf/bin/asdf plugin add java"
+- name: Add java plugin to asdf
+  command: "~/.asdf/bin/asdf plugin add java"
 
-    - name: Install openjdk
-      command: "${HOME}/.asdf/bin/asdf install java latest:openjdk"
+- name: Install openjdk
+  command: "~/.asdf/bin/asdf install java latest:openjdk"
 
-    - name: Add maven plugin to asdf
-      command: "${HOME}/.asdf/bin/asdf plugin add maven"
+- name: Add maven plugin to asdf
+  command: "~/.asdf/bin/asdf plugin add maven"
 
-    - name: Install latest maven
-      command: "${HOME}/.asdf/bin/asdf install maven latest"
+- name: Install latest maven
+  command: "~/.asdf/bin/asdf install maven latest"
 
-    - name: Add nodejs plugin to asdf
-      command: "${HOME}/.asdf/bin/asdf plugin add nodejs"
-
-  #    - name: Import nodejs release team gpg keys
-  #      command: bash -c "${ASDF_DATA_DIR=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring"
-
-  #    - name: Install latest node LTS version
-  #      command: "${HOME}/.asdf/bin/asdf install nodejs 12.18.3"
-  #      retries: 3
-  #      delay: 2
-
-  become: yes
-  become_user: "{{ user.name }}"
+- name: Add nodejs plugin to asdf
+  command: "~/.asdf/bin/asdf plugin add nodejs"

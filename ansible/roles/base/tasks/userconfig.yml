@@ -1,11 +1,13 @@
 ---
 - name: Ensure group {{ user.group }} exists
+  become: yes
   group:
     name: "{{ user.group }}"
     state: present
   when: user.name is defined and user.group is defined
 
 - name: Ensure the user {{ user.name }} exists
+  become: yes
   user:
     name: "{{ user.name }}"
     shell: "{{ user.shell }}"
@@ -22,18 +24,21 @@
   when: user.name is defined
   no_log: true
 
-- name: Give sudo rights to users in wheel group
+- name: Init /etc/sudoers
+  become: yes
   copy:
     dest: /etc/sudoers
     src: sudoers
     mode: 0440
 
 - name: Create AUR user
+  become: yes
   user:
     name: aur_builder
     group: wheel
 
 - name: Grant AUR user permissions to run pacman
+  become: yes
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
