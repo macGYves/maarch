@@ -32,11 +32,10 @@
     boot_mode: "{{ hostvars.localhost.boot_mode }}"
   roles:
     - { role: localisation, tags: "localisation" }
-    - { role: kernel, tags: "kernel" }
     - { role: network, tags: "network" }
-    - { role: systemd-boot, tags: "bootloader", when: boot_mode == 'uefi' }
-    - { role: syslinux, tags: "bootloader", when: boot_mode == 'bios' }
     - { role: microcode, tags: "microcode" }
+    - { role: systemd-boot, tags: "bootloader" }
+    - { role: kernel, tags: "kernel" }
   tasks:
     - name: Set root password
       user:

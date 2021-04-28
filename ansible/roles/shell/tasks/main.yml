@@ -6,21 +6,3 @@
     state: present
   become: yes
   become_user: aur_builder
-
-- name: Copy zsh_plugins
-  copy:
-    dest: "~/.zsh_plugins.txt"
-    src: ".zsh_plugins.txt"
-
-- name: Generate .zsh_plugins.sh for static loading
-  shell: "antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
-
-- name: Copy .zshrc
-  copy:
-    dest: "~/.zshrc"
-    src: ".zshrc"
-
-- name: Copy .zlogin
-  copy:
-    dest: "~/.zlogin"
-    src: ".zlogin"

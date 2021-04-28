@@ -1,0 +1,10 @@
+---
+- name: Install chezmoi
+  pacman:
+    package: chezmoi
+
+- name: Init chezmoi
+  command: chezmoi init https://github.com/macGYves/dotfiles.git
+
+- name: chezmoi apply
+  command: chezmoi apply

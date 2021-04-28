@@ -1,17 +1,22 @@
 ---
-- name: Create LUKS container
+- name: "Remove LUKS container on device {{ partitions.luks.dev }}"
+  community.crypto.luks_device:
+    device: "{{ partitions.luks.dev }}"
+    state: "absent"
+
+- name: "Create and open LUKS container on device {{ partitions.luks.dev }} with label {{ partitions.luks.label }} and name {{ partitions.luks.mapper_name }}"
   community.crypto.luks_device:
     device: "{{ partitions.luks.dev }}"
     label: "{{ partitions.luks.label }}"
-    state: "present"
+    name: "{{ partitions.luks.mapper_name }}"
+    state: "opened"
     passphrase: "{{ luks_password }}"
     type: luks2
   no_log: true
-
-- name: Open the LUKS container
-  community.crypto.luks_device:
-    device: "{{ partitions.luks.dev }}"
-    state: "opened"
-    name: "{{ partitions.luks.mapper_name }}"
-    passphrase: "{{ luks_password }}"
-  no_log: true
+# - name: "Open the LUKS container on device {{ partitions.luks.dev }}"
+#   community.crypto.luks_device:
+#     device: "{{ partitions.luks.dev }}"
+#     state: "opened"
+#     name: "{{ partitions.luks.mapper_name }}"
+#     passphrase: "{{ luks_password }}"
+#   no_log: true
