@@ -46,6 +46,11 @@
   vars_files:
     - play_vars/install-os_vars.yml
   tasks:
+    - name: Copy maarch to /opt/maarch
+      copy:
+        src: "{{ playbook_dir }}"
+        dest: "{{ arch_root }}/opt/maarch"
+
     - name: Unmount partitions
       command: "umount -Rf {{ arch_root }}"
 
