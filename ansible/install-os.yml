@@ -28,8 +28,6 @@
 
 - name: Continue Arch Linux installation in chroot
   hosts: localhost_chroot
-  vars:
-    boot_mode: "{{ hostvars.localhost.boot_mode }}"
   roles:
     - { role: localisation, tags: "localisation" }
     - { role: network, tags: "network" }
@@ -42,32 +40,14 @@
         name: root
         password: "{{ hostvars.localhost.root_password }}"
 
-- name: Finish installation
+- name: Finish base OS installation
   hosts: localhost
   become: yes
-  connection: local
   vars_files:
     - play_vars/install-os_vars.yml
   tasks:
     - name: Unmount partitions
       command: "umount -Rf {{ arch_root }}"
-      tags: "cleanup"
-
-    - name: unmount swap
-      command: swapoff -a
-      tags: "cleanup"
-
-    - name: close LUKS swap
-      luks_device:
-        device: "{{ lvm.lv_swap.dev }}"
-        state: closed
-      tags: "cleanup"
-
-    - name: close LUKS root
-      luks_device:
-        device: "{{ lvm.lv_root.dev }}"
-        state: closed
-      tags: "cleanup"
 
     - name: Reboot
       command: reboot now
