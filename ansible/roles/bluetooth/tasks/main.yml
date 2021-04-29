@@ -15,6 +15,6 @@
 
 - name: Init /etc/bluetooth/main.conf
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/bluetooth/main.conf
     src: main.conf

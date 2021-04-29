@@ -19,6 +19,6 @@
     state: directory
 
 - name: Copy gtk3 settings
-  copy:
+  ansible.builtin.copy:
     dest: "~/.config/gtk-3.0/settings.ini"
     src: "gtk-3.0/settings.ini"

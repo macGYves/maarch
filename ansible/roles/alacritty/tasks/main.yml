@@ -11,6 +11,6 @@
     state: directory
 
 - name: Copy alacritty config file
-  copy:
+  ansible.builtin.copy:
     dest: "~/.config/alacritty/alacritty.yml"
     src: "alacritty.yml"

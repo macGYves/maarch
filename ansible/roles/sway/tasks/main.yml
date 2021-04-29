@@ -35,7 +35,7 @@
     mode: 0750
 
 - name: Copy sway configuration files
-  copy:
+  ansible.builtin.copy:
     dest: "~/.config/sway/config"
     src: sway/config
     owner: "{{ user.name }}"
