@@ -1,14 +1,13 @@
 ---
-- name: Ensure group {{ user.group }} exists
+- name: "Ensure group {{ user.group }} exists"
   become: yes
   group:
     name: "{{ user.group }}"
     state: present
-  when: user.name is defined and user.group is defined
 
-- name: Ensure the user {{ user.name }} exists
+- name: "Ensure the user {{ user.name }} exists"
   become: yes
-  user:
+  ansible.builtin.user:
     name: "{{ user.name }}"
     shell: "{{ user.shell }}"
     groups:
@@ -20,7 +19,7 @@
     system: no
     createhome: yes
     home: /home/{{ user.name }}
-    password: "{{ macgyves_password }}"
+    password: "{{ user_password }}"
   when: user.name is defined
   no_log: true
 

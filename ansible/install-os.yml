@@ -13,13 +13,20 @@
       prompt: "Installation target device (e.g. /dev/sda)"
       private: no
     - name: root_password
-      prompt: "root password"
+      prompt: "root user password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+    - name: user_password
+      prompt: "user password"
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
   pre_tasks:
     - set_fact:
         root_password: "{{ root_password }}"
+    - set_fact:
+        user_password: "{{ user_password }}"
     - name: Update the system clock
       command: timedatectl set-ntp true
   roles:
@@ -28,17 +35,23 @@
 
 - name: Continue Arch Linux installation in chroot
   hosts: localhost_chroot
+  pre_tasks:
+    - set_fact:
+        user_password: "{{ hostvars.localhost.user_password }}"
+    - set_fact:
+        root_password: "{{ hostvars.localhost.root_password }}"
   roles:
     - { role: localisation, tags: "localisation" }
     - { role: network, tags: "network" }
     - { role: microcode, tags: "microcode" }
     - { role: systemd-boot, tags: "bootloader" }
     - { role: kernel, tags: "kernel" }
+    - { role: users, tags: "users" }
   tasks:
     - name: Set root password
       user:
         name: root
-        password: "{{ hostvars.localhost.root_password }}"
+        password: "{{ root_password }}"
 
 - name: Finish base OS installation
   hosts: localhost

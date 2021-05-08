@@ -2,11 +2,7 @@
 - name: Customise a basic arch linux installation
   hosts: localhost
   vars_prompt:
-    - name: macgyves_password
-      prompt: "macgyves password"
-      private: yes
-      encrypt: "sha512_crypt"
-      confirm: yes
+
   roles:
     - { role: network, tags: "network" }
     - base
