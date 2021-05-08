@@ -1,7 +1,6 @@
 ---
 - name: Install office packages
   become: true
-  become_user: macgyves
   pacman:
     name:
       - vdirsyncer
