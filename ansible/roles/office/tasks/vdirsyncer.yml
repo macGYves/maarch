@@ -4,12 +4,6 @@
     path: "~/contacts/contacts"
     state: directory
 
-- name: Run vdirsyncer discover
-  command: vdirsyncer discover
-
-- name: Run initial vdirsyncer sync
-  command: vdirsyncer sync
-
 - name: Ensure systemd user directory (~/.config/systemd/user) exists
   file:
     path: "~/.config/systemd/user"
