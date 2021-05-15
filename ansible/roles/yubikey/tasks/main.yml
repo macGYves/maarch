@@ -2,8 +2,9 @@
 - name: Install YubiKey Personalization GUI
   become: yes
   pacman:
-    name: yubikey-personalization-gui
-    state: present
+    name: 
+      - yubikey-personalization-gui
+      - yubikey-manager
 
 - name: Install smartcard libs/tools
   become: yes
@@ -12,4 +13,10 @@
       - pcsclite
       - libusb-compat
       - ccid
-    state: present
+
+- name: Start and enable pcscd.service
+  become: yes
+  systemd:
+    name: pcscd.service
+    state: started
+    enabled: yes
