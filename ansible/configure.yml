@@ -16,6 +16,7 @@
     - { role: themes, tags: "themes" }
     - { role: yubikey, tags: "yubikey" }
     - { role: office, tags: "office" }
+    - { role: udiskie, tags: "udiskie" }
   tasks:
     - name: Install more packages
       become: true
