@@ -22,25 +22,10 @@
       - nwg-launchers # grid/bar launchers
       - autotiling # script for opening new windows more space-efficiently
       - wdisplays # tool for changing screen layouts dynamically
+      - kanshi-git
     use: makepkg
     state: present
   become: yes
   become_user: aur_builder
 
-- name: Ensure sway config directory exists
-  file:
-    path: "~/.config/sway"
-    state: directory
-    owner: "{{ user.name }}"
-    mode: 0750
-
-- name: Copy sway configuration files
-  ansible.builtin.copy:
-    dest: "~/.config/sway/config"
-    src: sway/config
-    owner: "{{ user.name }}"
-    mode: 0640
-
-- import_tasks: waybar.yml
 - import_tasks: nwg-launchers.yml
-- import_tasks: kanshi.yml
