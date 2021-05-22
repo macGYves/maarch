@@ -19,6 +19,7 @@
     - { role: yubikey, tags: "yubikey" }
     - { role: office, tags: "office" }
     - { role: udiskie, tags: "udiskie" }
+    - { role: digikam, tags: "digikam" }
   tasks:
     - name: Install more packages
       become: true
