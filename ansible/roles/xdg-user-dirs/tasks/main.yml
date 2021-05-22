@@ -1,0 +1,9 @@
+---
+
+- name: Install xdg-user-dirs
+  become: yes
+  community.general.pacman:
+    pkg: xdg-user-dirs
+
+- name: Run xdg-user-dirs-update
+  command: xdg-user-dirs-update
