@@ -14,7 +14,7 @@
 
 - name: Install systemd-boot entry arch.conf
   become: yes
-  template:
+  ansible.builtin.template:
     src: templates/arch.conf.j2
     dest: /boot/loader/entries/arch.conf
     mode: 0644
