@@ -1,12 +1,12 @@
 ---
 - name: Perform full system upgrade
   become: true
-  pacman:
+  community.general.pacman:
     update_cache: yes
     upgrade: yes
 
 - name: Install base packages
   become: true
-  pacman:
+  community.general.pacman:
     name: "{{ packages.essential }}"
     state: present

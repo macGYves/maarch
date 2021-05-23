@@ -1,7 +1,7 @@
 ---
 - name: Install chezmoi
   become: yes
-  pacman:
+  community.general.pacman:
     package: chezmoi
 
 - name: Init chezmoi

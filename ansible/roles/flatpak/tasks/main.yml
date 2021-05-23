@@ -2,7 +2,7 @@
 
 - name: Install flatpak
   become: yes
-  pacman: 
+  community.general.pacman: 
     pkg: flatpak
 
 - name: Add the flathub flatpak repository remote to the user installation

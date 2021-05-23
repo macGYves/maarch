@@ -9,7 +9,7 @@
 
 - name: Install papirus icon theme
   become: yes
-  pacman:
+  community.general.pacman:
     name: papirus-icon-theme
     state: present
 

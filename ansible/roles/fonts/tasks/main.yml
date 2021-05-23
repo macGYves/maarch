@@ -1,7 +1,7 @@
 ---
 - name: Install fonts
   become: yes
-  pacman:
+  community.general.pacman:
     name:
       - tex-gyre-fonts
       - ttf-dejavu

@@ -1,6 +1,6 @@
 ---
 - name: Install udiskie
-  pacman: 
+  community.general.pacman: 
     name: udiskie
 
 - name: Ensure systemd user directory (~/.config/systemd/user) exists

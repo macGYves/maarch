@@ -23,7 +23,7 @@
   tasks:
     - name: Install more packages
       become: true
-      pacman:
+      community.general.pacman:
         name: "{{ packages.more }}"
         state: present
       tags: "install-packages"
