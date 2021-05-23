@@ -20,7 +20,7 @@
     src: .config/systemd/user/vdirsyncer.timer
 
 - name: Enable vdirsyncer timer
-  systemd:
+  ansible.builtin.systemd:
     name: vdirsyncer.timer
     scope: user
     state: started

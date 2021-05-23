@@ -7,6 +7,6 @@
 
 - name: Start and enable iwd systemd service
   become: yes
-  systemd:
+  ansible.builtin.systemd:
     name: iwd.service
     enabled: yes
