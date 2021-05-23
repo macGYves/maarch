@@ -28,7 +28,7 @@
     - set_fact:
         user_password: "{{ user_password }}"
     - name: Update the system clock
-      command: timedatectl set-ntp true
+      ansible.builtin.command: timedatectl set-ntp true
   roles:
     - facts
     - os-install
@@ -65,7 +65,7 @@
         dest: "{{ arch_root }}/opt/maarch"
 
     - name: Unmount partitions
-      command: "umount -Rf {{ arch_root }}"
+      ansible.builtin.command: "umount -Rf {{ arch_root }}"
 
     - name: Reboot
-      command: reboot now
+      ansible.builtin.command: reboot now

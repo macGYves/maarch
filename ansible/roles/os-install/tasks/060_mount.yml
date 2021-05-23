@@ -14,4 +14,4 @@
     state: mounted
 
 - name: Activate swapping on swap volume
-  command: "swapon {{ lvm.lv_swap.dev }}"
+  ansible.builtin.command: "swapon {{ lvm.lv_swap.dev }}"

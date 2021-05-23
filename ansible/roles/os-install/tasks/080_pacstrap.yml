@@ -6,4 +6,4 @@
     state: absent
 
 - name: Install essential packages
-  command: "pacstrap {{ arch_root }} {{ packages.essential | join(' ')}}"
+  ansible.builtin.command: "pacstrap {{ arch_root }} {{ packages.essential | join(' ')}}"

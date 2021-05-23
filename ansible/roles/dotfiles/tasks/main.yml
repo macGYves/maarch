@@ -5,7 +5,7 @@
     package: chezmoi
 
 - name: Init chezmoi
-  command: chezmoi init https://github.com/macGYves/dotfiles.git
+  ansible.builtin.command: chezmoi init https://github.com/macGYves/dotfiles.git
 
 - name: chezmoi apply
-  command: chezmoi apply
+  ansible.builtin.command: chezmoi apply

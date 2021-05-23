@@ -6,4 +6,4 @@
     pkg: xdg-user-dirs
 
 - name: Run xdg-user-dirs-update
-  command: xdg-user-dirs-update
+  ansible.builtin.command: xdg-user-dirs-update
