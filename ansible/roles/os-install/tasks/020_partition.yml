@@ -1,6 +1,6 @@
 ---
 - name: Create EFI System Partition
-  parted:
+  community.general.parted:
     device: "{{ install_disk }}"
     name: "{{ partitions.boot.label }}"
     number: 1
@@ -10,7 +10,7 @@
     part_end: 551MiB
 
 - name: Create LUKS partition
-  parted:
+  community.general.parted:
     device: "{{ install_disk }}"
     name: "{{ partitions.luks.label }}"
     number: 2
