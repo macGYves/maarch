@@ -17,7 +17,7 @@
 
 - name: Ensure systemd-resolved config folder exists
   become: yes
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/resolved.conf.d
     state: directory
 

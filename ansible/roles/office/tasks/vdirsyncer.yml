@@ -1,11 +1,11 @@
 ---
 - name: Ensure contacts folders exist
-  file:
+  ansible.builtin.file:
     path: "~/contacts/contacts"
     state: directory
 
 - name: Ensure systemd user directory (~/.config/systemd/user) exists
-  file:
+  ansible.builtin.file:
     path: "~/.config/systemd/user"
     state: directory
 
