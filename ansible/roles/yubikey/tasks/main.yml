@@ -20,3 +20,8 @@
     name: pcscd.service
     state: started
     enabled: yes
+
+- name: Install gcr  # pinentry-gnome3 depends on this
+  become: yes
+  pacman: 
+    pkg: gcr
