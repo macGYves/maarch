@@ -12,6 +12,7 @@
       - waybar
       - jq # needed for keyboard-layout-changer
       - pavucontrol
+      - mako # notification daemon
     state: present
 
 - name: Install sway dependencies from AUR
@@ -42,3 +43,4 @@
     - nextcloud.service
     - gammastep-indicator.service
     - autotiling.service
+    - mako.service
