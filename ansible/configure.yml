@@ -20,6 +20,7 @@
     - { role: office, tags: "office" }
     - { role: udiskie, tags: "udiskie" }
     - { role: digikam, tags: "digikam" }
+    - { role: power_management, tags: "power_mgmt"}
   tasks:
     - name: Install more packages
       become: true

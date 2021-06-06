@@ -1,0 +1,19 @@
+---
+
+- name: Install power management tools
+  become: yes
+  ansible.builtin.pacman:
+    name: tlp
+
+- name: Init /etc/tlp.conf
+  become: yes
+  ansible.builtin.copy:
+    dest: /etc/tlp.conf
+    src: tlp.conf
+
+- name: Enable tlp.service 
+  become: yes
+  ansible.builtin.systemd:
+    name: tlp.service
+    state: started
+    enabled: yes
