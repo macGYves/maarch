@@ -1,9 +1,0 @@
-[Unit]
-Description=Handle mounting of usb devices
-Documentation=man:udiskie(1)
-
-[Service]
-ExecStart=/usr/bin/udiskie --tray --no-automount
-
-[Install]
-WantedBy=default.target

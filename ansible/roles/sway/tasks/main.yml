@@ -3,17 +3,18 @@
   become: yes
   community.general.pacman:
     name:
-      - pamixer
-      - sway
-      - swaylock
-      - swayidle
       - brightnessctl
+      - sway
       - gammastep # auto-colour temperature adjustment tool
       - grim # screenshot tool
-      - waybar
       - jq # needed for keyboard-layout-changer
-      - pavucontrol
       - mako # notification daemon
+      - pamixer
+      - pavucontrol
+      - swayidle
+      - swaylock
+      - udiskie
+      - waybar
     state: present
 
 - name: Install sway dependencies from AUR
