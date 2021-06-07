@@ -2,6 +2,7 @@
 - name: Customise a basic arch linux installation
   hosts: localhost
   roles:
+    - kewlfft.aur # Necessary for installing packages from AUR
     - { role: network, tags: "network" }
     - base
     - { role: fonts, tags: "fonts" }
