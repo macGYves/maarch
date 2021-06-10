@@ -19,7 +19,6 @@
     - { role: themes, tags: "themes" }
     - { role: yubikey, tags: "yubikey" }
     - { role: office, tags: "office" }
-    - { role: udiskie, tags: "udiskie" }
     - { role: digikam, tags: "digikam" }
     - { role: power_management, tags: "power_mgmt"}
   tasks:
