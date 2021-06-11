@@ -1,10 +1,4 @@
 --- 
-- name: List installed asdf plugins
-  command: "{{ asdf.bin }} plugin list"
-  register: installed_asdf_plugins
-  failed_when: false
-  changed_when: false
-
 - name: Add java plugin to asdf
   ansible.builtin.command: "{{ asdf.bin }} plugin add java"
   register: asdf_java_plugin_installed
