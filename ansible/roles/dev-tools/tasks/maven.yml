@@ -1,0 +1,21 @@
+---
+- name: List installed asdf plugins
+  command: "{{ asdf.bin }} plugin list"
+  register: installed_asdf_plugins
+  failed_when: false
+  changed_when: false
+
+- name: Add maven plugin to asdf
+  ansible.builtin.command: "{{ asdf.bin }} plugin add maven"
+  register: asdf_maven_plugin_installed
+  failed_when: asdf_maven_plugin_installed.rc > 2
+  when: "'maven' not in installed_asdf_plugins.stdout_lines"
+
+- name: Install latest maven
+  ansible.builtin.command: "{{ asdf.bin }} install maven {{ item }}"
+  loop: "{{ maven.versions }}"
+  register: mvn_install_result
+  changed_when: mvn_install_result.rc != 0
+
+- name: "Make {{ maven.versions[0] }} global default maven"
+  ansible.builtin.command: "{{ asdf.bin }} global maven {{maven.versions[0]}}"
