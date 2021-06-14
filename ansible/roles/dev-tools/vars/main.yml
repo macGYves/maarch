@@ -13,7 +13,7 @@ maven:
 
 jdk:
   versions: 
-    - "adoptopenjdk-openj9-16.0.1+9.openj9-0.26.0"
+    - "adoptopenjdk-11.0.11+9"
     - "graalvm-21.1.0+java16"
 
 node: 
