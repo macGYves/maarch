@@ -2,7 +2,7 @@
 
 - name: Install power management tools
   become: yes
-  ansible.builtin.pacman:
+  community.general.pacman:
     name: tlp
 
 - name: Init /etc/tlp.conf
