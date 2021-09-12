@@ -5,4 +5,4 @@
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf
   notify:
-    - regenerate initramfs
+    - "regenerate initramfs"
