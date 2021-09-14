@@ -8,5 +8,5 @@
 - name: Install base packages
   become: true
   community.general.pacman:
-    name: "{{ packages.essential }}"
+    pkg: "{{ packages.essential }}"
     state: present

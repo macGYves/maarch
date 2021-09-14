@@ -10,7 +10,7 @@
 - name: Install papirus icon theme
   become: yes
   community.general.pacman:
-    name: papirus-icon-theme
+    pkg: papirus-icon-theme
     state: present
 
 - name: Create gtk3 settings directory

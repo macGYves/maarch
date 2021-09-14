@@ -2,7 +2,7 @@
 - name: Install sway
   become: yes
   community.general.pacman:
-    name:
+    pkg:
       - brightnessctl
       - sway
       - gammastep # auto-colour temperature adjustment tool

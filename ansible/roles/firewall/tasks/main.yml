@@ -2,7 +2,7 @@
 - name: Install Uncomplicated Firewall
   become: yes
   community.general.pacman:
-    name: ufw
+    pkg: ufw
     state: present
 
 - name: Start and enable ufw systemd service

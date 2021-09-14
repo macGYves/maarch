@@ -2,7 +2,7 @@
 - name: Install bluetooth protocol stack
   become: yes
   community.general.pacman:
-    name:
+    pkg:
       - bluez
       - bluez-utils
 

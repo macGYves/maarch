@@ -3,7 +3,7 @@
 - name: Install power management tools
   become: yes
   community.general.pacman:
-    name: tlp
+    pkg: tlp
 
 - name: Init /etc/tlp.conf
   become: yes
