@@ -25,3 +25,5 @@
   become: yes
   community.general.pacman: 
     pkg: gcr
+
+- import_tasks: ykfde.yml
