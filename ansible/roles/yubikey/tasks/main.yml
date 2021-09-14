@@ -13,6 +13,7 @@
       - pcsclite
       - libusb-compat
       - ccid
+      - gcr # pinentry-gnome3 depends on this
 
 - name: Start and enable pcscd.service
   become: yes
@@ -20,10 +21,5 @@
     name: pcscd.service
     state: started
     enabled: yes
-
-- name: Install gcr  # pinentry-gnome3 depends on this
-  become: yes
-  community.general.pacman: 
-    pkg: gcr
 
 - import_tasks: ykfde.yml
