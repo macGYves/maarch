@@ -32,6 +32,10 @@
   roles:
     - facts
     - os-install
+  handlers:
+    - name: "regenerate initramfs"
+      become: yes
+      ansible.builtin.command: mkinitcpio -P
 
 - name: Continue Arch Linux installation in chroot
   hosts: localhost_chroot
