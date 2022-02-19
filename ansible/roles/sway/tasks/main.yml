@@ -18,7 +18,7 @@
     state: present
 
 - name: Install sway dependencies from AUR
-  aur:
+  kewlfft.aur.aur:
     name:
       - swappy # screenshot-manipulating tool
       - azote # wallpaper manager
@@ -26,7 +26,7 @@
       - autotiling # script for opening new windows more space-efficiently
       - wdisplays # tool for changing screen layouts dynamically
       - kanshi-git
-      - wob       # wayland overlay bar
+      - wob # wayland overlay bar
     use: makepkg
     state: present
   become: yes
