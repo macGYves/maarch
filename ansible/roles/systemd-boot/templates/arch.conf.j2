@@ -1,5 +1,0 @@
-title          Arch Linux
-linux          /vmlinuz-linux
-initrd         /intel-ucode.img
-initrd         /initramfs-linux.img
-options        cryptdevice=UUID={{ luks_device_uuid }}:cryptlvm root={{ lvm.lv_root.dev }} resume={{ lvm.lv_swap.dev }} rw

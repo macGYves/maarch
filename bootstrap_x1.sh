@@ -27,7 +27,7 @@ DISK=/dev/nvme0n1
 BOOT_PARTITION="${DISK}p1"
 CRYPTROOT_PARTITION="${DISK}p2"
 
-SWAP_PARTITION=/dev/vg.main/swap
+SWAP_VOLUME=/dev/vg.main/swap
 
 # == Remove all partitions
 sgdisk --zap-all ${DISK}
@@ -48,25 +48,30 @@ pvcreate /dev/mapper/cryptlvm
 ## == create volume group called "vg.main"
 vgcreate vg.main /dev/mapper/cryptlvm
 ## == create logical volume for [swap]
-lvcreate -L 32G vg.main -n swap
+lvcreate -L 35G vg.main -n swap
 ## == create logical volume for /
 lvcreate -l 100%FREE vg.main -n root
 
-# == Format partitions
-# == root partition
-mkfs.ext4 /dev/vg.main/root
+# Format partitions
+## root partition
+mkfs.btrfs /dev/vg.main/root
+mount /dev/vg.main/root /mnt
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@var_log
 
-# == swap partition
+## swap partition
+mkswap ${SWAP_VOLUME}
+swapon ${SWAP_VOLUME}
 
-mkswap ${SWAP_PARTITION}
-swapon ${SWAP_PARTITION}
-
-# == boot partition
+## boot partition
 mkfs.fat -F32 -n EFI ${BOOT_PARTITION}
 
-# Mount the file systems
-mount /dev/vg.main/root /mnt
-mkdir /mnt/boot
+# Mount file systems
+mount -o subvol=@ /dev/vg.main/root /mnt
+mkdir -p /mnt/{boot,home}
+mount -o subvol=@home /dev/vg.main/root /mnt/home
 mount ${BOOT_PARTITION} /mnt/boot
 
 
@@ -154,7 +159,6 @@ printf \
 
 # Microcode
 pacman -S intel-ucode
-
 
 
 # Network

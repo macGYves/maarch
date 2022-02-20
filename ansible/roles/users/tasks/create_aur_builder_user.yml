@@ -1,0 +1,14 @@
+---
+- name: Create user aur_builder
+  become: yes
+  user:
+    name: aur_builder
+
+- name: Grant AUR user permissions to run pacman
+  become: yes
+  lineinfile:
+    path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
+    state: present
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    validate: /usr/sbin/visudo -cf %s
+    create: yes

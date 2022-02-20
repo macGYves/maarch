@@ -1,5 +1,0 @@
----
-- import_tasks: hostname.yml
-- import_tasks: hostsfile.yml
-- import_tasks: iwd.yml
-- import_tasks: systemd-network.yml
