@@ -5,11 +5,6 @@
     - name: luks_password
       prompt: "luks password"
       private: yes
-    - name: user_password
-      prompt: "user password"
-      private: yes
-      encrypt: "sha512_crypt"
-      confirm: yes
   roles:
     #    - { role: network, tags: "network" }
     - time
