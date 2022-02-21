@@ -6,7 +6,6 @@
       prompt: "luks password"
       private: yes
   roles:
-    #    - { role: network, tags: "network" }
     - time
     - packages
     - users
