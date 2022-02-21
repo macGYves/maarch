@@ -12,31 +12,24 @@
       confirm: yes
   roles:
     #    - { role: network, tags: "network" }
-    - base
+    - time
+    - packages
     - users
     #    - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
     - { role: sway, tags: "sway" }
     - { role: dotfiles, tags: "dotfiles" }
-  #    - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
+    - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
   #    - { role: flatpak, tags: "flatpak" }
   ##    - { role: dev-tools, tags: "dev-tools" }
   #    - { role: firewall, tags: "firewall" }
   #    - { role: ssd, tags: "ssd" }
-  #    - { role: alacritty, tags: "alacritty" }
   #    - { role: bluetooth, tags: "bluetooth" }
   #    - { role: themes, tags: "themes" }
   #    - { role: yubikey, tags: "yubikey" }
   ##    - { role: office, tags: "office" }
   ##    - { role: digikam, tags: "digikam" }
   #    - { role: power_management, tags: "power_mgmt" }
-  tasks:
-    - name: Install more packages
-      become: true
-      community.general.pacman:
-        pkg: "{{ packages.more }}"
-        state: present
-      tags: "install-packages"
   handlers:
     - name: "regenerate initramfs"
       become: yes

@@ -9,4 +9,8 @@
   become: true
   community.general.pacman:
     pkg: "{{ packages.essential }}"
-    state: present
+
+- name: Install more packages
+  become: true
+  community.general.pacman:
+    pkg: "{{ packages.more }}"

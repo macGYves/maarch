@@ -1,8 +1,0 @@
-root ALL=(ALL) ALL
-
-%wheel ALL=(ALL) ALL
-
-# Preserve environment variables when sudo-ing
-Defaults env_keep += "EDITOR"
-
-@includedir /etc/sudoers.d

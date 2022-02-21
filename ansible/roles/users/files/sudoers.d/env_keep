@@ -1,0 +1,2 @@
+# Preserve environment variables when sudo-ing
+Defaults env_keep += "EDITOR"
