@@ -29,6 +29,7 @@ packages:
     - qt5-wayland # needed for keepassxc
     - nnn
     - python-pip
+    - python-pexpect # required by ansible.builtin.expect
     - vlc
     - firefox
     - chromium

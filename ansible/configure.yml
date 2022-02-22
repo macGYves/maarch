@@ -5,6 +5,9 @@
     - name: luks_password
       prompt: "luks password"
       private: yes
+    - name: user_email
+      prompt: "Your email address: "
+      private: no
   roles:
     - time
     - packages
@@ -12,8 +15,8 @@
     - { role: ssd, tags: "ssd" }
     #    - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
-    - { role: sway, tags: "sway" }
     - { role: dotfiles, tags: "dotfiles" }
+    - { role: sway, tags: "sway" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
   #    - { role: firewall, tags: "firewall" }
   #    - { role: bluetooth, tags: "bluetooth" }
