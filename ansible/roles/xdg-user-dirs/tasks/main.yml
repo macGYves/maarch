@@ -1,9 +1,22 @@
 ---
-
 - name: Install xdg-user-dirs
   become: yes
   community.general.pacman:
     pkg: xdg-user-dirs
+
+- name: Ensure xdg user directories exist
+  ansible.builtin.file:
+    path: "{{ item.value }}"
+    state: directory
+  loop: "{{ user_dirs | dict2items}}"
+
+- name: Copy xdg user directory config
+  ansible.builtin.template:
+    dest: "~/.config/{{ item }}"
+    src: "{{ item }}"
+  loop:
+    - user-dirs.dirs
+    - user-dirs.locale
 
 - name: Run xdg-user-dirs-update
   ansible.builtin.command: xdg-user-dirs-update
