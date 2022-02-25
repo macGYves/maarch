@@ -1,9 +1,9 @@
 ---
 - name: Init /etc/locale.gen
   become: yes
-  ansible.builtin.copy:
+  ansible.builtin.template:
     dest: /etc/locale.gen
-    src: locale.gen
+    src: locale.gen.j2
 
 - name: run locale-gen
   become: yes
@@ -11,9 +11,9 @@
 
 - name: Init /etc/locale.conf
   become: yes
-  ansible.builtin.copy:
+  ansible.builtin.template:
     dest: /etc/locale.conf
-    src: locale.conf
+    src: locale.conf.j2
 
 - name: Init /etc/vconsole.conf
   become: yes
