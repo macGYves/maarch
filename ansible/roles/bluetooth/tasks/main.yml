@@ -1,20 +1,20 @@
 ---
-- name: Install bluetooth protocol stack
+- name: Configure bluetooth
   become: yes
-  community.general.pacman:
-    pkg:
-      - bluez
-      - bluez-utils
+  block:
+    - name: Install bluetooth protocol stack
+      community.general.pacman:
+        pkg:
+          - bluez
+          - bluez-utils
 
-- name: Start/Enable bluetooth systemd service
-  become: yes
-  ansible.builtin.systemd:
-    name: bluetooth.service
-    state: started
-    enabled: yes
+    - name: Start/Enable bluetooth systemd service
+      ansible.builtin.systemd:
+        name: bluetooth.service
+        state: started
+        enabled: yes
 
-- name: Init /etc/bluetooth/main.conf
-  become: yes
-  ansible.builtin.copy:
-    dest: /etc/bluetooth/main.conf
-    src: main.conf
+    - name: Init /etc/bluetooth/main.conf
+      ansible.builtin.copy:
+        dest: /etc/bluetooth/main.conf
+        src: main.conf
