@@ -6,18 +6,17 @@
       - tex-gyre-fonts
       - ttf-dejavu
       - ttf-linux-libertine
-      - ttf-hack
-      - otf-font-awesome
       - inter-font
       - noto-fonts-emoji
 
-#- name: Install fonts from AUR
-#  kewlfft.aur.aur:
-#    name: nerd-fonts-fira-code
-#    use: makepkg
-#    state: present
-#  become: yes
-#  become_user: aur_builder
+- name: Install fonts from AUR
+  kewlfft.aur.aur:
+    name:
+      - nerd-fonts-hack
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
 
 - name: Ensure ~/.config/fontconfig directory exists
   ansible.builtin.file:
