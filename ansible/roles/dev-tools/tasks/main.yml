@@ -7,7 +7,8 @@
       - curl
 
 - name: "Install dev tools via asdf"
-  include_role: markosamuli.asdf
+  include_role:
+    name: markosamuli.asdf
   vars:
     asdf_init_shell: false
     asdf_version: "{{ asdf.version }}"
