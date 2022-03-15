@@ -14,13 +14,16 @@
     asdf_user: "{{ ansible_user_id }}"
     asdf_plugins:
       - name: "java"
-        versions: "{{ jdk_versions }}"
-        global: "{{ jdk_versions[0] }}"
+        versions: "{{ jdk.versions }}"
+        global: "{{ jdk.versions[0] }}"
       - name: "maven"
-        versions: "{{ maven_versions }}"
-        global: "{{ maven_versions[0] }}"
+        versions: "{{ maven.versions }}"
+        global: "{{ maven.versions[0] }}"
       - name: "nodejs"
-        versions: "{{ nodejs_versions }}"
-        global: "{{ nodejs_versions[0] }}"
+        versions: "{{ nodejs.versions }}"
+        global: "{{ nodejs.versions[0] }}"
+      - name: "awscli"
+        versions: "latest"
+        global: ["latest"]
 
 - include_tasks: aws-cli.yml
