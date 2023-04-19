@@ -2,5 +2,5 @@
 
 - name: Install digikam as flatpak
   community.general.flatpak:
-    name: digiKam
+    name: org.kde.digikam
     method: user
