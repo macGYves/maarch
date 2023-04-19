@@ -12,6 +12,7 @@
     - time
     - packages
     - users
+    - yay
     - { role: ssd, tags: "ssd" }
     - { role: power_management, tags: "power_mgmt" }
     - { role: firewall, tags: "firewall" }
