@@ -20,4 +20,4 @@
     src: sudoers.d/env_keep
     mode: 0440
 
-- import_tasks: auto_login_user.yml
+#- import_tasks: auto_login_user.yml
