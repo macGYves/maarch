@@ -27,7 +27,7 @@
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
     - { role: flatpak, tags: "flatpak" }
     - { role: dev-tools, tags: "dev-tools" }
-    - { role: themes, tags: "themes" }
+    # - { role: themes, tags: "themes" }
     - { role: yubikey, tags: "yubikey" }
     - { role: ssh, tags: "ssh" }
     - { role: office, tags: "office" }
