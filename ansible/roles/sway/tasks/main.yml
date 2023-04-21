@@ -31,7 +31,6 @@
       - wdisplays # tool for changing screen layouts dynamically
       - kanshi-git
       - wob # wayland overlay bar
-    use: makepkg
     state: present
   become: yes
   become_user: aur_builder
