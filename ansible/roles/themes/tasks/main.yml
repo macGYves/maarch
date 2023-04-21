@@ -1,8 +1,7 @@
 ---
 - name: Install nordic gtk3 theme
   kewlfft.aur.aur:
-    name: nordic-theme-git
-    state: present
+    name: nordic-theme
   become: yes
   become_user: aur_builder
 
@@ -10,7 +9,6 @@
   become: yes
   community.general.pacman:
     pkg: papirus-icon-theme
-    state: present
 
 - name: Create gtk3 settings directory
   ansible.builtin.file:
