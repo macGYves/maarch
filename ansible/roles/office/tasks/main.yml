@@ -1,17 +1,19 @@
 ---
-- name: Install terminal mail/office packages
-  become: true
-  community.general.pacman:
-    pkg:
-      - vdirsyncer
-      - khard
-      - neomutt
-      - notmuch
-      # - urlview // <- from AUR!
-      - isync
-      - msmtp
-      - pass
-      - lynx
+#- name: Install terminal mail/office packages
+#  become: true
+#  community.general.pacman:
+#    pkg:
+#      - vdirsyncer
+#      - khard
+#      - neomutt
+#      - notmuch
+#      # - urlview // <- from AUR!
+#      - isync
+#      - msmtp
+#      - pass
+#      - lynx
+
+#- import_tasks: vdirsyncer.yml
 
 - name: Install messengers
   become: true
@@ -19,6 +21,4 @@
     pkg:
       - signal-desktop
       - telegram-desktop
-
 - import_tasks: nextcloud.yml
-- import_tasks: vdirsyncer.yml
