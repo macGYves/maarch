@@ -24,6 +24,7 @@
     - { role: shell, tags: "shell" }
     - { role: dotfiles, tags: "dotfiles" }
       #- { role: sway, tags: "sway" }
+    - { role: gnome, tags: "gnome" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
     - { role: flatpak, tags: "flatpak" }
     - { role: dev-tools, tags: "dev-tools" }
