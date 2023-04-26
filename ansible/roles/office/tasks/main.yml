@@ -21,4 +21,5 @@
     pkg:
       - signal-desktop
       - telegram-desktop
+      - thunderbird
 - import_tasks: nextcloud.yml
