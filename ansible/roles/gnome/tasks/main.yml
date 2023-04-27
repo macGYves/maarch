@@ -10,8 +10,10 @@
 
 
 - name: Start/Enable gdm.service
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: gdm.service
     state: started
     enabled: yes
+
+- include_tasks: gnome-apps.yml
