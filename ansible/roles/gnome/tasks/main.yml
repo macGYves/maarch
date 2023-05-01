@@ -7,7 +7,16 @@
       - evince # a.k.a. "Document Viewer"
       - nautilus # a.k.a. "Files"
       - seahorse # a.k.a. "Passwords and Keys"
+      - gedit
+      - gnome-shell-extension-gtile
+      - gnome-shell-extension-appindicator
 
+- name: Uninstall unnecessary gnome apps
+  become: true
+  community.general.pacman:
+    pkg:
+      - epiphany
+    state: absent
 
 - name: Start/Enable gdm.service
   become: true
@@ -15,5 +24,3 @@
     name: gdm.service
     state: started
     enabled: yes
-
-- include_tasks: gnome-apps.yml
