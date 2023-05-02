@@ -7,7 +7,6 @@
       - evince # a.k.a. "Document Viewer"
       - nautilus # a.k.a. "Files"
       - seahorse # a.k.a. "Passwords and Keys"
-      - gedit
       - gnome-shell-extension-gtile
       - gnome-shell-extension-appindicator
 
@@ -16,7 +15,11 @@
   community.general.pacman:
     pkg:
       - epiphany
+      - totem
+      - gnome-photos
+      - gnome-terminal
     state: absent
+
 
 - name: Start/Enable gdm.service
   become: true
