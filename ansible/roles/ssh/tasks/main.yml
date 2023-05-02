@@ -4,18 +4,17 @@
     command: "ssh-keygen -K"
     responses:
       Enter PIN for authenticator: "{{ yubikey_pin }}"
-      Overwrite: 'y'
-      Enter passphrase: ''
-      Enter same passphrase again: ''
+      Overwrite: "y"
+      Enter passphrase: ""
+      Enter same passphrase again: ""
 
 - name: Move downloaded resident key to ~/.ssh
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/id_ed25519_sk_rk"
     dest: "~/.ssh/id_ed25519_sk"
-    mode: '0600'
+    mode: "0600"
 
 - name: Move downloaded resident public key to ~/.ssh
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
     dest: "~/.ssh/id_ed25519_sk.pub"
-

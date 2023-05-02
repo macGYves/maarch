@@ -1,5 +1,4 @@
 ---
-
 - import_tasks: create_aur_builder_user.yml
 
 - name: Install yay

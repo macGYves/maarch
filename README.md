@@ -12,14 +12,13 @@ My Automated ARCH linux Installation
 
 3. archinstall --config https://github.com/macGYves/maarch/blob/main/archinstall/thinx.config.json
 
-
 Restart the system, login as ordinary user and continue below.
 
 4. Download maarch repo
 
    git clone https://github.com/macGYves/maarch.git
 
-5. Install ansible roles and collections 
+5. Install ansible roles and collections
 
    cd maarch/ansible
    ansible-galaxy install -r requirements.yml
