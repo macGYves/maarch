@@ -20,8 +20,6 @@ packages:
     - neovim
     - git
     - zsh
-  more:
-    - alacritty
     - curl
     - openssh
     - rsync
@@ -30,10 +28,11 @@ packages:
     - zip
     - keepassxc
     - qt5-wayland # needed for keepassxc
-    - nnn
-    - python-pip
     - python-pexpect # required by ansible.builtin.expect
     - python-psutil # required by community.general.dconf
+    - fwupd # firmware-update daemon
+    - transmission-gtk
+    - python-pip
     - vlc
     - firefox
     - chromium
@@ -41,8 +40,9 @@ packages:
     - pipewire-pulse
     - youtube-dl
     - task # taskwarrior
-    - fwupd # firmware-update daemon
-    - transmission-gtk
+  headless:
+    - alacritty
+    - nnn
 
 partitions:
   luks:
