@@ -42,6 +42,7 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding": "'<Super>t'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command": "'kgx'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name": "'Konsole öffnen'"
+  "/org/gnome/shell/app-picker-layout": "[{'bd25cccf-d6a0-4bed-a7b5-d12fade78753': <{'position': <0>}>, '6ebe2655-201a-45b0-8a5e-4323ca3fe92c': <{'position': <1>}>, '0c691547-2560-4beb-8c2e-406a4c72026a': <{'position': <2>}>, '6ec53523-91bd-496a-ae1c-dee04761af52': <{'position': <3>}>, 'bd2e0f00-08eb-40ed-bd57-6ababe362543': <{'position': <4>}>, 'bee5124e-ec30-4b6f-af50-bc4055047763': <{'position': <5>}>, 'b3816476-f81f-4e7c-8a93-33ee53432e46': <{'position': <6>}>, 'Utilities': <{'position': <7>}>, 'chromium.desktop': <{'position': <8>}>, 'virtualbox.desktop': <{'position': <9>}>}]"
   "/org/gnome/shell/disable-user-extensions": "false"
   "/org/gnome/shell/disabled-extensions": "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com']"
   "/org/gnome/shell/enabled-extensions": "['workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'gTile@vibou', 'appindicatorsupport@rgcjonas.gmail.com']"
@@ -56,17 +57,13 @@ org_gnome_dconf:
   "/org/gnome/shell/weather/automatic-location": "true"
   "/org/gnome/shell/weather/locations": "[<(uint32 2, <('Göteborg', 'ESGP', true, [(1.0085094136262927, 0.2074032869608953)], [(1.007345872427158, 0.20885773963975227)])>)>]"
 
-  "/org/gnome/desktop/app-folders/folder-children": "['Utilities', '47ce1235-4c48-43e9-939e-a50479f9e329', '42ad3479-54d7-45b1-a3ef-4f62466e4b7e', 'cdf373c8-e658-413e-ab96-c9743ae9fd62', 'bd2e0f00-08eb-40ed-bd57-6ababe362543', '0c691547-2560-4beb-8c2e-406a4c72026a', '6ebe2655-201a-45b0-8a5e-4323ca3fe92c', '6ec53523-91bd-496a-ae1c-dee04761af52', 'bee5124e-ec30-4b6f-af50-bc4055047763', '976fb2be-cf8c-4fef-b6d4-fa4ead81048f', 'bd25cccf-d6a0-4bed-a7b5-d12fade78753', 'b3816476-f81f-4e7c-8a93-33ee53432e46']"
+  "/org/gnome/desktop/app-folders/folder-children": "['Utilities', '42ad3479-54d7-45b1-a3ef-4f62466e4b7e', 'bd2e0f00-08eb-40ed-bd57-6ababe362543', '0c691547-2560-4beb-8c2e-406a4c72026a', '6ebe2655-201a-45b0-8a5e-4323ca3fe92c', '6ec53523-91bd-496a-ae1c-dee04761af52', 'bee5124e-ec30-4b6f-af50-bc4055047763', '976fb2be-cf8c-4fef-b6d4-fa4ead81048f', 'bd25cccf-d6a0-4bed-a7b5-d12fade78753', 'b3816476-f81f-4e7c-8a93-33ee53432e46']"
   "/org/gnome/desktop/app-folders/folders/0c691547-2560-4beb-8c2e-406a4c72026a/apps": "['org.gnome.Music.desktop', 'vlc.desktop', 'org.kde.digikam.desktop', 'org.gnome.Cheese.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop']"
   "/org/gnome/desktop/app-folders/folders/0c691547-2560-4beb-8c2e-406a4c72026a/name": "'Multimedia'"
 
   "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/apps": "['org.gnome.Photos.desktop', 'org.gnome.Totem.desktop']"
   "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/name": "'Media'"
   "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/translate": "false"
-
-  "/org/gnome/desktop/app-folders/folders/47ce1235-4c48-43e9-939e-a50479f9e329/apps": "['avahi-discover.desktop', 'bssh.desktop', 'bvnc.desktop']"
-  "/org/gnome/desktop/app-folders/folders/47ce1235-4c48-43e9-939e-a50479f9e329/name": "'Avahi'"
-  "/org/gnome/desktop/app-folders/folders/47ce1235-4c48-43e9-939e-a50479f9e329/translate": "false"
 
   "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/apps": "['vscodium.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.gedit.desktop', 'nvim.desktop']"
   "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/name": "'Editoren'"
@@ -98,7 +95,3 @@ org_gnome_dconf:
   "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/apps": "['com.nextcloud.desktopclient.nextcloud.desktop', 'transmission-gtk.desktop']"
   "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/name": "'Sync'"
   "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/translate": "false"
-
-  "/org/gnome/desktop/app-folders/folders/cdf373c8-e658-413e-ab96-c9743ae9fd62/apps": "['assistant.desktop', 'qvidcap.desktop', 'designer.desktop', 'linguist.desktop', 'qdbusviewer.desktop', 'qv4l2.desktop']"
-  "/org/gnome/desktop/app-folders/folders/cdf373c8-e658-413e-ab96-c9743ae9fd62/name": "'Qt'"
-  "/org/gnome/desktop/app-folders/folders/cdf373c8-e658-413e-ab96-c9743ae9fd62/translate": "false"
