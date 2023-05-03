@@ -7,7 +7,7 @@ org_gnome_dconf:
   "/org/gnome/desktop/background/picture-uri-dark": "'file:///usr/share/backgrounds/gnome/dune-d.svg'"
   "/org/gnome/desktop/background/primary-color": "'#f7a957'"
   "/org/gnome/desktop/background/secondary-color": "'#000000'"
-  "/org/gnome/desktop/input-sources/sources": "[('xkb', 'gb'), ('xkb', 'de'), ('xkb', 'se')]"
+  "/org/gnome/desktop/input-sources/sources": "[('xkb', 'de'), ('xkb', 'se'), ('xkb', 'gb')]"
   "/org/gnome/desktop/input-sources/xkb-options": "['terminate:ctrl_alt_bksp', 'compose:rctrl', 'lv3:ralt_switch', 'caps:escape']"
   "/org/gnome/desktop/interface/clock-show-seconds": "false"
   "/org/gnome/desktop/interface/clock-show-weekday": "false"
