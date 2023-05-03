@@ -1,0 +1,16 @@
+---
+- name: Remove unwanted desktop files
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "/usr/share/applications/avahi-discover.desktop" # from avahi
+    - "/usr/share/applications/bssh.desktop" # from avahi
+    - "/usr/share/applications/bvnc.desktop" # from avahi
+    - "/usr/share/applications/assistant.desktop" # from qt5-tools, dependency of virtualbox
+    - "/usr/share/applications/designer.desktop" # from qt5-tools, dependency of virtualbox
+    - "/usr/share/applications/linguist.desktop" # from qt5-tools, dependency of virtualbox
+    - "/usr/share/applications/qdbusviewer.desktop" # from qt5-tools, dependency of virtualbox
+    - "/usr/share/applications/qvidcap.desktop" # in v4l-utils, dependency of ffmpeg
+    - "/usr/share/applications/qv4l2.desktop" # in v4l-utils, dependency of ffmpeg
