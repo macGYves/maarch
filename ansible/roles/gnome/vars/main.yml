@@ -37,13 +37,26 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
   "/org/gnome/settings-daemon/plugins/media-keys/email": "['Mail']"
   "/org/gnome/settings-daemon/plugins/media-keys/home": "['HomePage']"
-  "/org/gnome/settings-daemon/plugins/media-keys/logout": "['<Control><Alt><Super>e']"
+  "/org/gnome/settings-daemon/plugins/media-keys/logout": "['<Control><Alt><Super>p']" # "logout" = "herunterfahren"
   "/org/gnome/settings-daemon/plugins/media-keys/screensaver": "['<Control><Alt><Super>l']"
   "/org/gnome/settings-daemon/plugins/media-keys/search": "['<Super>d']"
   "/org/gnome/settings-daemon/plugins/media-keys/www": "['<Shift><Super>f']"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding": "'<Super>t'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command": "'kgx'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name": "'Konsole öffnen'"
+
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding": "'<Control><Alt><Super>e'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command": "'gnome-session-quit'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name": "'Benutzer ausloggen'"
+
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding": "'<Control><Alt><Super>r'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command": "'gnome-session-quit --reboot'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name": "'Neustart'"
+
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/binding": "'<Control><Alt><Super>s'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command": "'systemctl suspend'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/name": "'Bereitschaft'"
+
   "/org/gnome/shell/app-picker-layout": "[{'bd25cccf-d6a0-4bed-a7b5-d12fade78753': <{'position': <0>}>, '6ebe2655-201a-45b0-8a5e-4323ca3fe92c': <{'position': <1>}>, '0c691547-2560-4beb-8c2e-406a4c72026a': <{'position': <2>}>, '6ec53523-91bd-496a-ae1c-dee04761af52': <{'position': <3>}>, 'bd2e0f00-08eb-40ed-bd57-6ababe362543': <{'position': <4>}>, 'bee5124e-ec30-4b6f-af50-bc4055047763': <{'position': <5>}>, 'b3816476-f81f-4e7c-8a93-33ee53432e46': <{'position': <6>}>, 'Utilities': <{'position': <7>}>, 'chromium.desktop': <{'position': <8>}>, 'virtualbox.desktop': <{'position': <9>}>}]"
   "/org/gnome/shell/disable-user-extensions": "false"
   "/org/gnome/shell/disabled-extensions": "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com']"
