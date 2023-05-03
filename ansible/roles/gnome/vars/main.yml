@@ -34,7 +34,7 @@ org_gnome_dconf:
   "/org/gnome/desktop/wm/preferences/workspace-names": "['Info', 'Kommunikation', 'Arbeit']"
   "/org/gnome/settings-daemon/plugins/media-keys/calculator": "['Calculator']"
   "/org/gnome/settings-daemon/plugins/media-keys/control-center": "['<Shift><Super>p']"
-  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
   "/org/gnome/settings-daemon/plugins/media-keys/email": "['Mail']"
   "/org/gnome/settings-daemon/plugins/media-keys/home": "['HomePage']"
   "/org/gnome/settings-daemon/plugins/media-keys/logout": "['<Control><Alt><Super>p']" # "logout" = "herunterfahren"
@@ -46,7 +46,7 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name": "'Konsole öffnen'"
 
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding": "'<Control><Alt><Super>e'"
-  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command": "'gnome-session-quit'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command": "'gnome-session-quit --no-prompt'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name": "'Benutzer ausloggen'"
 
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding": "'<Control><Alt><Super>r'"
