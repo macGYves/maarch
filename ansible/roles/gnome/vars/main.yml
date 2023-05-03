@@ -39,7 +39,7 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/screensaver": "['<Control><Alt><Super>l']"
   "/org/gnome/settings-daemon/plugins/media-keys/search": "['<Super>d']"
   "/org/gnome/settings-daemon/plugins/media-keys/www": "['<Shift><Super>f']"
-  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding": "'<Super>Return'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding": "'<Super>t'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command": "'kgx'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name": "'Konsole öffnen'"
   "/org/gnome/shell/disable-user-extensions": "false"
