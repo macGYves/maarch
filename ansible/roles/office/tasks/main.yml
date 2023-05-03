@@ -8,3 +8,8 @@
       - thunderbird
       - libreoffice-fresh
       - nextcloud-client
+
+- name: Install slack as flatpak
+  community.general.flatpak:
+    name: com.slack.Slack
+    method: user
