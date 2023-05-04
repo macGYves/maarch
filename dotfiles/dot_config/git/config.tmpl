@@ -1,0 +1,16 @@
+[user]
+    name = Yves Gänssinger
+    email = {{ .email }}
+    signingkey = {{ .git.signingkey }}
+[pull]
+    rebase = true
+[init]
+    defaultBranch = {{ .git.defaultbranch }}
+    templateDir = ~/.config/git/templates
+[commit]
+    gpgsign = false
+[core]
+    autocrlf = input
+    excludesfile = /home/macgyves/.config/git/ignore
+[push]
+    default = current
