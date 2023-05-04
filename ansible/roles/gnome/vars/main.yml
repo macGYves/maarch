@@ -90,7 +90,7 @@ org_gnome_dconf:
   "/org/gnome/desktop/app-folders/folders/976fb2be-cf8c-4fef-b6d4-fa4ead81048f/apps": "['firefox.desktop']"
   "/org/gnome/desktop/app-folders/folders/976fb2be-cf8c-4fef-b6d4-fa4ead81048f/name": "'Internet'"
 
-  "/org/gnome/desktop/app-folders/folders/Utilities/apps": "['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Extensions.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'ca.desrt.dconf-editor.desktop', 'org.gnome.Software.desktop', 'lstopo.desktop']"
+  "/org/gnome/desktop/app-folders/folders/Utilities/apps": "['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Extensions.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'ca.desrt.dconf-editor.desktop', 'lstopo.desktop']"
   "/org/gnome/desktop/app-folders/folders/Utilities/categories": "['X-GNOME-Utilities']"
   "/org/gnome/desktop/app-folders/folders/Utilities/excluded-apps": "['org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.seahorse.Application.desktop']"
   "/org/gnome/desktop/app-folders/folders/Utilities/name": "'System'"
