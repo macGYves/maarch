@@ -1,0 +1,20 @@
+---
+- name: Customise a basic arch linux installation
+  hosts: localhost
+  vars_prompt:
+    - name: luks_password
+      prompt: "luks password"
+      private: yes
+  roles:
+    - time
+    - users
+    - { role: ssd, tags: "ssd" }
+    - { role: power_management, tags: "power_mgmt" }
+    - { role: firewall, tags: "firewall" }
+    - { role: bluetooth, tags: "bluetooth" }
+    - { role: yubikey, tags: "yubikey" }
+    - { role: kernel, tags: "kernel" }
+  handlers:
+    - name: "regenerate initramfs"
+      become: yes
+      ansible.builtin.command: mkinitcpio -P
