@@ -35,6 +35,7 @@ packages:
     - vlc
     - firefox
     - chromium
+    - sof-firmware
     - pipewire
     - pipewire-pulse
     - youtube-dl
