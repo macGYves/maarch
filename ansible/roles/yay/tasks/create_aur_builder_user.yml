@@ -6,7 +6,7 @@
 
 - name: Grant AUR user permissions to run pacman
   become: yes
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
     state: present
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
