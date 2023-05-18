@@ -4,25 +4,17 @@ My Automated ARCH linux Installation
 
 ## Usage
 
-1. Create and start an [arch linux installation medium](https://wiki.archlinux.org/title/Installation_guide#Prepare_an_installation_medium)
+1. Boot from [arch linux installation medium](https://wiki.archlinux.org/title/Installation_guide#Prepare_an_installation_medium)
+2. Run the bootstrapping script:
 
-2. Install archinstall
+   sh -c "$(curl -s https://raw.githubusercontent.com/macGYves/maarch/scripts/bootstrap.sh)"
 
-   pacman -S archinstall
+3. Restart the system, login as root
+4. Run the system setup script:
 
-3. archinstall --config https://github.com/macGYves/maarch/blob/main/archinstall/thinx.config.json
+   sh -c "$(curl -s https://raw.githubusercontent.com/macGYves/maarch/scripts/setup-system.sh)"
 
-Restart the system, login as ordinary user and continue below.
+5. Restart the system, login as user
+6. Run the setup-user script:
 
-4. Download maarch repo
-
-   git clone https://github.com/macGYves/maarch.git
-
-5. Install ansible roles and collections
-
-   cd maarch/ansible
-   ansible-galaxy install -r requirements.yml
-
-6. Run "configure.yml" playbook
-
-   ansible-playbook configure.yml --ask-become-pass
+   sh -c "$(curl -s https://raw.githubusercontent.com/macGYves/maarch/scripts/setup-user.sh)"
