@@ -7,6 +7,7 @@
       private: yes
   roles:
     - { role: time, tags: "time" }
+    - { role: network, tags: "network" }
     - { role: users, tags: "users" }
     - { role: l10n, tags: "l10n" }
     - { role: reflector, tags: "reflector" }
