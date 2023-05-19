@@ -11,7 +11,7 @@
     - { role: l10n, tags: "l10n" }
     - { role: reflector, tags: "reflector" }
     - { role: ssd, tags: "ssd" }
-    - { role: power_management, tags: "power_mgmt" }
+    - { role: power_mgmt, tags: "power_mgmt" }
     - { role: firewall, tags: "firewall" }
     - { role: bluetooth, tags: "bluetooth" }
     - { role: yubikey, tags: "yubikey" }
