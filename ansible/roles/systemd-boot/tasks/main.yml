@@ -1,4 +1,6 @@
 ---
+- import_tasks: microcode.yml
+
 - name: Install systemd-boot
   become: yes
   ansible.builtin.command: bootctl install

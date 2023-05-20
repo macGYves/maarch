@@ -1,12 +1,25 @@
 ---
 system:
   locale: de_DE
+  processor: intel
+
+vconsole:
+  keymap: uk
+
+hostname: "Thinx"
 
 timezone: Europe/Stockholm
 
+partitions:
+  esp:
+    label: "ESP"
+    dev: "/dev/disk/by-partlabel/ESP"
+  luks:
+    label: "CRYPTROOT"
+    dev: "/dev/disk/by-partlabel/CRYPTROOT"
+
 user:
   name: macgyves
-  group: users
   shell: /bin/zsh
 
 packages:
@@ -43,7 +56,3 @@ packages:
   headless:
     - alacritty
     - nnn
-
-partitions:
-  luks:
-    dev: /dev/nvme0n1p2
