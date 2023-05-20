@@ -1,5 +1,9 @@
 ---
-- name: "Ensure the user {{ user.name }} exists"
+- name: Install sudo
+  community.general.pacman:
+    pkg: sudo
+
+- name: "Create user {{ user.name }}"
   become: yes
   ansible.builtin.user:
     name: "{{ user.name }}"
@@ -11,7 +15,15 @@
     system: no
     createhome: yes
     home: "/home/{{ user.name }}"
-  when: user.name is defined
+
+- name: "Grant user {{ user.name }} sudo permissions"
+  become: yes
+  ansible.builtin.lineinfile:
+    path: "/etc/sudoers.d/00_{{ user.name }}"
+    state: present
+    line: "{{ user.name }} ALL=(ALL) ALL"
+    validate: /usr/sbin/visudo -cf %s
+    create: yes
 
 - name: Setup sudo
   become: yes
