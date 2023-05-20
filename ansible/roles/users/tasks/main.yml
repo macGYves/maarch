@@ -31,4 +31,3 @@
     dest: /etc/sudoers.d/env_keep
     src: sudoers.d/env_keep
     mode: 0440
-#- import_tasks: auto_login_user.yml
