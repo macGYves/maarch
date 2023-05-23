@@ -1,12 +1,25 @@
 ---
 system:
   locale: de_DE
+  processor: intel
+
+vconsole:
+  keymap: uk
+
+hostname: "Thinx"
 
 timezone: Europe/Stockholm
 
+partitions:
+  esp:
+    label: "ESP"
+    dev: "/dev/disk/by-partlabel/ESP"
+  luks:
+    label: "CRYPTROOT"
+    dev: "/dev/disk/by-partlabel/CRYPTROOT"
+
 user:
   name: macgyves
-  group: users
   shell: /bin/zsh
 
 packages:
@@ -15,7 +28,6 @@ packages:
     - base-devel
     - linux
     - linux-firmware
-    - lvm2
     - ansible
     - neovim
     - git
@@ -28,22 +40,21 @@ packages:
     - zip
     - keepassxc
     - qt5-wayland # needed for keepassxc
-    - python-pexpect # required by ansible.builtin.expect
-    - python-psutil # required by community.general.dconf
     - fwupd # firmware-update daemon
     - transmission-gtk
     - python-pip
+    - python-pexpect # required by ansible.builtin.expect
+    - python-psutil # required by community.general.dconf
+    - python-passlib # required by ansible to hash variables
     - vlc
     - firefox
     - chromium
+    - sof-firmware
     - pipewire
     - pipewire-pulse
+    - wireplumber # declared here to avoid installing pipewire-media-session
     - youtube-dl
     - task # taskwarrior
   headless:
     - alacritty
     - nnn
-
-partitions:
-  luks:
-    dev: /dev/nvme0n1p2

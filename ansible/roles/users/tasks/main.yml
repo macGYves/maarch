@@ -1,22 +1,35 @@
 ---
-- name: "Ensure the user {{ user.name }} exists"
+- name: Install sudo
+  community.general.pacman:
+    pkg: sudo
+
+- name: "Create user {{ user.name }}"
   become: yes
   ansible.builtin.user:
     name: "{{ user.name }}"
+    password: "{{ user_password }}"
     shell: "{{ user.shell }}"
-    groups:
-      - lock
-      - uucp
-    append: yes
-    system: no
     createhome: yes
     home: "/home/{{ user.name }}"
-  when: user.name is defined
 
-- name: Setup sudo
+- name: "Add user {{ user.name }} to sudoers"
+  become: yes
+  ansible.builtin.lineinfile:
+    path: "/etc/sudoers.d/00_{{ user.name }}"
+    state: present
+    line: "{{ user.name }} ALL=(ALL) ALL"
+    validate: /usr/sbin/visudo -cf %s
+    create: yes
+
+- name: Customize sudo
   become: yes
   ansible.builtin.copy:
     dest: /etc/sudoers.d/env_keep
     src: sudoers.d/env_keep
     mode: 0440
-#- import_tasks: auto_login_user.yml
+
+- name: "Restrict root login"
+  become: yes
+  ansible.builtin.user:
+    name: "root"
+    password: "!"

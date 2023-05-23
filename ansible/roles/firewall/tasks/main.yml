@@ -14,4 +14,5 @@
 
 - name: Start ufw
   become: yes
-  ansible.builtin.command: ufw enable
+  community.general.ufw:
+    state: enabled

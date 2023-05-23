@@ -21,11 +21,17 @@
       - gnome-terminal
     state: absent
 
-- name: Start/Enable gdm.service
+- name: Install gnome-shell-pomodoro from AUR
+  kewlfft.aur.aur:
+    name:
+      - gnome-shell-pomodoro
+  become: yes
+  become_user: aur_builder
+
+- name: Enable gdm.service
   become: true
   ansible.builtin.systemd:
     name: gdm.service
-    state: started
     enabled: yes
 
 - name: "Write dconf values for /org/gnome/"

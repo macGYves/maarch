@@ -1,10 +1,11 @@
 ---
-- name: Install YubiKey Personalization GUI
+- name: Install YubiKey - related packages
   become: yes
   community.general.pacman:
     pkg:
       - yubikey-personalization-gui
       - yubikey-manager
+      - libfido2 # dependency
 
 - name: Install smartcard libs/tools
   become: yes
@@ -21,5 +22,3 @@
     name: pcscd.service
     state: started
     enabled: yes
-
-- import_tasks: ykfde.yml

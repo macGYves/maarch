@@ -40,7 +40,7 @@ org_gnome_dconf:
   "/org/gnome/desktop/wm/preferences/workspace-names": "['Info', 'Kommunikation', 'Arbeit']"
   "/org/gnome/settings-daemon/plugins/media-keys/calculator": "['Calculator']"
   "/org/gnome/settings-daemon/plugins/media-keys/control-center": "['<Shift><Super>p']"
-  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
   "/org/gnome/settings-daemon/plugins/media-keys/email": "['Mail']"
   "/org/gnome/settings-daemon/plugins/media-keys/home": "['HomePage']"
   "/org/gnome/settings-daemon/plugins/media-keys/logout": "['<Control><Alt><Super>p']" # "logout" = "herunterfahren"
@@ -63,6 +63,10 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command": "'systemctl suspend'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/name": "'Bereitschaft'"
 
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/binding": "'<Control><Alt><Super>h'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command": "'systemctl hibernate'"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/name": "'Ruhezustand'"
+
   "/org/gnome/shell/app-picker-layout": "[{'bd25cccf-d6a0-4bed-a7b5-d12fade78753': <{'position': <0>}>, '6ebe2655-201a-45b0-8a5e-4323ca3fe92c': <{'position': <1>}>, '0c691547-2560-4beb-8c2e-406a4c72026a': <{'position': <2>}>, '6ec53523-91bd-496a-ae1c-dee04761af52': <{'position': <3>}>, 'bd2e0f00-08eb-40ed-bd57-6ababe362543': <{'position': <4>}>, 'bee5124e-ec30-4b6f-af50-bc4055047763': <{'position': <5>}>, 'b3816476-f81f-4e7c-8a93-33ee53432e46': <{'position': <6>}>, 'Utilities': <{'position': <7>}>, 'chromium.desktop': <{'position': <8>}>, 'virtualbox.desktop': <{'position': <9>}>}]"
   "/org/gnome/shell/disable-user-extensions": "false"
   "/org/gnome/shell/disabled-extensions": "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'gTile@vibou', 'appindicatorsupport@rgcjonas.gmail.com']"
@@ -81,7 +85,7 @@ org_gnome_dconf:
   "/org/gnome/shell/extensions/materialshell/bindings/kill-focused-window": "['<Shift><Alt>q']"
   "/org/gnome/shell/extensions/materialshell/layouts/default-layout": "'ratio'"
   "/org/gnome/shell/extensions/materialshell/layouts/float": "false"
-  "/org/gnome/shell/extensions/materialshell/layouts/gap": "8"
+  "/org/gnome/shell/extensions/materialshell/layouts/gap": "0"
   "/org/gnome/shell/extensions/materialshell/layouts/grid": "false"
   "/org/gnome/shell/extensions/materialshell/layouts/half": "false"
   "/org/gnome/shell/extensions/materialshell/layouts/half-horizontal": "false"

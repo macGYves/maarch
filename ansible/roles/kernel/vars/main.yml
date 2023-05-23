@@ -1,5 +1,5 @@
 ---
-initrd_mods: "i915"
-initrd_bin: ""
+initrd_mods: "btrfs"
+initrd_bin: "/usr/bin/btrfs"
 initrd_files: ""
-initrd_hooks: "base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck"
+initrd_hooks: "base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt filesystems resume fsck"

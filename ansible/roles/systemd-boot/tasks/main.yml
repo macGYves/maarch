@@ -1,0 +1,22 @@
+---
+- import_tasks: microcode.yml
+
+- name: Install systemd-boot
+  become: yes
+  ansible.builtin.command: bootctl install
+  args:
+    creates: /boot/EFI/systemd/systemd-bootx64.efi
+
+- name: Create systemd-boot loader.conf
+  become: yes
+  ansible.builtin.copy:
+    src: files/loader.conf
+    dest: /boot/loader/loader.conf
+    mode: 0644
+
+- name: Install systemd-boot entry arch.conf
+  become: yes
+  ansible.builtin.template:
+    src: templates/arch.conf.j2
+    dest: /boot/loader/entries/arch.conf
+    mode: 0644
