@@ -1,0 +1,6 @@
+# If running from tty1 start sway
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  #. ~/.config/sway/env
+  #exec sway > /tmp/sway.log 2>&1
+  exec startx
+fi

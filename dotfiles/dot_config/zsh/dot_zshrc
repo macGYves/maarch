@@ -1,0 +1,68 @@
+# Only check cached .zcompdump file once per day. See https://gist.github.com/ctechols/ca1035271ad134841284
+autoload -Uz compinit
+
+ZCOMPDUMPFILE=$ZCACHEDIR/zcompdump-$ZSH_VERSION
+
+for dump in $ZCOMPDUMPFILE(N.mh+24); do
+  compinit -d $ZCOMPDUMPFILE
+done
+compinit -C -d $ZCOMPDUMPFILE
+
+
+# Launch gpg-agent for use by SSH
+# ===============================
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+
+# antidote (zsh plugin manager) 
+# ==============================
+antidote_dir=~/.local/bin/antidote
+plugins_txt=${ZDOTDIR:-~}/antidote/zsh_plugins.txt
+plugins_bundle=${ZCACHEDIR:-~}/antidote/zsh_plugin_bundle.zsh
+
+# Clone antidote if necessary and generate a static plugin file.
+if [[ ! $static_file -nt $plugins_txt ]]; then
+  [[ -e $antidote_dir ]] ||
+    git clone --depth=1 https://github.com/mattmc3/antidote.git $antidote_dir
+  (
+    source $antidote_dir/antidote.zsh
+    [[ -e $plugins_txt ]] || touch $plugins_txt
+    antidote bundle <$plugins_txt >$plugins_bundle
+  )
+fi
+
+source $plugins_bundle
+unset antidote_dir plugins_file plugins_bundle
+
+# zsh-z config
+# ------------
+export ZSHZ_DATA=~/.local/share/zsh-z
+
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+
+# turn off all beeps
+unsetopt BEEP
+
+# Syntax highlighting for less
+if [[ -a /usr/bin/src-hilite-lesspipe.sh ]]; then
+  export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+  export LESS=' -R '
+fi
+
+# PATH modifications
+# ==================
+
+LOCAL_BIN="${HOME}/.local/bin"
+if [[ ":$PATH:" != *":${LOCAL_BIN}:"* ]] && [ -d "${LOCAL_BIN}" ]; then
+  # Prepend ~/.local/bin to PATH when it's not included and when the directory exists
+  PATH=~/.local/bin:${PATH}
+fi
+
+source ${ZDOTDIR}/aliases.zsh
+source ${ZDOTDIR}/completion/pip.zsh
+source ${ZDOTDIR}/completion/aws-cli.zsh
