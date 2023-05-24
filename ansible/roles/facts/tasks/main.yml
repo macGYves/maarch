@@ -1,2 +1,9 @@
 ---
 - import_tasks: device_uuids.yml
+
+- name: Set fact has_intel_cpu
+  set_fact:
+    has_intel_cpu: "{{ 'GenuineIntel' in ansible_processor }}"
+
+- debug:
+    msg: "{{ has_intel_cpu }}"
