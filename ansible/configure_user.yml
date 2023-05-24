@@ -11,7 +11,6 @@
   roles:
     - { role: packages, tags: "packages" }
     - yay
-    - { role: yubikey, tags: "yubikey" }
     - { role: ssh, tags: "ssh" }
     - { role: dotfiles, tags: "dotfiles" }
     - { role: fonts, tags: "fonts" }
