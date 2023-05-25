@@ -24,6 +24,7 @@
     - { role: digikam, tags: "digikam" }
     - { role: virtualbox, tags: "virtualbox" }
     - { role: cleanup, tags: "cleanup" }
+    - { role: systemd-boot, tags: "systemd-boot" } # TODO: bad to have systemd-boot here.
   handlers:
     - name: "regenerate initramfs"
       become: yes
