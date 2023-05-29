@@ -1,15 +1,19 @@
 ---
-- name: Setup swap file
-  ansible.builtin.include_role:
-    name: geerlingguy.swap
-    apply:
-      become: yes
-  vars:
-    swap_file_path: "{{ swapfile.path }}"
-    swap_file_size_mb: "{{ swapfile.size }}"
-    swap_swappiness: "5"
-    swap_file_state: present
-    swap_file_create_command: "btrfs filesystem mkswapfile --size {{ swapfile.size }} --uuid clear {{ swap_file_path }}"
+- name: "Create btrfs subvolume {{ swapfile.path }}"
+  become: yes
+  ansible.builtin.command: btrfs filesystem mkswapfile --size "{{ swapfile.size}}" --uuid clear "{{ swapfile.path }}"
+  args:
+    creates: "{{ swapfile.path }}"
+
+- name: Activate the swap file
+  become: yes
+  ansible.builtin.command: swapon "{{ swapfile.path }}"
+
+- name: Add entry to /etc/fstab
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    line: "{{ swapfile.path }} none swap defaults 0.0"
 
 - name: Register swap_file_offset
   become: yes
@@ -23,16 +27,7 @@
   changed_when: false
   register: swap_file_uuid
 
-- name: Update bootloader entry
-  #TODO: improve.
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /boot/loader/entries/arch.conf
-    regexp: '^options (.*?)(resume=UUID={{ swap_file_uuid.stdout }}\s+resume_offset={{ swap_file_offset.stdout }})?$'
-    line: 'options \1 resume=UUID={{ swap_file_uuid.stdout }} resume_offset={{ swap_file_offset.stdout }}'
-    backrefs: yes
-
-- name: Add resume hook to /etc/mkinitcpio.conf before fsck
+- name: Add resume parameter to /etc/mkinitcpio.conf
   become: yes
   ansible.builtin.lineinfile:
     path: /etc/mkinitcpio.conf
@@ -42,8 +37,11 @@
   notify:
     - "regenerate initramfs"
 
-- name: Minimize hibernation image size
+- name: Update bootloader entry
+  #TODO: improve. Do not drop everything after resume=.
   become: yes
-  ansible.builtin.copy:
-    dest: /etc/tmpfiles.d/hibernation_image_size.conf
-    src: hibernation_image_size.conf
+  ansible.builtin.lineinfile:
+    path: /boot/loader/entries/arch.conf
+    regexp: '^options\s+(.*?)(resume=UUID={{ swap_file_uuid }} resume_offset={{ swap_file_offset }})$'
+    line: 'options=\1 resume=UUID={{ swap_file_uuid }} resume_offset={{ swap_file_offset }}'
+    backrefs: yes
