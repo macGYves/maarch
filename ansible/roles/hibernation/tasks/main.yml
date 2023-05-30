@@ -15,7 +15,7 @@
   become: yes
   ansible.builtin.lineinfile:
     path: /etc/fstab
-    line: "{{ swapfile.path }} none swap defaults 0.0"
+    line: "{{ swapfile.path }} none swap defaults 0 0"
 
 - name: Register swap_file_offset
   become: yes
