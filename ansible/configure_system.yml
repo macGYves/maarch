@@ -13,14 +13,19 @@
     - { role: users, tags: "users" }
     - { role: l10n, tags: "l10n" }
     - { role: reflector, tags: "reflector" }
-    - { role: ssd, tags: "ssd" }
+    - { role: ssd, tags: "ssd", when: features.ssd | default(false) }
     - { role: power_mgmt, tags: "power_mgmt" }
     - { role: firewall, tags: "firewall" }
     - { role: bluetooth, tags: "bluetooth" }
     - { role: yubikey, tags: "yubikey" }
-    - { role: systemd-boot, tags: "systemd-boot" }
-    - { role: kernel, tags: "kernel" }
-    - { role: hibernation, tags: "hibernation" }
+    - {
+        role: hibernation,
+        tags: "hibernation",
+        when: features.hibernation | default(false),
+      }
+    - { role: systemd-boot, tags: "hibernation, systemd-boot" }
+    - { role: kernel, tags: "hibernation, kernel" }
+
   handlers:
     - name: "regenerate initramfs"
       become: yes
