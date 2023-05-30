@@ -53,6 +53,7 @@ packages:
     - wireplumber # declared here to avoid installing pipewire-media-session
     - youtube-dl
     - task # taskwarrior
+    - gimp
   headless:
     - alacritty
     - nnn
