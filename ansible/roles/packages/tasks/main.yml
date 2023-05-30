@@ -13,5 +13,5 @@
 - name: Install host-specific packages
   become: true
   community.general.pacman:
-    pkg: "{{ host_specific_packages }}"
-  when: host_specific_packages | length > 0
+    pkg: "{{ host_specific.packages }}"
+  when: host_specific.packages | length > 0
