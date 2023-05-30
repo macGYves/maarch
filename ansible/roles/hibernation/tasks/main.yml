@@ -1,55 +1,15 @@
 ---
-- name: "Ensure btrfs subvolume {{ swapfile.path }} exists"
-  become: yes
-  ansible.builtin.command: btrfs filesystem mkswapfile --size {{ swapfile.size}} --uuid clear {{ swapfile.path }}
-  args:
-    creates: "{{ swapfile.path }}"
-  register: swap_file_create
-
-- name: Activate the swap file
-  become: yes
-  ansible.builtin.command: swapon {{ swapfile.path }}
-  when: swap_file_create is changed
-
-- name: Add entry to /etc/fstab
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /etc/fstab
-    line: "{{ swapfile.path }} none swap defaults 0 0"
-
-- name: Register swap_file_offset
-  become: yes
-  ansible.builtin.command: btrfs inspect-internal map-swapfile -r {{ swapfile.path }}
-  changed_when: false
-  register: swap_file_offset
-
-- name: Register swap_file_uuid
-  become: yes
-  ansible.builtin.command: findmnt -no UUID -T {{ swapfile.path }}
-  changed_when: false
-  register: swap_file_uuid
-
-- name: Add resume parameter to /etc/mkinitcpio.conf
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /etc/mkinitcpio.conf
-    regexp: '^HOOKS=(.*)(?<!resume)\s+fsck(.*)$'
-    line: 'HOOKS=\1 resume fsck\2'
-    backrefs: yes
-  notify:
-    - "regenerate initramfs"
-
-- name: Update bootloader entry
-  #TODO: improve.
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /boot/loader/entries/arch.conf
-    regexp: '^options (.*?)( resume=UUID={{ swap_file_uuid.stdout }}\s+resume_offset={{ swap_file_offset.stdout }})?$'
-    line: 'options \1 resume=UUID={{ swap_file_uuid.stdout }} resume_offset={{ swap_file_offset.stdout }}'
-    backrefs: yes
+- ansible.builtin.include_role:
+    name: swap
 
 - name: Configure system to minimize hibernation image size
   become: yes
   ansible.builtin.copy:
     dest: /etc/tmpfiles.d/hibernation_image_size.conf
     src: hibernation_image_size.conf
+
+- ansible.builtin.include_role:
+    name: kernel
+
+- ansible.builtin.include_role:
+    name: systemd-boot

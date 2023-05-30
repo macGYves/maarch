@@ -4,4 +4,10 @@ linux          /vmlinuz-linux
 initrd         /intel-ucode.img
 {% endif %}
 initrd         /initramfs-linux.img
-options        rd.luks.name={{ luks_device_uuid }}=archroot root=/dev/mapper/archroot rootflags=subvol=@ rw rootfstype=btrfs {% if disable_ibt %}ibt=off{% endif %}
+options        rd.luks.name={{ luks_device_uuid }}=archroot root=/dev/mapper/archroot rootflags=subvol=@ rw rootfstype=btrfs
+{%- if has_resume_params %}
+ resume=UUID={{ resume_uuid }} resume_offset={{ resume_offset }}
+{%- endif -%}
+{%- if disable_ibt %}
+ ibt=off
+{% endif %}
