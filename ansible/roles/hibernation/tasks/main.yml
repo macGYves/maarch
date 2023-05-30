@@ -48,7 +48,7 @@
     line: 'options \1 resume=UUID={{ swap_file_uuid.stdout }} resume_offset={{ swap_file_offset.stdout }}'
     backrefs: yes
 
-- name: Minimize hibernation image size
+- name: Configure system to minimize hibernation image size
   become: yes
   ansible.builtin.copy:
     dest: /etc/tmpfiles.d/hibernation_image_size.conf
