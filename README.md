@@ -9,12 +9,7 @@ My Automated ARCH linux Installation
 
    sh -c "$(curl -sL https://bit.ly/maarch-bootstrap)"
 
-3. Restart the system, login as root
-4. Run the system setup script:
+3. Restart the system, login as user
+4. Run the configure script:
 
-   sh -c "$(curl -sL https://bit.ly/maarch-system)"
-
-5. Restart the system, login as user
-6. Run the setup-user script:
-
-   sh -c "$(curl -sL https://bit.ly/maarch-user)"
+   sh -c "$(curl -sL https://bit.ly/maarch-config)"

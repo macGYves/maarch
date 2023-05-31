@@ -9,10 +9,21 @@
       prompt: "YubiKey authenticator PIN"
       private: yes
   roles:
-    - { role: packages, tags: "packages" }
-    - yay
+    - { role: facts, tags: "always" }
     - { role: ssh, tags: "ssh" }
     - { role: dotfiles, tags: "dotfiles" }
+    - { role: time, tags: "time" }
+    - { role: network, tags: "network" }
+    - { role: users, tags: "users" }
+    - { role: l10n, tags: "l10n" }
+    - { role: reflector, tags: "reflector" }
+    - { role: ssd, tags: "ssd", when: features.ssd }
+    - { role: power_mgmt, tags: "power_mgmt" }
+    - { role: firewall, tags: "firewall" }
+    - { role: bluetooth, tags: "bluetooth" }
+    - { role: yubikey, tags: "yubikey" }
+    - { role: packages, tags: "packages" }
+    - { role: yay, tags: "yay" }
     - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
     - { role: flatpak, tags: "flatpak" }
@@ -22,12 +33,12 @@
     - { role: themes, tags: "themes" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
-    - { role: virtualbox, tags: "virtualbox" }
+    - { role: virtualbox, tags: "virtualbox", when: not features.vbox_guest }
+    - { role: hibernation, tags: "hibernation", when: features.hibernation }
+    - { role: systemd-boot, tags: "hibernation, systemd-boot" }
+    - { role: kernel, tags: "hibernation, kernel" }
     - { role: cleanup, tags: "cleanup" }
-    - { role: systemd-boot, tags: "systemd-boot" } # TODO: bad to have systemd-boot here.
   handlers:
     - name: "regenerate initramfs"
       become: yes
       ansible.builtin.command: mkinitcpio -P
-    - name: "update boot loader entries"
-      become: yes
