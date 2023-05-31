@@ -4,4 +4,4 @@ tmpdir=$(mktemp -d)
 git clone https://github.com/macGYves/maarch.git "${tmpdir}/maarch"
 cd "${tmpdir}/maarch/ansible" || exit
 ansible-galaxy install -r requirements.yml
-ansible-playbook configure.yml
+ansible-playbook configure.yml --ask-become-pass
