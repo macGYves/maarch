@@ -1,0 +1,8 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      features:
+        ssd: false
+        hibernation: false
+        vbox_guest: true

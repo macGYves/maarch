@@ -10,3 +10,4 @@ all:
       features:
         ssd: true
         hibernation: true
+        vbox_guest: false

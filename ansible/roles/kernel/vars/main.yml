@@ -1,2 +1,2 @@
 ---
-has_resume_hook: "{{ features.hibernation | default(false) }}"
+has_resume_hook: "{{ features.hibernation }}"
