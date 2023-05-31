@@ -3,20 +3,20 @@
   community.general.pacman:
     pkg: sudo
 
-- name: "Ensure user {{ user.name }} exists"
+- name: "Ensure user {{ username }} exists"
   become: yes
   ansible.builtin.user:
-    name: "{{ user.name }}"
+    name: "{{ username }}"
     shell: "{{ user.shell }}"
     createhome: yes
-    home: "/home/{{ user.name }}"
+    home: "/home/{{ username }}"
 
-- name: "Add user {{ user.name }} to sudoers"
+- name: "Add user {{ username }} to sudoers"
   become: yes
   ansible.builtin.lineinfile:
-    path: "/etc/sudoers.d/00_{{ user.name }}"
+    path: "/etc/sudoers.d/00_{{ username }}"
     state: present
-    line: "{{ user.name }} ALL=(ALL) ALL"
+    line: "{{ username }} ALL=(ALL) ALL"
     validate: /usr/sbin/visudo -cf %s
     create: yes
 
