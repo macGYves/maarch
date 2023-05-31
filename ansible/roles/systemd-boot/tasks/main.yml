@@ -14,9 +14,16 @@
     dest: /boot/loader/loader.conf
     mode: 0644
 
-- name: Install systemd-boot entry arch.conf
+- name: Create systemd-boot entry arch.conf
   become: yes
   ansible.builtin.template:
-    src: templates/arch.conf.j2
+    src: arch.conf.j2
     dest: /boot/loader/entries/arch.conf
+    mode: 0644
+
+- name: Create systemd-boot entry arch-fallback.conf
+  become: yes
+  ansible.builtin.template:
+    src: arch-fallback.conf.j2
+    dest: /boot/loader/entries/arch-fallback.conf
     mode: 0644

@@ -4,6 +4,9 @@
 printf 'Installation device (e.g. /dev/sda):'
 read -r INSTALL_DEV
 
+printf 'Username:'
+read -r USERNAME
+
 TIMEZONE="Europe/Stockholm"
 
 ESP_LABEL="ESP" # _E_FI _S_ystem _P_artition
@@ -92,7 +95,7 @@ reflector --country Sweden --age 12 --protocol https --sort rate -n 5 --save /et
 
 # Installation
 # ============
-pacstrap /mnt base linux linux-firmware neovim zsh git ansible btrfs-progs networkmanager man-db man-pages intel-ucode \
+pacstrap /mnt base linux linux-firmware neovim zsh git ansible btrfs-progs networkmanager man-db man-pages sudo \
   python-passlib # required by ansible to hash variables
 
 genfstab -U /mnt > /mnt/etc/fstab
@@ -141,9 +144,16 @@ FILES=()
 HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block sd-encrypt filesystems fsck)" \
 > /etc/mkinitcpio.conf
 
-echo "Setting root password..."
-passwd
+echo "Restricting root login..."
+passwd --lock root
 
+echo "Adding user ${USERNAME}"
+useradd --create-home --shell /bin/zsh "${USERNAME}"
+passwd ${USERNAME}
+
+
+echo "Adding user ${USERNAME} to sudoers..."
+echo "${USERNAME} ALL=(ALL) ALL" > /etc/sudoers.d/00_${USERNAME}
 
 # Install systemd-boot
 bootctl install
@@ -151,7 +161,6 @@ bootctl install
 echo \
 "title          Arch Linux
 linux          /vmlinuz-linux
-initrd         /intel-ucode.img
 initrd         /initramfs-linux.img
 options        rd.luks.name=${CRYPTROOT_UUID}=${LUKS_MAPPING_NAME} root=/dev/mapper/${LUKS_MAPPING_NAME} rootflags=subvol=@ rw rootfstype=btrfs" \
 > /boot/loader/entries/arch.conf

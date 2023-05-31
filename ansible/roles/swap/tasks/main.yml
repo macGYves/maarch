@@ -1,0 +1,35 @@
+---
+- name: "Ensure btrfs subvolume {{ swapfile.path }} exists"
+  become: yes
+  ansible.builtin.command: btrfs filesystem mkswapfile --size {{ swapfile.size}} --uuid clear {{ swapfile.path }}
+  args:
+    creates: "{{ swapfile.path }}"
+  register: swap_file_create
+
+- name: Activate the swap file
+  become: yes
+  ansible.builtin.command: swapon {{ swapfile.path }}
+  when: swap_file_create is changed
+
+- name: Add entry to /etc/fstab
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    line: "{{ swapfile.path }} none swap defaults 0 0"
+
+- name: Register swap_file_offset
+  become: yes
+  ansible.builtin.command: btrfs inspect-internal map-swapfile -r {{ swapfile.path }}
+  changed_when: false
+  register: swap_file_offset_result
+
+- name: Register swap_file_uuid
+  become: yes
+  ansible.builtin.command: findmnt -no UUID -T {{ swapfile.path }}
+  changed_when: false
+  register: swap_file_uuid_result
+
+- name: Set swap-related facts
+  set_fact:
+    swap_file_offset: "{{ swap_file_offset_result.stdout }}"
+    swap_file_uuid: "{{ swap_file_uuid_result.stdout }}"

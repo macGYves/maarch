@@ -1,0 +1,13 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      host_specific:
+        packages:
+          - sof-firmware
+        swapfile:
+          size: "20g"
+      features:
+        ssd: true
+        hibernation: true
+        vbox_guest: false

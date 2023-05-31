@@ -1,0 +1,9 @@
+---
+# see https://wiki.archlinux.org/title/VirtualBox#Freeze_during_virtual_machine_startup_with_11th_generation_Intel_CPU_and_later
+- name: "Set fact disable_ibt_required"
+  set_fact:
+    disable_ibt_required: "{{ has_intel_cpu and intel_cpu_gen | int >= 11 }}"
+
+- ansible.builtin.include_role:
+    name: systemd-boot
+  when: disable_ibt_required

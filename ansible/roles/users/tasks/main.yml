@@ -3,11 +3,10 @@
   community.general.pacman:
     pkg: sudo
 
-- name: "Create user {{ user.name }}"
+- name: "Ensure user {{ user.name }} exists"
   become: yes
   ansible.builtin.user:
     name: "{{ user.name }}"
-    password: "{{ user_password }}"
     shell: "{{ user.shell }}"
     createhome: yes
     home: "/home/{{ user.name }}"

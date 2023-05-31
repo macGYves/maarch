@@ -1,0 +1,6 @@
+---
+disable_ibt: "{{ disable_ibt_required | default(false) }}"
+
+resume_uuid: "{{ swap_file_uuid | default(undefined)}}"
+resume_offset: "{{ swap_file_offset | default(undefined)}}"
+has_resume_params: "{{ features.hibernation and resume_uuid is defined and resume_offset is defined | default(false) }}"

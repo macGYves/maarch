@@ -1,0 +1,4 @@
+---
+swapfile:
+  path: /swapfile
+  size: "{{ host_specific.swapfile.size | default('8g') }}"

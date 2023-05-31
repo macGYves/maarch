@@ -1,7 +1,6 @@
 ---
 system:
   locale: de_DE
-  processor: intel
 
 vconsole:
   keymap: uk
@@ -49,12 +48,17 @@ packages:
     - vlc
     - firefox
     - chromium
-    - sof-firmware
     - pipewire
     - pipewire-pulse
     - wireplumber # declared here to avoid installing pipewire-media-session
     - youtube-dl
     - task # taskwarrior
+    - gimp
   headless:
     - alacritty
     - nnn
+
+features:
+  ssd: true
+  hibernation: false
+  vbox_guest: false

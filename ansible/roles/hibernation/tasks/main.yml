@@ -1,0 +1,15 @@
+---
+- ansible.builtin.include_role:
+    name: swap
+
+- name: Configure system to minimize hibernation image size
+  become: yes
+  ansible.builtin.copy:
+    dest: /etc/tmpfiles.d/hibernation_image_size.conf
+    src: hibernation_image_size.conf
+
+- ansible.builtin.include_role:
+    name: kernel
+
+- ansible.builtin.include_role:
+    name: systemd-boot

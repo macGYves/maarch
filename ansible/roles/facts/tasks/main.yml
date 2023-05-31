@@ -1,2 +1,10 @@
 ---
 - import_tasks: device_uuids.yml
+
+- name: Set fact has_intel_cpu
+  set_fact:
+    has_intel_cpu: "{{ 'GenuineIntel' in ansible_processor }}"
+
+- name: Set fact intel_cpu_gen
+  set_fact:
+    intel_cpu_gen: "{{ ansible_processor | unique | select('match', '^\\d+(st|nd|rd|th)?\\s+Gen\\s+Intel.*') | first | regex_replace('^(\\d+).*$', '\\1') }}"

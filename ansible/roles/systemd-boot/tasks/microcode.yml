@@ -3,7 +3,6 @@
   become: yes
   community.general.pacman:
     pkg: intel-ucode
-    state: present
-  when: "'GenuineIntel' in ansible_processor"
+  when: "has_intel_cpu"
   notify:
     - regenerate initramfs
