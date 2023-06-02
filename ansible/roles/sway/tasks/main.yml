@@ -1,12 +1,12 @@
 ---
 - name: Install packages for keyboard-centric WMs
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg: "{{ packages.headless }}"
 
 - name: Install sway
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - brightnessctl
       - gammastep # auto-colour temperature adjustment tool
@@ -21,11 +21,6 @@
       - udiskie
       - waybar
 
-- name: Import wob maintainer gpg key
-  become: yes
-  become_user: aur_builder
-  command: gpg --receive-keys 5C6DA024DDE27178073EA103F4B432D5D67990E3
-
 - name: Install sway dependencies from AUR
   kewlfft.aur.aur:
     name:
@@ -35,9 +30,8 @@
       - autotiling # script for opening new windows more space-efficiently
       - wdisplays # tool for changing screen layouts dynamically
       - kanshi-git
-      - wob # wayland overlay bar
     state: present
-  become: yes
+  become: true
   become_user: aur_builder
 
 - name: Enable and start systemd user services
@@ -45,7 +39,7 @@
     name: "{{ item }}"
     scope: user
     state: started
-    enabled: yes
+    enabled: true
   loop:
     - kanshi.service
     - udiskie.service
@@ -53,21 +47,19 @@
     - gammastep-indicator.service
     - autotiling.service
     - mako.service
-    - wob.socket
-    - wob.service
 
 - name: Install terminal mail/office packages
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg:
       - vdirsyncer
       - khard
       - neomutt
       - notmuch
-      # - urlview // <- from AUR!
       - isync
       - msmtp
       - pass
       - lynx
 
-- import_tasks: vdirsyncer.yml
+- name: "Configure vdirsyncer"
+  ansible.builtin.import_tasks: vdirsyncer.yml

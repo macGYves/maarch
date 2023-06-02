@@ -36,6 +36,10 @@ fi
 source $plugins_bundle
 unset antidote_dir plugins_file plugins_bundle
 
+
+# Set JAVA_HOME via asdf java plugin
+. ~/.asdf/plugins/java/set-java-home.zsh
+
 # zsh-z config
 # ------------
 export ZSHZ_DATA=~/.local/share/zsh-z
@@ -66,3 +70,5 @@ fi
 source ${ZDOTDIR}/aliases.zsh
 source ${ZDOTDIR}/completion/pip.zsh
 source ${ZDOTDIR}/completion/aws-cli.zsh
+
+

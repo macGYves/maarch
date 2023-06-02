@@ -1,7 +1,7 @@
 ---
 - name: Install fonts
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - tex-gyre-fonts
       - ttf-dejavu
@@ -14,8 +14,10 @@
   ansible.builtin.file:
     path: ~/.config/fontconfig
     state: directory
+    mode: "0755"
 
 - name: Copy fontconfig configuration
   ansible.builtin.copy:
     dest: ~/.config/fontconfig/fonts.conf
     src: font.conf
+    mode: "0644"

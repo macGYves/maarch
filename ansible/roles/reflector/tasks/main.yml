@@ -2,26 +2,27 @@
 # https://wiki.archlinux.org/title/Reflector
 
 - name: Install reflector
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - reflector
 
 - name: Init reflector.conf
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: reflector.conf
     dest: /etc/xdg/reflector/reflector.conf
+    mode: "0440"
 
 - name: Enable reflector systemd service
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: reflector.service
-    enabled: yes
+    enabled: true
 
 - name: Run reflector service weekly
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: reflector.timer
-    enabled: yes
+    enabled: true
     state: started

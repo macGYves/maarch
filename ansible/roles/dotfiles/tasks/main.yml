@@ -1,7 +1,7 @@
 ---
 - name: Install chezmoi
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     package: chezmoi
 
 - name: Init chezmoi ( INTERACTION POTENTIALLY NEEDED! -> CHECK & PRESS YUBIKEY <- )

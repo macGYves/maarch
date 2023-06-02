@@ -1,9 +1,9 @@
 ---
 - name: Configure bluetooth
-  become: yes
+  become: true
   block:
     - name: Install bluetooth protocol stack
-      community.general.pacman:
+      ansible.builtin.package:
         pkg:
           - bluez
           - bluez-utils
@@ -12,9 +12,10 @@
       ansible.builtin.systemd:
         name: bluetooth.service
         state: started
-        enabled: yes
+        enabled: true
 
     - name: Init /etc/bluetooth/main.conf
       ansible.builtin.copy:
         dest: /etc/bluetooth/main.conf
         src: main.conf
+        mode: "0644"

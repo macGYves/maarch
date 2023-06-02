@@ -1,15 +1,15 @@
 ---
 - name: Install YubiKey - related packages
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - yubikey-personalization-gui
       - yubikey-manager
       - libfido2 # dependency
 
 - name: Install smartcard libs/tools
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - pcsclite
       - libusb-compat
@@ -17,8 +17,8 @@
       - gcr # pinentry-gnome3 depends on this
 
 - name: Start and enable pcscd.service
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: pcscd.service
     state: started
-    enabled: yes
+    enabled: true

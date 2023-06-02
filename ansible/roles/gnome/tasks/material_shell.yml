@@ -1,7 +1,7 @@
 ---
 - name: Install fonts
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg:
       - ttf-roboto
       - ttf-roboto-mono-nerd
@@ -11,5 +11,5 @@
     name:
       - gnome-shell-extension-material-shell-git
       - tela-icon-theme
-  become: yes
+  become: true
   become_user: aur_builder

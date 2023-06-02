@@ -1,15 +1,16 @@
 ---
 - name: Register if private ssh resident key exist
   ansible.builtin.stat:
-    path: "{{ private_ssh_key.path }}"
-  register: private_ssh_key_stat
+    path: "{{ ssh_private_key.path }}"
+  register: ssh_private_ssh_key_stat
 
 - name: Register if public ssh resident key exist
   ansible.builtin.stat:
-    path: "{{ public_ssh_key.path }}"
-  register: public_ssh_key_stat
+    path: "{{ ssh_public_key.path }}"
+  register: ssh_public_key_stat
 
 - name: Setup ssh to use resident keys on YubiKey
+  when: not ssh_private_ssh_key_stat.stat.exists or not ssh_public_key_stat.stat.exists
   block:
     - name: Fetch resident key from YubiKey
       # The command below places the keys in the "current" folder, i.e. the ansible "playbook_dir"
@@ -24,13 +25,14 @@
     - name: Move fetched resident key to ~/.ssh
       ansible.builtin.copy:
         src: "{{ playbook_dir }}/id_ed25519_sk_rk"
-        dest: "{{ private_ssh_key.path }}"
-        mode: "0600"
+        dest: "{{ ssh_private_key.path }}"
+        mode: "0400"
 
     - name: Move fetched resident public key to ~/.ssh
       ansible.builtin.copy:
         src: "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
-        dest: "{{ public_ssh_key.path }}"
+        dest: "{{ ssh_public_key.path }}"
+        mode: "0400"
 
     - name: Cleanup fetched resident keys from temp dir
       ansible.builtin.file:
@@ -39,4 +41,3 @@
       loop:
         - "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
         - "{{ playbook_dir }}/id_ed25519_sk_rk"
-  when: not private_ssh_key_stat.stat.exists or not public_ssh_key_stat.stat.exists
