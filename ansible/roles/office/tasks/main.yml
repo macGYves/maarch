@@ -1,7 +1,7 @@
 ---
 - name: Install messengers/office/nextcloud
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg:
       - signal-desktop
       - telegram-desktop

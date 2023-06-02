@@ -1,12 +1,12 @@
 ---
 - name: Install util-linux package
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg: util-linux
     state: present
 
 - name: Schedule weekly SSD TRIM
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: fstrim.timer
-    enabled: yes
+    enabled: true

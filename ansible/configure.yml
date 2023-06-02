@@ -4,12 +4,36 @@
   vars_prompt:
     - name: user_email
       prompt: "Your email address"
-      private: no
+      private: false
     - name: yubikey_pin
       prompt: "YubiKey authenticator PIN"
-      private: yes
+      private: true
+  pre_tasks:
+    - name: Set facts
+      tags: "always"
+      block:
+        - name: Save LUKS device UUID in fact
+          become: true
+          ansible.builtin.set_fact:
+            luks_device_uuid: "{{ ansible_device_links.uuids[item.key] | first }}"
+          loop: "{{ ansible_device_links.labels | dict2items }}"
+          when: partitions.luks.label in item.value
+          changed_when: false
+
+        - name: Set fact has_intel_cpu
+          ansible.builtin.set_fact:
+            has_intel_cpu: "{{ 'GenuineIntel' in ansible_processor }}"
+
+        - name: Set fact intel_cpu_gen
+          ansible.builtin.set_fact:
+            intel_cpu_gen: "
+              {{ ansible_processor | unique | select('match', '^\\d+(st|nd|rd|th)?\\s+Gen\\s+Intel.*') | first \
+              | regex_replace('^(\\d+).*$', '\\1') }}"
+
+        - name: Set fact username
+          ansible.builtin.set_fact:
+            username: "{{ ansible_user_id }}"
   roles:
-    - { role: facts, tags: "always" }
     - { role: ssh, tags: "ssh" }
     - { role: dotfiles, tags: "dotfiles" }
     - { role: time, tags: "time" }
@@ -28,17 +52,18 @@
     - { role: shell, tags: "shell" }
     - { role: flatpak, tags: "flatpak" }
     - { role: gnome, tags: "gnome" }
-    - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
-    - { role: dev-tools, tags: "dev-tools" }
+    - { role: xdg_user_dirs, tags: "xdg_user_dirs" }
+    - { role: dev_tools, tags: "dev-tools" }
     - { role: themes, tags: "themes" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
     - { role: virtualbox, tags: "virtualbox", when: not features.vbox_guest }
     - { role: hibernation, tags: "hibernation", when: features.hibernation }
-    - { role: systemd-boot, tags: "hibernation, systemd-boot" }
+    - { role: systemd_boot, tags: "hibernation, systemd_boot" }
     - { role: kernel, tags: "hibernation, kernel" }
     - { role: cleanup, tags: "cleanup" }
   handlers:
-    - name: "regenerate initramfs"
-      become: yes
+    - name: "Regenerate initramfs"
+      become: true
       ansible.builtin.command: mkinitcpio -P
+      changed_when: true

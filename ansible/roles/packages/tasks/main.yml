@@ -1,17 +1,17 @@
 ---
 - name: Perform full system upgrade
   become: true
-  community.general.pacman:
-    update_cache: yes
-    upgrade: yes
+  ansible.builtin.package:
+    update_cache: true
+    upgrade: true
 
 - name: Install base packages
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg: "{{ packages.essential }}"
 
 - name: Install host-specific packages
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg: "{{ host_specific.packages }}"
   when: host_specific is defined and host_specific.packages | length > 0

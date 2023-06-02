@@ -1,14 +1,15 @@
 ---
 - name: Create user aur_builder
-  become: yes
-  user:
+  become: true
+  ansible.builtin.user:
     name: aur_builder
 
 - name: Grant AUR user permissions to run pacman
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
     state: present
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     validate: /usr/sbin/visudo -cf %s
-    create: yes
+    create: true
+    mode: "0660"

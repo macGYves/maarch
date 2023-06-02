@@ -1,18 +1,19 @@
 ---
 - name: Install power management tools
+  become: true
   block:
     - name: Install TLP
-      community.general.pacman:
+      ansible.builtin.package:
         pkg: tlp
 
     - name: Init /etc/tlp.conf
       ansible.builtin.copy:
         dest: /etc/tlp.conf
         src: tlp.conf
+        mode: "0640"
 
     - name: Enable tlp.service
       ansible.builtin.systemd:
         name: tlp.service
         state: started
-        enabled: yes
-  become: yes
+        enabled: true
