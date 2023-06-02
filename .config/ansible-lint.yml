@@ -9,7 +9,6 @@ exclude_paths:
   - scripts/
   - .idea/
   - .github
-#  - .config
 
 offline: false
 
@@ -17,6 +16,3 @@ offline: false
 warn_list:
   - command-instead-of-module
   - command-instead-of-shell
-# Ansible-lint will skip and ignore the rules or tags listed below
-#skip_list:
-#  - yaml
