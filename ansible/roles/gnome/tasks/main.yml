@@ -1,7 +1,7 @@
 ---
 - name: Install gnome desktop
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg:
       - gnome
       - evince # a.k.a. "Document Viewer"
@@ -12,7 +12,7 @@
 
 - name: Uninstall unnecessary gnome apps
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     pkg:
       - epiphany
       - totem
@@ -25,14 +25,14 @@
   kewlfft.aur.aur:
     name:
       - gnome-shell-pomodoro
-  become: yes
+  become: true
   become_user: aur_builder
 
 - name: Enable gdm.service
   become: true
   ansible.builtin.systemd:
     name: gdm.service
-    enabled: yes
+    enabled: true
 
 - name: "Write dconf values for /org/gnome/"
   community.general.dconf:
@@ -40,4 +40,5 @@
     value: "{{ item.value | string }}"
   loop: "{{ org_gnome_dconf | dict2items }}"
 
-- include_tasks: material_shell.yml
+- name: "Setup Gnome Material Shell"
+  ansible.builtin.include_tasks: material_shell.yml

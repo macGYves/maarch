@@ -1,8 +1,9 @@
 ---
 - name: Update mkinitcpio.conf and trigger regenerate initramfs
-  become: yes
+  become: true
   ansible.builtin.template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf
+    mode: "0644"
   notify:
-    - "regenerate initramfs"
+    - "Regenerate initramfs"

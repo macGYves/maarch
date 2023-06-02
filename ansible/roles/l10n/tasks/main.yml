@@ -1,17 +1,19 @@
 ---
-- name: "Init /etc/locale.gen with {{ system.locale }} and generate locales"
-  become: yes
+- name: "Init /etc/locale.gen and generate locales"
+  become: true
   community.general.locale_gen:
     name: "{{ system.locale }}.UTF-8"
 
 - name: Init /etc/locale.conf
-  become: yes
+  become: true
   ansible.builtin.template:
     dest: /etc/locale.conf
     src: locale.conf.j2
+    mode: "0644"
 
 - name: Init /etc/vconsole.conf
-  become: yes
+  become: true
   ansible.builtin.template:
     dest: /etc/vconsole.conf
     src: vconsole.conf.j2
+    mode: "0644"

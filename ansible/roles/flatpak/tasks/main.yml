@@ -1,7 +1,7 @@
 ---
 - name: Install flatpak
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - flatpak
       - xdg-desktop-portal-wlr

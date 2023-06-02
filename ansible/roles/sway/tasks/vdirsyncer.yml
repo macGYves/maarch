@@ -3,26 +3,30 @@
   ansible.builtin.file:
     path: "~/contacts/contacts"
     state: directory
+    mode: "0750"
 
 - name: Ensure systemd user directory (~/.config/systemd/user) exists
   ansible.builtin.file:
     path: "~/.config/systemd/user"
     state: directory
+    mode: "0750"
 
 - name: Ensure vdirsyncer.service systemd unit is installed
   ansible.builtin.copy:
     dest: "~/.config/systemd/user"
     src: .config/systemd/user/vdirsyncer.service
+    mode: "0640"
 
 - name: Ensure vdirsyncer.timer systemd unit is installed
   ansible.builtin.copy:
     dest: "~/.config/systemd/user"
     src: .config/systemd/user/vdirsyncer.timer
+    mode: "0640"
 
 - name: Enable vdirsyncer timer
   ansible.builtin.systemd:
     name: vdirsyncer.timer
     scope: user
     state: started
-    enabled: yes
-    daemon_reload: yes
+    enabled: true
+    daemon_reload: true

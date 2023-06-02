@@ -1,6 +1,6 @@
 ---
-private_ssh_key:
+ssh_private_key:
   path: ~/.ssh/id_ed25519_sk
 
-public_ssh_key:
+ssh_public_key:
   path: ~/.ssh/id_ed25519_sk.pub

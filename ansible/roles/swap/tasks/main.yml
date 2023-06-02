@@ -1,35 +1,45 @@
 ---
-- name: "Ensure btrfs subvolume {{ swapfile.path }} exists"
-  become: yes
-  ansible.builtin.command: btrfs filesystem mkswapfile --size {{ swapfile.size}} --uuid clear {{ swapfile.path }}
+- name: "Ensure btrfs subvolume exists: {{ swapfile.path }}"
+  become: true
+  ansible.builtin.command: btrfs filesystem mkswapfile --size {{ swap_file.size }} --uuid clear {{ swap_file.path }}
   args:
-    creates: "{{ swapfile.path }}"
-  register: swap_file_create
+    creates: "{{ swap_file.path }}"
+#  register: swap_file_create
 
-- name: Activate the swap file
-  become: yes
-  ansible.builtin.command: swapon {{ swapfile.path }}
-  when: swap_file_create is changed
+- name: "Get currently active swap devices"
+  ansible.builtin.command: swapon --show=NAME --noheadings
+  register: swap_devices
+  changed_when: false
+
+- name: "Activate swap file"
+  become: true
+  ansible.builtin.command: swapon {{ swap_file.path }}
+  #  when: swap_file_create is changed
+  when: not swap_file.path in swap_devices.stdout
+  #  register: swap_swapon_output
+  #  changed_when: swap_swapon_output.rc == 0
+  changed_when: true
+#  ignore_errors: true
 
 - name: Add entry to /etc/fstab
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     path: /etc/fstab
-    line: "{{ swapfile.path }} none swap defaults 0 0"
+    line: "{{ swap_file.path }} none swap defaults 0 0"
 
 - name: Register swap_file_offset
-  become: yes
-  ansible.builtin.command: btrfs inspect-internal map-swapfile -r {{ swapfile.path }}
+  become: true
+  ansible.builtin.command: btrfs inspect-internal map-swapfile -r {{ swap_file.path }}
   changed_when: false
   register: swap_file_offset_result
 
 - name: Register swap_file_uuid
-  become: yes
-  ansible.builtin.command: findmnt -no UUID -T {{ swapfile.path }}
+  become: true
+  ansible.builtin.command: findmnt -no UUID -T {{ swap_file.path }}
   changed_when: false
   register: swap_file_uuid_result
 
 - name: Set swap-related facts
-  set_fact:
+  ansible.builtin.set_fact:
     swap_file_offset: "{{ swap_file_offset_result.stdout }}"
     swap_file_uuid: "{{ swap_file_uuid_result.stdout }}"

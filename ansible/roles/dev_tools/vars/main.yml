@@ -1,17 +1,17 @@
 ---
-asdf:
+dev_tools_asdf:
   install_dir: "~/.asdf"
   version: "v0.11.3"
 
-maven:
+dev_tools_maven:
   versions:
     - "3.9.1"
 
-jdk:
+dev_tools_jdk:
   versions:
-    - "graalvm-22.3.0+java17"
     - "temurin-17.0.7+7"
+    - "graalvm-22.3.0+java17"
 
-nodejs:
+dev_tools_nodejs:
   versions:
     - "18.16.0"
