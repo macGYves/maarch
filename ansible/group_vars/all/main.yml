@@ -45,7 +45,6 @@ packages:
     - python-psutil # required by community.general.dconf
     - python-passlib # required by ansible to hash variables
     - vlc
-    - firefox
     - chromium
     - pipewire
     - pipewire-pulse

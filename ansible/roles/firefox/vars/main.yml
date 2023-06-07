@@ -1,0 +1,17 @@
+firefox_profiles:
+  default:
+    extensions:
+      - ublock-origin
+      - decentraleyes
+      - floccus
+      - multi-account-containers
+      - canvasblocker
+      - cookie-autodelete
+      - keepassxc-browser
+    preferences:
+      privacy.donottrackheader.enabled: true
+      datareporting.healthreport.uploadEnabled: false
+      signon.rememberSignons: false
+      signon.autofillForms: false
+      signon.generation.enabled: false
+      signon.management.page.breach-alerts.enabled: false
