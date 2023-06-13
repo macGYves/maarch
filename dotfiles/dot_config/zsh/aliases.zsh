@@ -62,3 +62,4 @@ alias -g sctl="systemctl"
 
 # taskmanager
 alias ta="task add"
+alias t="task"
