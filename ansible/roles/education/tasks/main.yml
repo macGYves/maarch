@@ -1,0 +1,25 @@
+---
+- name: Install software for kids
+  community.general.flatpak:
+    name:
+      - com.tux4kids.tuxmath
+      - edu.mit.Scratch
+      - org.kde.minuet
+      - org.kde.gcompris
+      - org.robocode.Robocode
+      - org.openclonk.OpenClonk
+    method: system
+
+- name: Install kstars
+  become: true
+  ansible.builtin.package:
+    pkg:
+      - kstars
+
+- name: Install games
+  become: true
+  ansible.builtin.package:
+    pkg:
+      - supertuxkart
+      - hedgewars
+      - 0ad
