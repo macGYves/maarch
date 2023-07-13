@@ -32,6 +32,7 @@ alias dcup="docker-compose up"
 alias pip="pip3"
 
 # misc
+alias -g v="less"
 alias -g e="nvim"
 alias open="xdg-open"
 alias email="neomutt"
