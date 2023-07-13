@@ -1,5 +1,8 @@
 # ALIASES
 # =======
+# puts files to trashbin. Requires package trash-cli
+alias del="trash-put"
+
 ## maven
 alias mci="mvn clean install"
 alias mcp="mvn clean package"
