@@ -36,6 +36,7 @@ packages:
     - man-db
     - unzip
     - zip
+    - htop
     - keepassxc
     - qt5-wayland # needed for keepassxc
     - fwupd # firmware-update daemon
