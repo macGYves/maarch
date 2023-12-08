@@ -1,0 +1,24 @@
+---
+- name: Copy update.service to /etc/systemd/system/update.service
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/update.service
+    src: update.service
+    mode: "0640"
+
+- name: Copy update.timer to /etc/systemd/system/update.timer
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/update.timer
+    src: update.timer
+    mode: "0640"
+
+- name: Enable systemd unit update.service
+  ansible.builtin.systemd:
+    name: update.service
+    enabled: true
+
+- name: Enable systemd timer update.timer
+  ansible.builtin.systemd:
+    name: update.timer
+    enabled: true
