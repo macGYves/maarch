@@ -7,7 +7,7 @@
       - evince # a.k.a. "Document Viewer"
       - nautilus # a.k.a. "Files"
       - seahorse # a.k.a. "Passwords and Keys"
-      - gnome-shell-extension-gtile
+      #      - gnome-shell-extension-gtile
       - gnome-shell-extension-appindicator
 
 - name: Uninstall unnecessary gnome apps
@@ -40,5 +40,5 @@
     value: "{{ item.value | string }}"
   loop: "{{ org_gnome_dconf | dict2items }}"
 
-- name: "Setup Gnome Material Shell"
-  ansible.builtin.include_tasks: material_shell.yml
+  #- name: "Setup Gnome Material Shell"
+  #ansible.builtin.include_tasks: material_shell.yml

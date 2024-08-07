@@ -5,4 +5,4 @@
     pkg: intel-ucode
   when: "has_intel_cpu"
   notify:
-    - regenerate initramfs
+    - Regenerate initramfs

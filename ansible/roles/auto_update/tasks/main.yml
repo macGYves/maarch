@@ -14,11 +14,13 @@
     mode: "0640"
 
 - name: Enable systemd unit update.service
+  become: true
   ansible.builtin.systemd:
     name: update.service
     enabled: true
 
 - name: Enable systemd timer update.timer
+  become: true
   ansible.builtin.systemd:
     name: update.timer
     enabled: true

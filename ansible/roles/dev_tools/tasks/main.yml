@@ -37,6 +37,7 @@
   become_user: aur_builder
 
 - name: Install IntelliJ IDEA Ultimate
+  become: true
   community.general.snap:
     name: intellij-idea-ultimate
     classic: true
