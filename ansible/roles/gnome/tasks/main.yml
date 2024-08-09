@@ -9,6 +9,7 @@
       - seahorse # a.k.a. "Passwords and Keys"
       #      - gnome-shell-extension-gtile
       - gnome-shell-extension-appindicator
+      - dconf-editor
 
 - name: Uninstall unnecessary gnome apps
   become: true
