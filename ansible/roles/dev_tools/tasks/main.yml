@@ -44,3 +44,9 @@
 
 - name: "Setup docker"
   ansible.builtin.include_tasks: docker.yml
+
+- name: "Install more"
+  become: true
+  ansible.builtin.package:
+    package:
+      - mariadb-clients
