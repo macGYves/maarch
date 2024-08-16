@@ -2,7 +2,6 @@
 - name: Install nordic gtk3 theme
   kewlfft.aur.aur:
     name: nordic-theme-git
-    use: makepkg
     state: present
   become: yes
   become_user: aur_builder

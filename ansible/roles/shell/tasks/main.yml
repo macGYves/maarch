@@ -2,7 +2,6 @@
 - name: Install antidote (zsh plugin manager)
   kewlfft.aur.aur:
     name: zsh-antidote
-    use: makepkg
     state: present
   become: yes
   become_user: aur_builder
