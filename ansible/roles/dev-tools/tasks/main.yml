@@ -5,6 +5,7 @@
     package:
       - git
       - curl
+      - python-pre-commit
 
 - name: "Install dev tools via asdf"
   include_role:
@@ -27,8 +28,6 @@
         versions: ["2.11.16"]
         global: "2.11.16"
 
-- include_tasks: aws-cli.yml
-
 - name: "Install IDEs"
   kewlfft.aur.aur:
     name:
@@ -36,6 +35,5 @@
       - intellij-idea-ultimate-edition
   become: yes
   become_user: aur_builder
-
 
 - include_tasks: docker.yml
