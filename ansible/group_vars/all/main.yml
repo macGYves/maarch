@@ -1,7 +1,6 @@
 ---
 system:
   locale: de_DE
-  processor: intel
 
 vconsole:
   keymap: uk
