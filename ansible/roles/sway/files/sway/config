@@ -223,6 +223,8 @@ exec firefox
 exec gammastep-indicator
 exec autotiling
 
+exec_always kanshi
+
 set $Locker swaylock && sleep 1
 
 ########## Styling ##########
