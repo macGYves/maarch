@@ -1,0 +1,56 @@
+--- 
+
+- name: Install yubikey-full-disk-encryption
+  become: yes
+  community.general.pacman:
+    pkg: 
+      - yubikey-full-disk-encryption
+      - python-pexpect                # required by ansible.builtin.expect
+
+- name: "Check if YKFDE_CHALLENGE is defined"
+  become: yes
+  ansible.builtin.shell: grep --quiet '^\s*YKFDE_CHALLENGE='  /etc/ykfde.conf
+  register: ykfde_challenge_defined
+  failed_when: false
+  changed_when: false
+    
+- name: Set is_ykfde_configured fact
+  ansible.builtin.set_fact:
+    is_ykfde_configured: "{{ ykfde_challenge_defined.rc == 0 }}"
+
+- name: Configure ykfde as 1FA
+  become: yes
+  ansible.builtin.copy:
+    dest: /etc/ykfde.conf
+    content: |
+      YKFDE_CHALLENGE="{{ lookup('community.general.random_string', upper=false, special=false, length=64) }}"
+    mode: '600'
+  notify: "regenerate initramfs"
+  when: not is_ykfde_configured
+
+
+- name: Remove possibly existing ykfde-key from LUKS
+  become: yes
+  ansible.builtin.expect: 
+    command: "cryptsetup luksKillSlot {{ partitions.luks.dev }} {{ykfde_luks_slot}}"
+    responses: 
+      (?i)passphrase: "{{luks_password}}"
+  failed_when: false
+  when: not is_ykfde_configured
+
+- name: Enrol ykfde-key to LUKS
+  become: yes
+  ansible.builtin.expect: 
+    command: "ykfde-enroll -d {{ partitions.luks.dev }} -s {{ykfde_luks_slot}}"
+    responses:
+      Enter passphrase: "{{luks_password}}"
+  when: not is_ykfde_configured
+
+- name: Add ykfde hook before encrypt hook in mkinitcpio.conf 
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: '^HOOKS=(.*)(?<!ykfde)\s+encrypt(.*)$'
+    line: 'HOOKS=\1ykfde encrypt\2'
+    backrefs: yes
+  when: not is_ykfde_configured
