@@ -1,4 +1,4 @@
 ---
 swapfile:
   path: /swapfile
-  size: 32g
+  size: 32768
