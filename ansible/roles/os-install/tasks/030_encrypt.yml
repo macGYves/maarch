@@ -12,11 +12,3 @@
     state: "opened"
     passphrase: "{{ luks_password }}"
     type: luks2
-  no_log: true
-# - name: "Open the LUKS container on device {{ partitions.luks.dev }}"
-#   community.crypto.luks_device:
-#     device: "{{ partitions.luks.dev }}"
-#     state: "opened"
-#     name: "{{ partitions.luks.mapper_name }}"
-#     passphrase: "{{ luks_password }}"
-#   no_log: true

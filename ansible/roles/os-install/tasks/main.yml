@@ -1,12 +1,12 @@
 ---
-- import_tasks: erase_install_disk.yml
-- import_tasks: partition.yml
-- import_tasks: encrypt.yml
-- import_tasks: lvm.yml
+- import_tasks: 010_erase_install_disk.yml
+- import_tasks: 020_partition.yml
+- import_tasks: 030_encrypt.yml
+- import_tasks: 040_lvm.yml
 
-- import_tasks: format.yml
-- import_tasks: mount.yml
+- import_tasks: 050_format.yml
+- import_tasks: 060_mount.yml
 
-- import_tasks: mirrorlist.yml
-- import_tasks: pacstrap.yml
-- import_tasks: fstab.yml
+- import_tasks: 070_mirrorlist.yml
+- import_tasks: 080_pacstrap.yml
+- import_tasks: 090_fstab.yml
