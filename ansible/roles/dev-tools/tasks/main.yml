@@ -31,7 +31,7 @@
 - name: "Install IDEs"
   kewlfft.aur.aur:
     name:
-      - vscodium
+      - vscodium-bin
       - intellij-idea-ultimate-edition
   become: yes
   become_user: aur_builder
