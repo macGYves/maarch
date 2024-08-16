@@ -1,4 +1,24 @@
 hostname: 'ThinkR'
+
+system:
+    processor: intel
+    timezone: Europe/Stockholm
+
 partitions:
     esp: 'ESP'
     luks2_encrypted_partition: 'LUKS2_ENCRYPTED_PARTITION'
+
+
+user:
+    name: macgyves
+    group: users
+    shell: /bin/zsh
+
+
+base_packages:
+    - base-devel
+    - curl
+    - git
+    - openssh
+    - rsync
+    - zsh
