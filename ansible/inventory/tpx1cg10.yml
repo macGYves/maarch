@@ -7,3 +7,6 @@ all:
           - sof-firmware
         swapfile:
           size: "20g"
+      features:
+        ssd: true
+        hibernation: true
