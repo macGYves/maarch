@@ -1,0 +1,7 @@
+{{- $email := promptString "email" -}}
+[data]
+email = {{ $email | quote }}
+
+[data.git]
+signingkey = "0x42AC3C55EABA8B8A"
+defaultbranch = "main"

@@ -1,0 +1,5 @@
+ZDOTDIR="$HOME/.config/zsh"
+ZCACHEDIR="$HOME/.cache/zsh"
+
+# For compatibiliy with ohmyzsh
+ZSH_CACHE_DIR="$ZCACHEDIR"
