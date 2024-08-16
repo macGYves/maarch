@@ -14,8 +14,16 @@
     mode: 0644
 
 
+- name: Install NetworkManager
+  pacman:
+    name:
+      - networkmanager
+      - network-manager-applet
+    state: present
+
+
 - name: Enable NetworkManager
-  systemd:
-    name: NetworkManager.service
-    state: started
-    enabled: yes
+  command: "systemctl enable NetworkManager.service"
+#    name: NetworkManager
+#    state: started
+#    enabled: yes

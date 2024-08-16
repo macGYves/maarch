@@ -55,11 +55,10 @@ more_packages:
     - docker
     - docker-compose
     # 3G modem
-    - modem-manager-gui
+    #- modem-manager-gui
     # smartcard
     - ccid
     - opensc
     - xloadimage
     # firewall
-    - ufw
     - nextcloud-client

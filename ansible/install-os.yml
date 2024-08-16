@@ -2,7 +2,7 @@
 
 - name: bootstrap Arch Linux system
   hosts: localhost
-  remote_user: root
+  become: yes
   vars_prompt:
     - name: luks_password
       prompt: "luks password"
@@ -27,15 +27,12 @@
 
 - name: configure bootstrapped Arch Linux installation
   hosts: localhost_chroot
-  remote_user: root
-  connection: chroot
-  vars:
-    ansible_chroot_exe: arch-chroot
   roles:
     - { role: localisation, tags: 'localisation' }
     - { role: kernel, tags: 'kernel' }
     - { role: network, tags: 'network' }
     - { role: bootloader, tags: 'bootloader' }
+    - { role: microcode, tags: 'microcode' }
   tasks:
     - name: Set root password
       user:
