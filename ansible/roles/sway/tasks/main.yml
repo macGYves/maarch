@@ -44,5 +44,4 @@
 
 - import_tasks: waybar.yml
 - import_tasks: nwg-launchers.yml
-- import_tasks: swaylock.yml
 - import_tasks: kanshi.yml

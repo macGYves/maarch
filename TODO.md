@@ -8,3 +8,6 @@ zsh mit allem pipapo
 dotfiles
 
 rkhunter
+
+kanshi-git ?
+wdisplays?
