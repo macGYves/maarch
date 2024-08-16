@@ -16,13 +16,13 @@
     - { role: packages, tags: "packages" }
     - users
     - yay
+    - { role: dotfiles, tags: "dotfiles" }
     - { role: ssd, tags: "ssd" }
     - { role: power_management, tags: "power_mgmt" }
     - { role: firewall, tags: "firewall" }
     - { role: bluetooth, tags: "bluetooth" }
     - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
-    - { role: dotfiles, tags: "dotfiles" }
       #- { role: sway, tags: "sway" }
     - { role: gnome, tags: "gnome" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
