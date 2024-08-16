@@ -1,33 +1,23 @@
 ---
-- name: "Ensure group {{ user.group }} exists"
-  become: yes
-  group:
-    name: "{{ user.group }}"
-    state: present
-
 - name: "Ensure the user {{ user.name }} exists"
   become: yes
   ansible.builtin.user:
     name: "{{ user.name }}"
     shell: "{{ user.shell }}"
     groups:
-      - "{{ user.group }}"
-      - wheel
       - lock
       - uucp
     append: yes
     system: no
     createhome: yes
     home: "/home/{{ user.name }}"
-    password: "{{ user_password }}"
   when: user.name is defined
-  no_log: true
 
-- name: Init /etc/sudoers
+- name: Setup sudo
   become: yes
   ansible.builtin.copy:
-    dest: /etc/sudoers
-    src: sudoers
+    dest: /etc/sudoers.d/env_keep
+    src: sudoers.d/env_keep
     mode: 0440
 
 - import_tasks: auto_login_user.yml
