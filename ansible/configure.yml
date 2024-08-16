@@ -8,6 +8,7 @@
     - { role: shell, tags: "shell" }
     - { role: dotfiles, tags: "dotfiles" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
+    - { role: flatpak, tags: "flatpak" }
     - { role: dev-tools, tags: "dev-tools" }
     - { role: firewall, tags: "firewall" }
     - { role: ssd, tags: "ssd" }
