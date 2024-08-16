@@ -12,3 +12,11 @@
 
 - name: "Make latest aws-cli version global default"
   ansible.builtin.command: "{{ asdf.bin }} global awscli latest"
+
+- name: "Symlink ~/.asdf/shims/aws_completer to ~/.local/bin"
+  # Reason: .zshrc relies upon ~/local/bin/aws_completer to exist for 
+  # aws-cli auto-completion
+  ansible.builtin.file:
+    src: "~/.asdf/shims/aws_completer"
+    dest: "~/.local/bin/aws_completer"
+    state: link
