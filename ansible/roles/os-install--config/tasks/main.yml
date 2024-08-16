@@ -1,6 +1,0 @@
----
-
-- import_tasks: timezone.yml
-- import_tasks: network.yml
-- import_tasks: initramfs.yml
-- import_tasks: passwd.yml

@@ -12,6 +12,3 @@
   filesystem:
     fstype: ext4
     dev : /dev/vg.main/root
-
-- name: Format swap
-  command: swapon /dev/vg.main/swap

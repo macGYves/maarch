@@ -1,5 +1,5 @@
 ---
-- name: Mount root
+- name: Mount root volume
   mount:
     path: /mnt
     src: /dev/vg.main/root
@@ -12,3 +12,6 @@
     src: "/dev/disk/by-partlabel/{{ partitions.esp }}"
     fstype: vfat
     state: mounted
+
+- name: Activate swapping on vg.main-swap
+  command: swapon /dev/vg.main/swap

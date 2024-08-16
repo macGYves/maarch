@@ -2,11 +2,12 @@ hostname: 'ThinkR'
 
 system:
     processor: intel
-    timezone: Europe/Stockholm
+
+timezone: Europe/Stockholm
 
 partitions:
-    esp: 'ESP'
-    luks2_encrypted_partition: 'LUKS2_ENCRYPTED_PARTITION'
+    esp: 'EFI_SYSTEM_PARTITION'
+    encrypted: 'LUKS2_ENCRYPTED_PARTITION'
 
 
 user:

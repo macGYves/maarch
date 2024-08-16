@@ -1,0 +1,6 @@
+---
+
+initrd_mods: "i915"
+initrd_bin: ""
+initrd_files: ""
+initrd_hooks: "base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck"

@@ -12,7 +12,7 @@
 - name: Create LUKS2 encrypted partition
   parted:
     device: "{{ install_disk }}"
-    name: "{{ partitions.luks2_encrypted_partition }}"
+    name: "{{ partitions.encrypted }}"
     number: 2
     label: gpt
     state: present

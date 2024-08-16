@@ -5,7 +5,7 @@
     creates: /boot/EFI/systemd/systemd-bootx64.efi
 
 - name: Get root's UUID
-  command: blkid "/dev/disk/by-partlabel/{{ partitions.luks2_encrypted_partition }}" -s UUID -o value
+  command: blkid "/dev/disk/by-partlabel/{{ partitions.encrypted }}" -s UUID -o value
   register: _uuid
   changed_when: false
 
