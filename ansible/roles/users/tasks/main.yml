@@ -18,7 +18,7 @@
     append: yes
     system: no
     createhome: yes
-    home: /home/{{ user.name }}
+    home: "/home/{{ user.name }}"
     password: "{{ user_password }}"
   when: user.name is defined
   no_log: true
@@ -33,23 +33,13 @@
 - name: Ensure directory /etc/systemd/system/getty@tty1.service.d exists
   become: yes
   ansible.builtin.file:
-    path: "/etc/systemd/system/getty@tty1.service.d"
+    path: /etc/systemd/system/getty@tty1.service.d
     state: directory
 
 - name: Create drop-in-snippet for getty@tty1.service
+  become: yes
   ansible.builtin.template:
     dest: /etc/systemd/system/getty@tty1.service.d/override.conf
     src: getty@tty1.service.override.conf.j2
 
-- name: Create AUR user
-  become: yes
-  user:
-    name: aur_builder
-    group: wheel
-
-- name: Grant AUR user permissions to run pacman
-  become: yes
-  lineinfile:
-    path: /etc/sudoers.d/11-install-aur_builder
-    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-    create: yes
+- import_tasks: create_aur_builder_user.yml

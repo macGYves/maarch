@@ -1,3 +1,0 @@
----
-- name: Generate fstab
-  shell: "genfstab -U {{ arch_root }} >> {{ arch_root }}/etc/fstab"

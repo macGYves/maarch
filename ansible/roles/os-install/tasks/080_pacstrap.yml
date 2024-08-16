@@ -1,9 +1,0 @@
----
-# pacstrap fails if intel-ucode exists on boot partition.
-- name: Delete intel-ucode.img
-  ansible.builtin.file:
-    path: "{{ arch_root }}/boot/intel-ucode.img"
-    state: absent
-
-- name: Install essential packages
-  ansible.builtin.command: "pacstrap {{ arch_root }} {{ packages.essential | join(' ')}}"

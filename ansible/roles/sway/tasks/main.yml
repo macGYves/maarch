@@ -17,20 +17,20 @@
       - waybar
     state: present
 
-- name: Install sway dependencies from AUR
-  kewlfft.aur.aur:
-    name:
-      - swappy # screenshot-manipulating tool
-      - azote # wallpaper manager
-      - nwg-launchers # grid/bar launchers
-      - autotiling # script for opening new windows more space-efficiently
-      - wdisplays # tool for changing screen layouts dynamically
-      - kanshi-git
-      - wob # wayland overlay bar
-    use: makepkg
-    state: present
-  become: yes
-  become_user: aur_builder
+#- name: Install sway dependencies from AUR
+#  kewlfft.aur.aur:
+#    name:
+#      - swappy # screenshot-manipulating tool
+#      - azote # wallpaper manager
+#      - nwg-launchers # grid/bar launchers
+#      - autotiling # script for opening new windows more space-efficiently
+#      - wdisplays # tool for changing screen layouts dynamically
+#      - kanshi-git
+#      - wob # wayland overlay bar
+#    use: makepkg
+#    state: present
+#  become: yes
+#  become_user: aur_builder
 
 - name: Enable and start systemd user services
   ansible.builtin.systemd:
@@ -39,11 +39,11 @@
     state: started
     enabled: yes
   loop:
-    - kanshi.service
+    #    - kanshi.service
     - udiskie.service
-    - nextcloud.service
+    #    - nextcloud.service
     - gammastep-indicator.service
-    - autotiling.service
+    #    - autotiling.service
     - mako.service
-    - wob.socket
-    - wob.service
+#    - wob.socket
+#    - wob.service

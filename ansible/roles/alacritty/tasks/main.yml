@@ -1,5 +1,0 @@
----
-- name: Install alacritty
-  become: yes
-  community.general.pacman:
-    pkg: alacritty

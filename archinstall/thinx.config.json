@@ -1,7 +1,7 @@
 {
   "audio": "pipewire",
   "bootloader": "systemd-bootctl",
-  "dry-run": true,
+  "dry-run": false,
   "harddrives": ["/dev/nvme0n1"],
   "hostname": "Thinx",
   "kernels": ["linux"],
@@ -17,7 +17,7 @@
   },
   "nic": "Copy ISO network configuration to installation",
   "ntp": true,
-  "packages": ["git", "ansible", "neovim", "zsh"],
+  "packages": ["sof-firmware", "git", "ansible", "neovim", "zsh"],
   "profile": {
     "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/minimal.py"
   },
