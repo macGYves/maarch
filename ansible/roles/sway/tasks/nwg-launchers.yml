@@ -1,8 +1,6 @@
 ---
 - name: Copy nwgbar config files
   ansible.builtin.copy:
-    dest: "/home/{{ user.name }}/.config/nwg-launchers/nwgbar/"
+    dest: "~/.config/nwg-launchers/nwgbar/"
     src: "{{ item }}"
-    owner: "{{ user.name }}"
-    mode: 0640
   with_fileglob: "nwg-launchers/nwgbar/*"
