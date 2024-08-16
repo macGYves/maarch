@@ -8,4 +8,4 @@
 
 - name: Sync time with hardware clock
   become: yes
-  command: hwclock --systohc
+  ansible.builtin.command: hwclock --systohc

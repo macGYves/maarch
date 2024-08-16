@@ -1,7 +1,7 @@
 ---
 - name: Install systemd-boot
   become: yes
-  command: bootctl install
+  ansible.builtin.command: bootctl install
   args:
     creates: /boot/EFI/systemd/systemd-bootx64.efi
 

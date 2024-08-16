@@ -1,7 +1,7 @@
 ---
 - name: Enable systemd-networkd
   become: yes
-  command: "systemctl enable systemd-networkd.service"
+  ansible.builtin.command: "systemctl enable systemd-networkd.service"
 
 - name: Copy systemd-networkd config files
   become: yes
@@ -13,7 +13,7 @@
 
 - name: Enable systemd-resolved
   become: yes
-  command: "systemctl enable systemd-resolved.service"
+  ansible.builtin.command: "systemctl enable systemd-resolved.service"
 
 - name: Ensure systemd-resolved config folder exists
   become: yes

@@ -7,7 +7,7 @@
 
 - name: run locale-gen
   become: yes
-  command: locale-gen
+  ansible.builtin.command: locale-gen
 
 - name: Init /etc/locale.conf
   become: yes

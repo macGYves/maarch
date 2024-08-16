@@ -11,16 +11,16 @@
     version: v0.8.0
 
 - name: Add java plugin to asdf
-  command: "~/.asdf/bin/asdf plugin add java"
+  ansible.builtin.command: "~/.asdf/bin/asdf plugin add java"
 
 - name: Install openjdk
-  command: "~/.asdf/bin/asdf install java latest:openjdk"
+  ansible.builtin.command: "~/.asdf/bin/asdf install java latest:openjdk"
 
 - name: Add maven plugin to asdf
-  command: "~/.asdf/bin/asdf plugin add maven"
+  ansible.builtin.command: "~/.asdf/bin/asdf plugin add maven"
 
 - name: Install latest maven
-  command: "~/.asdf/bin/asdf install maven latest"
+  ansible.builtin.command: "~/.asdf/bin/asdf install maven latest"
 
 - name: Add nodejs plugin to asdf
-  command: "~/.asdf/bin/asdf plugin add nodejs"
+  ansible.builtin.command: "~/.asdf/bin/asdf plugin add nodejs"
