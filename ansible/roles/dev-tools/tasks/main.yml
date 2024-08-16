@@ -28,3 +28,9 @@
         global: "latest"
 
 - include_tasks: aws-cli.yml
+
+- name: "Install VSCodium"
+  kewlfft.aur.aur:
+    name: vscodium
+  become: yes
+  become_user: aur_builder
