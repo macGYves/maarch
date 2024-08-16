@@ -2,7 +2,7 @@
 - name: Install iNet wireless daemon (iwd)
   become: yes
   community.general.pacman:
-    name: iwd
+    pkg: iwd
     state: present
 
 - name: Start and enable iwd systemd service

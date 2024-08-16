@@ -2,12 +2,12 @@
 - name: Install office packages
   become: true
   community.general.pacman:
-    name:
+    pkg:
       - vdirsyncer
       - khard
       - neomutt
       - notmuch
-      - urlview
+      # - urlview // <- from AUR!
       - isync
       - msmtp
       - pass

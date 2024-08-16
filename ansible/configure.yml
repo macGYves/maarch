@@ -29,7 +29,7 @@
     - name: Install more packages
       become: true
       community.general.pacman:
-        name: "{{ packages.more }}"
+        pkg: "{{ packages.more }}"
         state: present
       tags: "install-packages"
   handlers: 

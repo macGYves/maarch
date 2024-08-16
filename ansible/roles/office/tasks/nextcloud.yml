@@ -2,4 +2,4 @@
 - name: Install nextcloud desktop sync client
   become: yes
   community.general.pacman:
-    name: nextcloud-client
+    pkg: nextcloud-client

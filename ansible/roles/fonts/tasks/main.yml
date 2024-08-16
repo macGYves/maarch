@@ -2,7 +2,7 @@
 - name: Install fonts
   become: yes
   community.general.pacman:
-    name:
+    pkg:
       - tex-gyre-fonts
       - ttf-dejavu
       - ttf-linux-libertine

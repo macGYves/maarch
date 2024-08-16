@@ -2,14 +2,14 @@
 - name: Install YubiKey Personalization GUI
   become: yes
   community.general.pacman:
-    name: 
+    pkg: 
       - yubikey-personalization-gui
       - yubikey-manager
 
 - name: Install smartcard libs/tools
   become: yes
   community.general.pacman:
-    name:
+    pkg:
       - pcsclite
       - libusb-compat
       - ccid
