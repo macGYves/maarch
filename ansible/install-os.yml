@@ -1,10 +1,10 @@
 ---
 
-- name: bootstrap Arch Linux system
+- name: Bootstrap Arch Linux system
   hosts: localhost
   become: yes
-  vars:
-    arch_root: '/mnt'
+  vars_files:
+    - play_vars/install-os_vars.yml
   vars_prompt:
     - name: luks_password
       prompt: "luks password"
@@ -49,6 +49,8 @@
   hosts: localhost
   become: yes
   connection: local
+  vars_files:
+    - play_vars/install-os_vars.yml
   tasks:
     - name: Unmount partitions
       command: "umount -Rf {{ arch_root }}"
@@ -60,12 +62,15 @@
 
     - name: close LUKS swap
       luks_device:
-        device: "{{ lvm.lv_root.dev }}"
+        device: "{{ lvm.lv_swap.dev }}"
         state: closed
       tags: 'cleanup'
 
     - name: close LUKS root
       luks_device:
-        device: "{{ lvm.lv_swap.dev }}"
+        device: "{{ lvm.lv_root.dev }}"
         state: closed
       tags: 'cleanup'
+
+    - name: Reboot
+      command: reboot now
