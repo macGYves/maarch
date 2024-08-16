@@ -19,7 +19,7 @@
   tasks:
     - name: Install more packages
       pacman:
-        name: "{{ more_packages }}"
+        name: "{{ packages.more }}"
         state: present
       tags: 'install-packages'
 

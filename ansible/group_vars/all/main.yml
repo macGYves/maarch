@@ -30,46 +30,50 @@ user:
     group: users
     shell: /bin/zsh
 
-
-base_packages:
-    - base-devel
-    - curl
-    - git
-    - openssh
-    - rsync
-    - zsh
-
-# tmp
-more_packages:
-    - kate
-    - dolphin
-    - konsole
-    - okular
-    - gwenview
-    - spectacle
-    - ark
-    - unzip
-    - zip
-    - openssh
-    - baobab
-    - gramps
-    - firefox
-    - chromium
-    - vlc
-    - libreoffice-fresh
-    - calibre
-    - keepassxc
-    - digikam
-    - freemind
-    - gimp
-    - ttf-hack
-    - docker
-    - docker-compose
-    # 3G modem
-    #- modem-manager-gui
-    # smartcard
-    - ccid
-    - opensc
-    - xloadimage
-    # firewall
-    - nextcloud-client
+packages:
+    essential:
+        - base
+        - linux
+        - linux-firmware
+        - lvm2
+        - ansible
+        - wpa_supplicant
+        - neovim
+        - git
+        - zsh
+    more:
+        - curl
+        - openssh
+        - rsync
+        - kate
+        - dolphin
+        - konsole
+        - okular
+        - gwenview
+        - spectacle
+        - ark
+        - unzip
+        - zip
+        - openssh
+        - baobab
+        - gramps
+        - firefox
+        - chromium
+        - vlc
+        - libreoffice-fresh
+        - calibre
+        - keepassxc
+        - digikam
+        - freemind
+        - gimp
+        - ttf-hack
+        - docker
+        - docker-compose
+        # 3G modem
+        #- modem-manager-gui
+        # smartcard
+        - ccid
+        - opensc
+        - xloadimage
+        # firewall
+        - nextcloud-client
