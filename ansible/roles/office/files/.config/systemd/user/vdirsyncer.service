@@ -1,6 +1,0 @@
-[Unit]
-Description=Sync vdirsyncer
-
-[Service]
-ExecStart=vdirsyncer sync
-Type=oneshot

@@ -52,7 +52,6 @@
   become: true
   ansible.builtin.package:
     pkg:
-      - vdirsyncer
       - khard
       - neomutt
       - notmuch
@@ -60,6 +59,3 @@
       - msmtp
       - pass
       - lynx
-
-- name: "Configure vdirsyncer"
-  ansible.builtin.import_tasks: vdirsyncer.yml
