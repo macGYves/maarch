@@ -4,4 +4,4 @@ email = {{ $email | quote }}
 
 [data.git]
 signingkey = "0x42AC3C55EABA8B8A"
-defaultbranch = "main"
+defaultbranch = {{ if eq (substr 0 5 .chezmoi.hostname) "WCAR-" }} "master" {{ else }} "main" {{- end }}
