@@ -7,16 +7,12 @@
   become: yes
   ansible.builtin.user:
     name: "{{ user.name }}"
+    password: "{{ user_password }}"
     shell: "{{ user.shell }}"
-    groups:
-      - lock
-      - uucp
-    append: yes
-    system: no
     createhome: yes
     home: "/home/{{ user.name }}"
 
-- name: "Grant user {{ user.name }} sudo permissions"
+- name: "Add user {{ user.name }} to sudoers"
   become: yes
   ansible.builtin.lineinfile:
     path: "/etc/sudoers.d/00_{{ user.name }}"
@@ -25,9 +21,15 @@
     validate: /usr/sbin/visudo -cf %s
     create: yes
 
-- name: Setup sudo
+- name: Customize sudo
   become: yes
   ansible.builtin.copy:
     dest: /etc/sudoers.d/env_keep
     src: sudoers.d/env_keep
     mode: 0440
+
+- name: "Restrict root login"
+  become: yes
+  ansible.builtin.user:
+    name: "root"
+    password: "!"

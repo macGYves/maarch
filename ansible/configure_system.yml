@@ -2,9 +2,11 @@
 - name: Customise a basic arch linux installation
   hosts: localhost
   vars_prompt:
-    - name: luks_password
-      prompt: "luks password"
+    - name: user_password
+      prompt: "user password"
       private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
   roles:
     - { role: time, tags: "time" }
     - { role: network, tags: "network" }

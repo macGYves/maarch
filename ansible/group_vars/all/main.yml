@@ -40,11 +40,12 @@ packages:
     - zip
     - keepassxc
     - qt5-wayland # needed for keepassxc
-    - python-pexpect # required by ansible.builtin.expect
-    - python-psutil # required by community.general.dconf
     - fwupd # firmware-update daemon
     - transmission-gtk
     - python-pip
+    - python-pexpect # required by ansible.builtin.expect
+    - python-psutil # required by community.general.dconf
+    - python-passlib # required by ansible to hash variables
     - vlc
     - firefox
     - chromium
