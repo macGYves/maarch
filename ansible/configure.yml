@@ -1,8 +1,6 @@
 ---
 - name: Customise a basic arch linux installation
   hosts: localhost
-  vars_prompt:
-
   roles:
     - { role: network, tags: "network" }
     - base
