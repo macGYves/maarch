@@ -1,7 +1,13 @@
 ---
 
-- name: Generate pacman mirrorlist
-  command: reflector --country Sweden --country Norway --country Danmark --country Germany --country Finland --age 12 --protocol https --sort rate -n 5 --save /etc/pacman.d/mirrorlist
+# pacstrap fails if intel-ucode exists on boot partition.
+- name: Delete intel-ucode.img
+  file:
+    path: /mnt/boot/intel-ucode.img
+    state: absent
 
 - name: Install essential packages
   command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2 ansible wpa_supplicant"
+  retries: 3
+  delay: 2
+  tags: 'pacstrap'

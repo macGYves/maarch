@@ -1,10 +1,10 @@
 ---
 
 - import_tasks: erase_install_disk.yml
-- import_tasks: create_partitions.yml
-- import_tasks: setup_lvm_on_luks.yml
+- import_tasks: setup_partition_layout.yml
 - import_tasks: format_partitions.yml
 - import_tasks: mount_file_systems.yml
 
+- import_tasks: mirrorlist.yml
 - import_tasks: pacstrap.yml
 - import_tasks: fstab.yml

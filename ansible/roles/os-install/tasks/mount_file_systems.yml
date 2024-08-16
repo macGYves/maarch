@@ -2,9 +2,10 @@
 - name: Mount root volume
   mount:
     path: /mnt
-    src: /dev/vg.main/root
+    src: "/dev/{{lvm.vg_main}}/{{lvm.lv_root}}"
     fstype: ext4
     state: mounted
+  tags: 'mount_fs'
 
 - name: Mount ESP
   mount:
@@ -12,6 +13,8 @@
     src: "/dev/disk/by-partlabel/{{ partitions.esp }}"
     fstype: vfat
     state: mounted
+  tags: 'mount_fs'
 
-- name: Activate swapping on vg.main-swap
-  command: swapon /dev/vg.main/swap
+- name: Activate swapping on swap volume
+  command: swapon "/dev/{{lvm.vg_main}}/{{lvm.lv_swap}}"
+  tags: 'mount_fs'

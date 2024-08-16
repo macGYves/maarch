@@ -1,4 +1,5 @@
 ---
+
 - name: bootstrap Arch Linux system
   hosts: localhost
   remote_user: root
@@ -22,7 +23,6 @@
       command: timedatectl set-ntp true
   roles:
     - os-install
-
 
 
 - name: configure bootstrapped Arch Linux installation

@@ -1,0 +1,47 @@
+---
+
+- name: Create EFI System Partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.esp }}"
+    number: 1
+    label: gpt
+    flags: [ esp, boot ]
+    state: present
+    part_end: 551MiB
+
+- name: Create LUKS2 encrypted partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.encrypted }}"
+    number: 2
+    label: gpt
+    state: present
+    part_start: 551MiB
+
+- name: Encrypt system partition
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q luksFormat --type luks2 "/dev/disk/by-partlabel/{{ partitions.encrypted }}"
+
+- name: Open encrypted system partition
+  shell: >
+    echo -n {{ luks_password }} |
+    cryptsetup -q open "/dev/disk/by-partlabel/{{ partitions.encrypted }}" cryptlvm
+
+- name: Create main LVM volume group
+  lvg:
+    vg: "{{lvm.vg_main}}"
+    pvs: /dev/mapper/cryptlvm
+
+- name: Create logical volume for /
+  lvol:
+    vg: "{{lvm.vg_main}}"
+    lv: "{{lvm.lv_swap}}"
+    size: "{{ ansible_memtotal_mb | string }}"
+
+- name: Create logical volume for swap
+  lvol:
+    vg: "{{lvm.vg_main}}"
+    lv: "{{lvm.lv_root}}"
+    size: 100%FREE
