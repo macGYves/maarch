@@ -40,3 +40,7 @@ packages:
     - pipewire-pulse
     - youtube-dl
     - task # taskwarrior
+
+partitions:
+  luks:
+    dev: /dev/nvme0n1p2

@@ -51,6 +51,6 @@
   ansible.builtin.lineinfile:
     path: /etc/mkinitcpio.conf
     regexp: '^HOOKS=(.*)(?<!ykfde)\s+encrypt(.*)$'
-    line: 'HOOKS=\1ykfde encrypt\2'
+    line: 'HOOKS=\1 ykfde encrypt\2'
     backrefs: yes
   when: not is_ykfde_configured
