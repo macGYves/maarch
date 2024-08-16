@@ -242,6 +242,7 @@ for_window [class="firefox"] border none
 for_window [class="jetbrains-idea"] border none
 for_window [class="jetbrains-idea" title="win0"] floating enable
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="wdisplays"] floating enable
 
 # Remove application title bars
 #default_border none

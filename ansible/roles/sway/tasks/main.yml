@@ -22,6 +22,7 @@
       - azote         # wallpaper manager
       - nwg-launchers # grid/bar launchers
       - autotiling    # script for opening new windows more space-efficiently
+      - wdisplays     # tool for changing screen layouts dynamically
     use: makepkg
     state: present
   become: yes
