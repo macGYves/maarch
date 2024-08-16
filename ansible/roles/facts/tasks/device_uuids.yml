@@ -1,0 +1,16 @@
+---
+
+- name: Gathering hardware facts
+  setup:
+    gather_subset:
+      - '!all'
+      - '!min'
+      - hardware
+
+
+- name: Save LUKS device UUID in fact
+  set_fact:
+    luks_device_uuid: "{{ ansible_device_links.uuids[item.key] | first}}"
+  with_dict: "{{ ansible_device_links.labels }}"
+  when: partitions.luks.label in item.value
+  changed_when: false

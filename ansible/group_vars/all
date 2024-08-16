@@ -2,18 +2,27 @@ hostname: 'ThinkR'
 
 system:
     processor: intel
-    boot_mode: bios
 
 timezone: Europe/Stockholm
 
 partitions:
-    esp: 'EFI_SYSTEM_PARTITION'
-    encrypted: 'LUKS2_ENCRYPTED_PARTITION'
+    boot:
+        label: 'BOOT'
+        dev: "/dev/disk/by-partlabel/BOOT"
+    luks:
+        label: 'LUKS'
+        dev: '/dev/disk/by-partlabel/LUKS'
 
 lvm:
     vg_main: 'vg.main'
-    lv_root: 'root'
-    lv_swap: 'swap'
+    lv_root:
+        name: 'root'
+        label: 'ROOT'
+        dev: '/dev/vg.main/root'
+    lv_swap:
+        name: 'swap'
+        label: 'SWAP'
+        dev: '/dev/vg.main/swap'
 
 user:
     name: macgyves
