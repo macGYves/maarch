@@ -34,3 +34,9 @@ hooks.location=~/.config/task/hooks
 include solarized-light-256.theme
 #include no-color.theme
 
+{{- if eq (substr 0 5 .chezmoi.hostname) "WCAR-" }}
+news.version=2.6.0
+context.work.read=project:wcar
+context.work.write=project:wcar
+context=work
+{{- end }}
