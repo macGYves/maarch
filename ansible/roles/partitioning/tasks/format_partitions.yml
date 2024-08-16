@@ -1,0 +1,17 @@
+---
+- name: Format ESP as FAT32
+  filesystem:
+    fstype: vfat
+    dev: "{{ efi_system_partition }}"
+    opts: -F32 -n EFI
+
+- name: Format vg.main-swap
+  command: mkswap /dev/vg.main/swap
+
+- name: Format vg.main-root
+  filesystem:
+    fstype: ext4
+    dev : /dev/vg.main/root
+
+- name: Format swap
+  command: swapon /dev/vg.main/swap

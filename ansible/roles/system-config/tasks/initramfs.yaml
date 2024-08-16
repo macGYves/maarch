@@ -1,0 +1,12 @@
+---
+-name: Create mkinitcpio.conf
+  copy:
+    dest: /etc/mkinitcpio.conf
+    content: |
+      MODULES=(i915)
+      BINARIES=()
+      FILES=()
+      HOOKS=(base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck)
+
+  - name: mkinitcpio
+    command: mkinitcpio -P

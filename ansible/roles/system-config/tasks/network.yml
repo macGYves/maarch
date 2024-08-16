@@ -1,0 +1,24 @@
+---
+- name: Set hostname
+  copy:
+    dest: /etc/hostname
+    content: "{{hostname}}"
+    mode: 0644
+
+- name: Add IPv4 loopback address to hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.0\.1\s+localhost'
+    line: 127.0.0.1	localhost
+
+- name: Add IPv6 loopback address to hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^::1\s+localhost'
+    line: ::1		localhost
+
+- name: Add IPv4 localdomain address to hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '{{hostname}}'
+    line: "127.0.1.1	{{hostname}}.localdomain	{{hostname}}"

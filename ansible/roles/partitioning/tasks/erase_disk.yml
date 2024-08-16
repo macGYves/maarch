@@ -1,0 +1,13 @@
+---
+- name: "Read device information"
+  parted:
+    device: "{{ install_disk }}"
+    unit: MiB
+  register: install_disk_info
+
+- name: "Remove all partitions from disk"
+  parted:
+    device: "{{ install_disk }}"
+    number: "{{ item.num }}"
+    state: absent
+  loop: "{{ install_disk_info.partitions }}"

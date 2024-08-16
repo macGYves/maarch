@@ -1,0 +1,14 @@
+---
+- name: Mount root
+  mount:
+    path: /mnt
+    src: /dev/vg.main/root
+    fstype: ext4
+    state: mounted
+
+- name: Mount ESP
+  mount:
+    name: /mnt/boot
+    src: "{{ efi_system_partition.uuid }}"
+    fstype: vfat
+    state: mounted
