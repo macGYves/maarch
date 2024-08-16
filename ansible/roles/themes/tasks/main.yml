@@ -10,12 +10,12 @@
   community.general.pacman:
     pkg: papirus-icon-theme
 
-- name: Create gtk3 settings directory
-  ansible.builtin.file:
-    path: "~/.config/gtk-3.0"
-    state: directory
-
-- name: Copy gtk3 settings
-  ansible.builtin.copy:
-    dest: "~/.config/gtk-3.0/settings.ini"
-    src: "gtk-3.0/settings.ini"
+#- name: Create gtk3 settings directory
+#  ansible.builtin.file:
+#    path: "~/.config/gtk-3.0"
+#    state: directory
+#
+#- name: Copy gtk3 settings
+#  ansible.builtin.copy:
+#    dest: "~/.config/gtk-3.0/settings.ini"
+#    src: "gtk-3.0/settings.ini"
