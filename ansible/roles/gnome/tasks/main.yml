@@ -1,0 +1,16 @@
+---
+- name: Install gnome desktop
+  become: true
+  community.general.pacman:
+    pkg:
+      - gnome
+      - evince # a.k.a. "Document Viewer"
+      - nautilus # a.k.a. "Files"
+      - seahorse # a.k.a. "Passwords and Keys"
+
+
+- name: Start/Enable gdm.service
+  ansible.builtin.systemd:
+    name: gdm.service
+    state: started
+    enabled: yes
