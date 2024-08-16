@@ -6,27 +6,28 @@
       prompt: "luks password"
       private: yes
     - name: user_email
-      prompt: "Your email address: "
+      prompt: "Your email address"
       private: no
   roles:
     - time
     - packages
     - users
     - { role: ssd, tags: "ssd" }
-    #    - { role: fonts, tags: "fonts" }
+    - { role: power_management, tags: "power_mgmt" }
+    - { role: firewall, tags: "firewall" }
+    - { role: bluetooth, tags: "bluetooth" }
+    - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
     - { role: dotfiles, tags: "dotfiles" }
     - { role: sway, tags: "sway" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
-  #    - { role: firewall, tags: "firewall" }
-  #    - { role: bluetooth, tags: "bluetooth" }
-  #    - { role: flatpak, tags: "flatpak" }
-  ##    - { role: dev-tools, tags: "dev-tools" }
-  #    - { role: themes, tags: "themes" }
-  #    - { role: yubikey, tags: "yubikey" }
-  ##    - { role: office, tags: "office" }
-  ##    - { role: digikam, tags: "digikam" }
-  #    - { role: power_management, tags: "power_mgmt" }
+    - { role: sway, tags: "sway" }
+    - { role: flatpak, tags: "flatpak" }
+    - { role: dev-tools, tags: "dev-tools" }
+    - { role: themes, tags: "themes" }
+    - { role: yubikey, tags: "yubikey" }
+    - { role: office, tags: "office" }
+    - { role: digikam, tags: "digikam" }
   handlers:
     - name: "regenerate initramfs"
       become: yes
