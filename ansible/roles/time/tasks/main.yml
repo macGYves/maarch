@@ -1,4 +1,6 @@
 ---
+- import_tasks: timezone.yml
+
 - name: Init /etc/systemd/timesyncd.conf
   become: yes
   ansible.builtin.copy:

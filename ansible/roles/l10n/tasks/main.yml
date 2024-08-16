@@ -1,3 +1,17 @@
 ---
-- import_tasks: locales.yml
-- import_tasks: timezone.yml
+- name: "Init /etc/locale.gen with {{ system.locale }} and generate locales"
+  become: yes
+  community.general.locale_gen:
+    name: "{{ system.locale }}.UTF-8"
+
+- name: Init /etc/locale.conf
+  become: yes
+  ansible.builtin.template:
+    dest: /etc/locale.conf
+    src: locale.conf.j2
+
+- name: Init /etc/vconsole.conf
+  become: yes
+  ansible.builtin.template:
+    dest: /etc/vconsole.conf
+    src: vconsole.conf.j2
