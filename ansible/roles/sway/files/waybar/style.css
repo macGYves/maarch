@@ -15,7 +15,7 @@
     border: none;
     border-radius: 0;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -25,7 +25,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0.4em 1em;
     background: transparent;
     color: @nord6;
     border-top: 2px solid transparent;
@@ -43,6 +43,7 @@ window#waybar {
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
     padding: 4px 6px;
+    margin: 0 2px;
 }
 
 #clock {
@@ -83,5 +84,3 @@ window#waybar {
 
 #tray {
 }
-
-

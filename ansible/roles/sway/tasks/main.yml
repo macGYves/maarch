@@ -11,7 +11,7 @@
       - grim        # screenshot tool
       - waybar
       - jq          # needed for keyboard-layout-changer
-      - amixer      # audio volume control
+#      - amixer      # audio volume control
       - pavucontrol
     state: present
 
