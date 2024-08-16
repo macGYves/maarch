@@ -1,6 +1,6 @@
 ---
 - name: Customise a basic arch linux installation
-  hosts: inventory.yml
+  hosts: localhost
   vars_prompt:
     - name: user_email
       prompt: "Your email address"
