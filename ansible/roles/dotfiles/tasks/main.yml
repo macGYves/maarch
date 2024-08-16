@@ -4,8 +4,14 @@
   community.general.pacman:
     package: chezmoi
 
+- name: Check if ~/.local/share/chezmoi exists
+  stat:
+    path: ~/.local/share/chezmoi
+  register: chezmoi_dir
+
 - name: Init chezmoi
   ansible.builtin.command: chezmoi init https://github.com/macGYves/dotfiles.git
+  when: not chezmoi_dir.stat.exists 
 
 - name: chezmoi apply
   ansible.builtin.command: chezmoi apply
