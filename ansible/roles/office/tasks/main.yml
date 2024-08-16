@@ -6,6 +6,7 @@
       - signal-desktop
       - telegram-desktop
       - thunderbird
+      - libreoffice-fresh
 
 - name: Install nextcloud desktop sync client
   become: yes
