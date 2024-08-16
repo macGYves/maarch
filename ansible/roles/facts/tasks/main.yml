@@ -8,3 +8,7 @@
 - name: Set fact intel_cpu_gen
   set_fact:
     intel_cpu_gen: "{{ ansible_processor | unique | select('match', '^\\d+(st|nd|rd|th)?\\s+Gen\\s+Intel.*') | first | regex_replace('^(\\d+).*$', '\\1') }}"
+
+- name: Set fact username
+  set_fact:
+    username: "{{ ansible_env['USERNAME'] }}"

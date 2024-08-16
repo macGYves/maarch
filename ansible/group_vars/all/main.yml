@@ -18,7 +18,6 @@ partitions:
     dev: "/dev/disk/by-partlabel/CRYPTROOT"
 
 user:
-  name: macgyves
   shell: /bin/zsh
 
 packages:

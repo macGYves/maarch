@@ -7,14 +7,13 @@
       - virtualbox-host-modules-arch
       - virtualbox-guest-iso
 
-- name: "Add user {{ user.name }} to 'vboxusers' group"
+- name: "Add user {{ username }} to 'vboxusers' group"
   become: yes
   ansible.builtin.user:
-    name: "{{ user.name }}"
+    name: "{{ username }}"
     groups:
       - vboxusers
     append: yes
-  when: user.name is defined
 
 - include_tasks: fix_ibt_bug.yml
 

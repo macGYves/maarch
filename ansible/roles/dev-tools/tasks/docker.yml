@@ -6,14 +6,13 @@
       - docker
       - docker-compose
 
-- name: "Add user {{ user.name }} to 'docker' group"
+- name: "Add user {{ username }} to 'docker' group"
   become: yes
   ansible.builtin.user:
-    name: "{{ user.name }}"
+    name: "{{ username }}"
     groups:
       - docker
     append: yes
-  when: user.name is defined
 
 - name: Start/Enable docker systemd service
   become: yes
