@@ -6,8 +6,8 @@
       prompt: "luks password"
       private: yes
   roles:
-    - time
-    - users
+    - { role: time, tags: "time" }
+    - { role: users, tags: "users" }
     - { role: l10n, tags: "l10n" }
     - { role: reflector, tags: "reflector" }
     - { role: ssd, tags: "ssd" }
