@@ -12,7 +12,7 @@
       - noto-fonts-emoji
 
 - name: Install fonts from AUR
-  aur:
+  kewlfft.aur.aur:
     name: nerd-fonts-fira-code
     use: makepkg
     state: present
