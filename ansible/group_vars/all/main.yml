@@ -51,3 +51,8 @@ packages:
     - keepassxc
     - nnn
     - python-pip
+    - vlc
+    - firefox
+    - chromium
+    - pipewire
+    - pipewire-pulse
