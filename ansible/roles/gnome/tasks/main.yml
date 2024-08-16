@@ -24,3 +24,9 @@
     name: gdm.service
     state: started
     enabled: yes
+
+- name: "Write dconf values for /org/gnome/"
+  community.general.dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value | string }}"
+  loop: "{{ org_gnome_dconf | dict2items }}"

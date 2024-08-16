@@ -33,6 +33,7 @@ packages:
     - nnn
     - python-pip
     - python-pexpect # required by ansible.builtin.expect
+    - python-psutil # required by community.general.dconf
     - vlc
     - firefox
     - chromium
