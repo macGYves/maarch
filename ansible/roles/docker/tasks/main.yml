@@ -16,6 +16,7 @@
   when: user.name is defined
 
 - name: Start/Enable docker systemd service
+  become: yes
   ansible.builtin.systemd:
     name: docker.service
     state: started
