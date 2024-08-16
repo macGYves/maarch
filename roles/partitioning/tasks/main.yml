@@ -4,6 +4,7 @@
     device: "{{ disk_dev }}"
     unit: MiB
   register: disk_dev_info
+  tags: [ 'lol' ]
 
 - name: "Remove all partitions from disk"
   parted:
@@ -11,11 +12,9 @@
     number: "{{ item.num }}"
     state: absent
   loop: "{{ disk_dev_info.partitions }}"
+  tags: [ 'lol' ]
 
-#    - name: "Zeroize {{ disk_dev }}"
-#      command: "blkdiscard {{ disk_dev }}"
-
-- name: Create UEFI partition
+- name: Create ESP
   parted:
     device: "{{ disk_dev }}"
     name: EFI System Partition
@@ -24,8 +23,9 @@
     flags: [ esp, boot ]
     state: present
     part_end: 551MiB
+  tags: [ 'lol' ]
 
-- name: Create a FAT32 filesystem on {{ disk_dev }}1
+- name: Format ESP as FAT32
   filesystem:
     fstype: vfat
     dev: "{{ disk_dev }}1"
@@ -40,11 +40,10 @@
     state: present
     part_start: 551MiB
 
-
 - name: Encrypt system partition
   shell: printf {{ root_password }} |cryptsetup luksFormat --type luks2 {{ disk_dev }}2 -
 
-- name: Open encrypted partition
+- name: Open encrypted system partition
   shell: 'echo -n {{ root_password }} |cryptsetup open {{ disk_dev }}2 cryptlvm -'
 
 - name: Create LVM volume group "vg.main"
@@ -71,3 +70,20 @@
   filesystem:
     fstype: ext4
     dev : /dev/vg.main/root
+
+- name: Activate swap volume
+  command: swapon /dev/vg.main/swap
+
+- name: Mount root volume
+  mount:
+    path: /mnt
+    src: /dev/vg.main/root
+    fstype: ext4
+    state: mounted
+
+- name: Mount ESP
+  mount:
+    name: /mnt/boot
+    src: "{{ disk_dev }}1"
+    fstype: vfat
+    state: mounted
