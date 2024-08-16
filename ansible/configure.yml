@@ -28,6 +28,7 @@
     - { role: yubikey, tags: "yubikey" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
+    - { role: docker, tags: "docker" }
   handlers:
     - name: "regenerate initramfs"
       become: yes
