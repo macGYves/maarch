@@ -1,0 +1,41 @@
+---
+- name: Install asdf dependencies
+  become: true
+  ansible.builtin.package:
+    package:
+      - git
+      - curl
+      - python-pre-commit
+
+- name: "Install dev tools via asdf"
+  # noqa: var-naming[no-role-prefix]
+  ansible.builtin.include_role:
+    name: markosamuli.asdf
+  vars:
+    asdf_init_shell: false
+    asdf_version: "{{ dev_tools_asdf.version }}"
+    asdf_user: "{{ ansible_user_id }}"
+    asdf_plugins:
+      - name: "java"
+        versions: "{{ dev_tools_jdk.versions }}"
+        global: "{{ dev_tools_jdk.versions[0] }}"
+      - name: "maven"
+        versions: "{{ dev_tools_maven.versions }}"
+        global: "{{ dev_tools_maven.versions[0] }}"
+      - name: "nodejs"
+        versions: "{{ dev_tools_nodejs.versions }}"
+        global: "{{ dev_tools_nodejs.versions[0] }}"
+      - name: "awscli"
+        versions: ["2.11.16"]
+        global: "2.11.16"
+
+- name: "Install IDEs"
+  kewlfft.aur.aur:
+    name:
+      - vscodium-bin
+  #      - intellij-idea-ultimate-edition
+  become: true
+  become_user: aur_builder
+
+- name: "Setup docker"
+  ansible.builtin.include_tasks: docker.yml

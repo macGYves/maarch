@@ -1,18 +1,18 @@
 ---
 - name: Install Uncomplicated Firewall
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg: ufw
     state: present
 
 - name: Start and enable ufw systemd service
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: ufw.service
     state: started
-    enabled: yes
+    enabled: true
 
 - name: Start ufw
-  become: yes
+  become: true
   community.general.ufw:
     state: enabled

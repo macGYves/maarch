@@ -1,21 +1,23 @@
 ---
 - name: Install virtualbox
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     pkg:
       - virtualbox
       - virtualbox-host-modules-arch
       - virtualbox-guest-iso
 
-- name: "Add user {{ username }} to 'vboxusers' group"
-  become: yes
+- name: "Add current user to 'vboxusers' group: '{{ username }}'"
+  become: true
   ansible.builtin.user:
     name: "{{ username }}"
     groups:
       - vboxusers
-    append: yes
+    append: true
 
-- include_tasks: fix_ibt_bug.yml
+- name: "Workaround to virtualbox ibt bug"
+  ansible.builtin.include_tasks: fix_ibt_bug.yml
 
-- include_tasks: configure_as_vbox_guest.yml
+- name: "Configure as virtualbox guest"
+  ansible.builtin.include_tasks: configure_as_vbox_guest.yml
   when: features.vbox_guest

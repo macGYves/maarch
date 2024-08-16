@@ -1,19 +1,21 @@
 ---
-- import_tasks: hostname.yml
+- name: "Import hostname.yml"
+  ansible.builtin.import_tasks: hostname.yml
 
 - name: Init /etc/hosts
-  become: yes
+  become: true
   ansible.builtin.template:
     dest: /etc/hosts
     src: "hosts.j2"
+    mode: "0644"
 
 - name: Install NetworkManager
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     name: networkmanager
 
 - name: "Enable & start NetworkManager systemd service"
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: NetworkManager.service
-    enabled: yes
+    enabled: true

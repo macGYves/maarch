@@ -1,6 +1,9 @@
 org_gnome_dconf:
   "/org/gnome/Console/theme": "'auto'"
-  "/org/gnome/Weather/locations": "[<(uint32 2, <('Göteborg', 'ESGP', true, [(1.0085094136262927, 0.2074032869608953)], [(1.007345872427158, 0.20885773963975227)])>)>]"
+  "/org/gnome/Weather/locations": >
+    [<(uint32 2, <('Göteborg', 'ESGP', true,
+    [(1.0085094136262927, 0.2074032869608953)],
+    [(1.007345872427158, 0.20885773963975227)])>)>]
   "/org/gnome/desktop/background/color-shading-type": "'solid'"
   "/org/gnome/desktop/background/picture-options": "'zoom'"
   "/org/gnome/desktop/background/picture-uri": "'file:///usr/share/backgrounds/gnome/dune-l.svg'"
@@ -8,7 +11,8 @@ org_gnome_dconf:
   "/org/gnome/desktop/background/primary-color": "'#f7a957'"
   "/org/gnome/desktop/background/secondary-color": "'#000000'"
   "/org/gnome/desktop/input-sources/sources": "[('xkb', 'de'), ('xkb', 'se'), ('xkb', 'gb')]"
-  "/org/gnome/desktop/input-sources/xkb-options": "['terminate:ctrl_alt_bksp', 'compose:rctrl', 'lv3:ralt_switch', 'caps:escape']"
+  "/org/gnome/desktop/input-sources/xkb-options": >
+    ['terminate:ctrl_alt_bksp', 'compose:rctrl', 'lv3:ralt_switch', 'caps:escape']
   "/org/gnome/desktop/interface/clock-show-seconds": "false"
   "/org/gnome/desktop/interface/clock-show-weekday": "false"
   "/org/gnome/desktop/interface/color-scheme": "'default'"
@@ -24,7 +28,8 @@ org_gnome_dconf:
   "/org/gnome/desktop/interface/text-scaling-factor": "1.25"
   "/org/gnome/desktop/interface/toolkit-accessibility": "false"
   "/org/gnome/desktop/peripherals/keyboard/numlock-state": "true"
-  "/org/gnome/desktop/search-providers/sort-order": "['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']"
+  "/org/gnome/desktop/search-providers/sort-order": >
+    ['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
   "/org/gnome/desktop/wm/keybindings/close": "['<Shift><Super>q']"
   "/org/gnome/desktop/wm/keybindings/move-to-workspace-1": "['<Shift><Super>1']"
   "/org/gnome/desktop/wm/keybindings/move-to-workspace-2": "['<Shift><Super>2']"
@@ -40,7 +45,12 @@ org_gnome_dconf:
   "/org/gnome/desktop/wm/preferences/workspace-names": "['Info', 'Kommunikation', 'Arbeit']"
   "/org/gnome/settings-daemon/plugins/media-keys/calculator": "['Calculator']"
   "/org/gnome/settings-daemon/plugins/media-keys/control-center": "['<Shift><Super>p']"
-  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
+  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings": >
+    ['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
   "/org/gnome/settings-daemon/plugins/media-keys/email": "['Mail']"
   "/org/gnome/settings-daemon/plugins/media-keys/home": "['HomePage']"
   "/org/gnome/settings-daemon/plugins/media-keys/logout": "['<Control><Alt><Super>p']" # "logout" = "herunterfahren"
@@ -67,21 +77,57 @@ org_gnome_dconf:
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command": "'systemctl hibernate'"
   "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/name": "'Ruhezustand'"
 
-  "/org/gnome/shell/app-picker-layout": "[{'bd25cccf-d6a0-4bed-a7b5-d12fade78753': <{'position': <0>}>, '6ebe2655-201a-45b0-8a5e-4323ca3fe92c': <{'position': <1>}>, '0c691547-2560-4beb-8c2e-406a4c72026a': <{'position': <2>}>, '6ec53523-91bd-496a-ae1c-dee04761af52': <{'position': <3>}>, 'bd2e0f00-08eb-40ed-bd57-6ababe362543': <{'position': <4>}>, 'bee5124e-ec30-4b6f-af50-bc4055047763': <{'position': <5>}>, 'b3816476-f81f-4e7c-8a93-33ee53432e46': <{'position': <6>}>, 'Utilities': <{'position': <7>}>, 'chromium.desktop': <{'position': <8>}>, 'virtualbox.desktop': <{'position': <9>}>}]"
+  "/org/gnome/shell/app-picker-layout": >
+    [{'bd25cccf-d6a0-4bed-a7b5-d12fade78753': <{'position': <0>}>,
+    '6ebe2655-201a-45b0-8a5e-4323ca3fe92c': <{'position': <1>}>,
+    '0c691547-2560-4beb-8c2e-406a4c72026a': <{'position': <2>}>,
+    '6ec53523-91bd-496a-ae1c-dee04761af52': <{'position': <3>}>,
+    'bd2e0f00-08eb-40ed-bd57-6ababe362543': <{'position': <4>}>,
+    'bee5124e-ec30-4b6f-af50-bc4055047763': <{'position': <5>}>,
+    'b3816476-f81f-4e7c-8a93-33ee53432e46': <{'position': <6>}>,
+    'Utilities': <{'position': <7>}>,
+    'chromium.desktop': <{'position': <8>}>,
+    'virtualbox.desktop': <{'position': <9>}>}]
   "/org/gnome/shell/disable-user-extensions": "false"
-  "/org/gnome/shell/disabled-extensions": "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'gTile@vibou', 'appindicatorsupport@rgcjonas.gmail.com']"
-  "/org/gnome/shell/enabled-extensions": "['auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'material-shell@papyelgringo', 'pomodoro@arun.codito.in']"
-  "/org/gnome/shell/favorite-apps": "['org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Console.desktop', 'jetbrains-idea.desktop', 'thunderbird.desktop']"
+  "/org/gnome/shell/disabled-extensions": >
+    ['apps-menu@gnome-shell-extensions.gcampax.github.com',
+    'places-menu@gnome-shell-extensions.gcampax.github.com',
+    'window-list@gnome-shell-extensions.gcampax.github.com',
+    'windowsNavigator@gnome-shell-extensions.gcampax.github.com',
+    'workspace-indicator@gnome-shell-extensions.gcampax.github.com',
+    'native-window-placement@gnome-shell-extensions.gcampax.github.com',
+    'gTile@vibou', 'appindicatorsupport@rgcjonas.gmail.com']
+  "/org/gnome/shell/enabled-extensions": >
+    ['auto-move-windows@gnome-shell-extensions.gcampax.github.com',
+    'drive-menu@gnome-shell-extensions.gcampax.github.com',
+    'material-shell@papyelgringo',
+    'pomodoro@arun.codito.in']
+  "/org/gnome/shell/favorite-apps": >
+    ['org.gnome.Calendar.desktop',
+    'org.gnome.Nautilus.desktop',
+    'firefox.desktop',
+    'org.gnome.Console.desktop',
+    'jetbrains-idea.desktop',
+    'thunderbird.desktop']
   "/org/gnome/shell/welcome-dialog-last-shown-version": "'43.4'"
   "/org/gnome/shell/app-switcher/current-workspace-only": "true"
-  "/org/gnome/shell/extensions/auto-move-windows/application-list": "['thunderbird.desktop:2', 'jetbrains-idea.desktop:3', 'signal-desktop.desktop:2', 'org.telegram.desktop.desktop:2', 'org.keepassxc.KeePassXC.desktop:4', 'org.gnome.Calendar.desktop:2', 'com.slack.Slack.desktop:2']"
+  "/org/gnome/shell/extensions/auto-move-windows/application-list": >
+    ['thunderbird.desktop:2',
+    'jetbrains-idea.desktop:3',
+    'signal-desktop.desktop:2',
+    'org.telegram.desktop.desktop:2',
+    'org.keepassxc.KeePassXC.desktop:4',
+    'org.gnome.Calendar.desktop:2',
+    'com.slack.Slack.desktop:2']
   "/org/gnome/shell/extensions/gtile/show-toggle-tiling-alt": "['<Control><Super>KP_Enter']"
   "/org/gnome/shell/extensions/gtile/theme": "'Default'"
   "/org/gnome/shell/keybindings/screenshot": "['<Super>Print']"
   "/org/gnome/shell/keybindings/screenshot-window": "['<Shift><Super>Print']"
   "/org/gnome/shell/weather/automatic-location": "true"
-  "/org/gnome/shell/weather/locations": "[<(uint32 2, <('Göteborg', 'ESGP', true, [(1.0085094136262927, 0.2074032869608953)], [(1.007345872427158, 0.20885773963975227)])>)>]"
-
+  "/org/gnome/shell/weather/locations": >
+    [<(uint32 2, <('Göteborg', 'ESGP', true,
+    [(1.0085094136262927, 0.2074032869608953)],
+    [(1.007345872427158, 0.20885773963975227)])>)>]
   "/org/gnome/shell/extensions/materialshell/bindings/kill-focused-window": "['<Shift><Alt>q']"
   "/org/gnome/shell/extensions/materialshell/layouts/default-layout": "'ratio'"
   "/org/gnome/shell/extensions/materialshell/layouts/float": "false"
@@ -109,41 +155,97 @@ org_gnome_dconf:
   "/org/gnome/shell/extensions/materialshell/theme/taskbar-item-style": "'name'"
   "/org/gnome/shell/extensions/materialshell/theme/theme": "'light'"
 
-  "/org/gnome/desktop/app-folders/folder-children": "['Utilities', '42ad3479-54d7-45b1-a3ef-4f62466e4b7e', 'bd2e0f00-08eb-40ed-bd57-6ababe362543', '0c691547-2560-4beb-8c2e-406a4c72026a', '6ebe2655-201a-45b0-8a5e-4323ca3fe92c', '6ec53523-91bd-496a-ae1c-dee04761af52', 'bee5124e-ec30-4b6f-af50-bc4055047763', '976fb2be-cf8c-4fef-b6d4-fa4ead81048f', 'bd25cccf-d6a0-4bed-a7b5-d12fade78753', 'b3816476-f81f-4e7c-8a93-33ee53432e46']"
-  "/org/gnome/desktop/app-folders/folders/0c691547-2560-4beb-8c2e-406a4c72026a/apps": "['org.gnome.Music.desktop', 'vlc.desktop', 'org.kde.digikam.desktop', 'org.gnome.Cheese.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop']"
+  "/org/gnome/desktop/app-folders/folder-children": >
+    ['Utilities',
+    '42ad3479-54d7-45b1-a3ef-4f62466e4b7e',
+    'bd2e0f00-08eb-40ed-bd57-6ababe362543',
+    '0c691547-2560-4beb-8c2e-406a4c72026a',
+    '6ebe2655-201a-45b0-8a5e-4323ca3fe92c',
+    '6ec53523-91bd-496a-ae1c-dee04761af52',
+    'bee5124e-ec30-4b6f-af50-bc4055047763',
+    '976fb2be-cf8c-4fef-b6d4-fa4ead81048f',
+    'bd25cccf-d6a0-4bed-a7b5-d12fade78753',
+    'b3816476-f81f-4e7c-8a93-33ee53432e46']
+  "/org/gnome/desktop/app-folders/folders/0c691547-2560-4beb-8c2e-406a4c72026a/apps":
+    >
+    ['org.gnome.Music.desktop',
+    'vlc.desktop',
+    'org.kde.digikam.desktop',
+    'org.gnome.Cheese.desktop',
+    'org.gnome.eog.desktop',
+    'org.gnome.Evince.desktop']
   "/org/gnome/desktop/app-folders/folders/0c691547-2560-4beb-8c2e-406a4c72026a/name": "'Multimedia'"
-
-  "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/apps": "['org.gnome.Photos.desktop', 'org.gnome.Totem.desktop']"
+  "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/apps":
+    >
+    ['org.gnome.Photos.desktop', 'org.gnome.Totem.desktop']
   "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/name": "'Media'"
   "/org/gnome/desktop/app-folders/folders/42ad3479-54d7-45b1-a3ef-4f62466e4b7e/translate": "false"
 
-  "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/apps": "['vscodium.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.gedit.desktop', 'nvim.desktop']"
+  "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/apps":
+    >
+    ['vscodium.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.gedit.desktop', 'nvim.desktop']
   "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/name": "'Editoren'"
   "/org/gnome/desktop/app-folders/folders/6ebe2655-201a-45b0-8a5e-4323ca3fe92c/translate": "false"
 
-  "/org/gnome/desktop/app-folders/folders/6ec53523-91bd-496a-ae1c-dee04761af52/apps": "['org.gnome.clocks.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Maps.desktop']"
+  "/org/gnome/desktop/app-folders/folders/6ec53523-91bd-496a-ae1c-dee04761af52/apps":
+    >
+    ['org.gnome.clocks.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Maps.desktop']
   "/org/gnome/desktop/app-folders/folders/6ec53523-91bd-496a-ae1c-dee04761af52/name": "'Zubehör'"
-
   "/org/gnome/desktop/app-folders/folders/976fb2be-cf8c-4fef-b6d4-fa4ead81048f/apps": "['firefox.desktop']"
   "/org/gnome/desktop/app-folders/folders/976fb2be-cf8c-4fef-b6d4-fa4ead81048f/name": "'Internet'"
 
-  "/org/gnome/desktop/app-folders/folders/Utilities/apps": "['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Extensions.desktop', 'yelp.desktop', 'org.gnome.Settings.desktop', 'ca.desrt.dconf-editor.desktop', 'lstopo.desktop']"
+  "/org/gnome/desktop/app-folders/folders/Utilities/apps": >
+    ['gnome-abrt.desktop',
+    'gnome-system-log.desktop',
+    'nm-connection-editor.desktop',
+    'org.gnome.baobab.desktop',
+    'org.gnome.Connections.desktop',
+    'org.gnome.DejaDup.desktop',
+    'org.gnome.Dictionary.desktop',
+    'org.gnome.DiskUtility.desktop',
+    'org.gnome.FileRoller.desktop',
+    'org.gnome.fonts.desktop',
+    'org.gnome.tweaks.desktop',
+    'org.gnome.Usage.desktop',
+    'vinagre.desktop',
+    'gnome-system-monitor.desktop',
+    'org.gnome.Extensions.desktop',
+    'yelp.desktop',
+    'org.gnome.Settings.desktop',
+    'ca.desrt.dconf-editor.desktop',
+    'lstopo.desktop']
   "/org/gnome/desktop/app-folders/folders/Utilities/categories": "['X-GNOME-Utilities']"
-  "/org/gnome/desktop/app-folders/folders/Utilities/excluded-apps": "['org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.seahorse.Application.desktop']"
+  "/org/gnome/desktop/app-folders/folders/Utilities/excluded-apps": >
+    ['org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.seahorse.Application.desktop']
   "/org/gnome/desktop/app-folders/folders/Utilities/name": "'System'"
   "/org/gnome/desktop/app-folders/folders/Utilities/translate": "false"
 
-  "/org/gnome/desktop/app-folders/folders/b3816476-f81f-4e7c-8a93-33ee53432e46/apps": "['org.keepassxc.KeePassXC.desktop', 'yubikey-personalization-gui.desktop', 'org.gnome.seahorse.Application.desktop']"
+  "/org/gnome/desktop/app-folders/folders/b3816476-f81f-4e7c-8a93-33ee53432e46/apps":
+    >
+    ['org.keepassxc.KeePassXC.desktop', 'yubikey-personalization-gui.desktop', 'org.gnome.seahorse.Application.desktop']
   "/org/gnome/desktop/app-folders/folders/b3816476-f81f-4e7c-8a93-33ee53432e46/name": "'Sicherheit'"
   "/org/gnome/desktop/app-folders/folders/b3816476-f81f-4e7c-8a93-33ee53432e46/translate": "false"
 
-  "/org/gnome/desktop/app-folders/folders/bd25cccf-d6a0-4bed-a7b5-d12fade78753/apps": "['libreoffice-base.desktop', 'libreoffice-startcenter.desktop', 'libreoffice-calc.desktop', 'libreoffice-draw.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'libreoffice-writer.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop']"
+  "/org/gnome/desktop/app-folders/folders/bd25cccf-d6a0-4bed-a7b5-d12fade78753/apps":
+    >
+    ['libreoffice-base.desktop',
+    'libreoffice-startcenter.desktop',
+    'libreoffice-calc.desktop',
+    'libreoffice-draw.desktop',
+    'libreoffice-impress.desktop',
+    'libreoffice-math.desktop',
+    'libreoffice-writer.desktop',
+    'org.gnome.Contacts.desktop',
+    'org.gnome.Calculator.desktop']
   "/org/gnome/desktop/app-folders/folders/bd25cccf-d6a0-4bed-a7b5-d12fade78753/name": "'Büro'"
-
-  "/org/gnome/desktop/app-folders/folders/bd2e0f00-08eb-40ed-bd57-6ababe362543/apps": "['signal-desktop.desktop', 'org.telegram.desktop.desktop']"
+  "/org/gnome/desktop/app-folders/folders/bd2e0f00-08eb-40ed-bd57-6ababe362543/apps":
+    >
+    ['signal-desktop.desktop', 'org.telegram.desktop.desktop']
   "/org/gnome/desktop/app-folders/folders/bd2e0f00-08eb-40ed-bd57-6ababe362543/name": "'Kommunikation'"
   "/org/gnome/desktop/app-folders/folders/bd2e0f00-08eb-40ed-bd57-6ababe362543/translate": "false"
 
-  "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/apps": "['com.nextcloud.desktopclient.nextcloud.desktop', 'transmission-gtk.desktop']"
+  "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/apps":
+    >
+    ['com.nextcloud.desktopclient.nextcloud.desktop', 'transmission-gtk.desktop']
   "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/name": "'Sync'"
   "/org/gnome/desktop/app-folders/folders/bee5124e-ec30-4b6f-af50-bc4055047763/translate": "false"

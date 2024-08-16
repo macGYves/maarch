@@ -3,3 +3,13 @@ repos:
     rev: "v2.7.1"
     hooks:
       - id: prettier
+        name: Prettier
+        description: Format code with prettier
+  - repo: https://github.com/ansible/ansible-lint
+    rev: v6.17.0 # put latest release tag from https://github.com/ansible/ansible-lint/releases/
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
+        name: Ansible Lint
+        description: Run linting with config from .ansible-lint file
+        args: [-c, ./ansible/.ansible-lint.yml]

@@ -4,11 +4,11 @@
     name:
       - zsh-antidote
       - git-extras
-  become: yes
+  become: true
   become_user: aur_builder
 
 ## Needed for syntax highlighting in less
 - name: Install GNU syntax-highlighting
-  become: yes
-  community.general.pacman:
+  become: true
+  ansible.builtin.package:
     package: source-highlight

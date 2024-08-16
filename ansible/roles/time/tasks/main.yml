@@ -1,15 +1,17 @@
 ---
-- import_tasks: timezone.yml
+- name: "Set timezone"
+  ansible.builtin.import_tasks: timezone.yml
 
 - name: Init /etc/systemd/timesyncd.conf
-  become: yes
+  become: true
   ansible.builtin.copy:
     dest: /etc/systemd/timesyncd.conf
     src: timesyncd.conf
+    mode: "0644"
 
 - name: Enable systemd-timesyncd
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: systemd-timesyncd.service
     state: started
-    enabled: yes
+    enabled: true
