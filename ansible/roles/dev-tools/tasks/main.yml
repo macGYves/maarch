@@ -37,3 +37,5 @@
   become: yes
   become_user: aur_builder
 
+
+- include_tasks: docker.yml
