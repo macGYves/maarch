@@ -1,1 +1,4 @@
 hostname: 'ThinkR'
+partitions:
+    esp: 'ESP'
+    luks2_encrypted_partition: 'LUKS2_ENCRYPTED_PARTITION'

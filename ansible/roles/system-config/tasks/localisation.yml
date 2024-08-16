@@ -1,5 +1,5 @@
 ---
-- name: Create locale.gen
+- name: create locale.gen
   copy:
     dest: /etc/locale.gen
     content: |
@@ -8,16 +8,16 @@
       sv_SE.UTF-8 UTF-8
     mode: 0644
 
-- name: Run locale-gen
+- name: run locale-gen
   shell: locale-gen
 
-- name: Set LANG variable
+- name: create locale.conf
   copy:
     dest: /etc/locale.conf
     content: LANG=de_DE.UTF-8
     mode: 0644
 
-- name: Make swedish keyboard layout persistent
+- name: make swedish keyboard layout persistent
   copy:
     dest: /etc/vconsole.conf
     content: "KEYMAP=sv-latin1"
