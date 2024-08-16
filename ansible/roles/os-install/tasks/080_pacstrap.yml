@@ -1,7 +1,7 @@
 ---
 # pacstrap fails if intel-ucode exists on boot partition.
 - name: Delete intel-ucode.img
-  file:
+  ansible.builtin.file:
     path: "{{ arch_root }}/boot/intel-ucode.img"
     state: absent
 

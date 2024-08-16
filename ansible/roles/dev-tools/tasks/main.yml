@@ -1,6 +1,6 @@
 ---
 - name: "Ensure ~/.asdf does not exist"
-  file:
+  ansible.builtin.file:
     path: "~/.asdf"
     state: absent
 
