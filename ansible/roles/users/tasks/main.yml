@@ -21,4 +21,3 @@
     mode: 0440
 
 - import_tasks: auto_login_user.yml
-- import_tasks: create_aur_builder_user.yml

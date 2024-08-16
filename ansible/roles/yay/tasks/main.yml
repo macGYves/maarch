@@ -1,0 +1,11 @@
+---
+
+- import_tasks: create_aur_builder_user.yml
+
+- name: Install yay
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
