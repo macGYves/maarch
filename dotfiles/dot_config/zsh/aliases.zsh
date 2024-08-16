@@ -14,6 +14,7 @@ alias gcom="git checkout main"
 alias gcam="git commit --all -m"
 alias gd="git diff"
 alias gf="git fetch"
+alias gfp="git fetch --prune"
 alias glog='git log --oneline --decorate --graph'
 alias gp="git pull"
 alias gpu="git push"
