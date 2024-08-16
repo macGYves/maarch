@@ -22,5 +22,7 @@ My Automated ARCH linux Installation
 
 After the system restart, login as ordinary user and run
 
-    cd /opt/maarch/ansible
-    ansible-playbook configure.yml --ask-become-pass
+   ansible-galaxy install kewlfft.aur
+
+   cd /opt/maarch/ansible
+   ansible-playbook configure.yml --ask-become-pass
