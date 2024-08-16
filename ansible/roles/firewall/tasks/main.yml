@@ -7,7 +7,7 @@
 
 - name: Start and enable ufw systemd service
   become: yes
-  systemd:
+  ansible.builtin.systemd:
     name: ufw.service
     state: started
     enabled: yes

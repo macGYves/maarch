@@ -16,7 +16,7 @@
 
 - name: Start and enable pcscd.service
   become: yes
-  systemd:
+  ansible.builtin.systemd:
     name: pcscd.service
     state: started
     enabled: yes

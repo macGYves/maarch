@@ -14,7 +14,7 @@
     src: udiskie.service
 
 - name: start and enable udiskie systemd service 
-  systemd:
+  ansible.builtin.systemd:
     name: udiskie.service
     scope: user
     state: started

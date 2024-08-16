@@ -7,6 +7,6 @@
 
 - name: Schedule weekly SSD TRIM
   become: yes
-  systemd:
+  ansible.builtin.systemd:
     name: fstrim.timer
     enabled: yes
