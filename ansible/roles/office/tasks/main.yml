@@ -1,13 +1,12 @@
 ---
-
 - name: Install office packages
   become: true
   become_user: macgyves
-  pacman: 
-    name: 
+  pacman:
+    name:
       - vdirsyncer
       - khard
     state: present
-    
+
 - import_tasks: nextcloud.yml
 - import_tasks: vdirsyncer.yml

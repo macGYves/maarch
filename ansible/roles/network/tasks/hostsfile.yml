@@ -1,5 +1,4 @@
 ---
-
 - name: Init /etc/hosts
   template:
     src: hosts.j2

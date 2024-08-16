@@ -1,5 +1,4 @@
 ---
-
 - name: Perform full system upgrade
   pacman:
     update_cache: yes

@@ -1,5 +1,4 @@
 ---
-
 - import_tasks: erase_install_disk.yml
 - import_tasks: partition.yml
 - import_tasks: encrypt.yml

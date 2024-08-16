@@ -1,12 +1,10 @@
 ---
-
 - name: Gathering hardware facts
   setup:
     gather_subset:
-      - '!all'
-      - '!min'
+      - "!all"
+      - "!min"
       - hardware
-
 
 - name: Save LUKS device UUID in fact
   set_fact:

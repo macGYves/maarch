@@ -16,8 +16,8 @@
     mode: 0644
 
 - name: Install systemd-boot entry arch.conf
-#  vars:
-#    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  #  vars:
+  #    root_uuid: "{{ _uuid.stdout_lines[0] }}"
   template:
     src: templates/arch.conf.j2
     dest: /boot/loader/entries/arch.conf

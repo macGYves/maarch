@@ -1,5 +1,4 @@
 ---
-
 - name: Copy nwgbar config files
   copy:
     dest: "/home/{{ user.name }}/.config/nwg-launchers/nwgbar/"

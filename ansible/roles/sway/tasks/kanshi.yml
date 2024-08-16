@@ -1,5 +1,4 @@
 ---
-
 - name: Install kanshi (screen-constellation profile management tool)
   aur:
     name: kanshi-git

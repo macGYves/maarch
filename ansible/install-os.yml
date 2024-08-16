@@ -1,5 +1,4 @@
 ---
-
 - name: Bootstrap Arch Linux system
   hosts: localhost
   become: yes
@@ -11,10 +10,10 @@
       private: yes
       confirm: yes
     - name: install_disk
-      prompt: 'Installation target device (e.g. /dev/sda)'
+      prompt: "Installation target device (e.g. /dev/sda)"
       private: no
     - name: root_password
-      prompt: 'root password'
+      prompt: "root password"
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
@@ -27,18 +26,17 @@
     - facts
     - os-install
 
-
 - name: Continue Arch Linux installation in chroot
   hosts: localhost_chroot
   vars:
     boot_mode: "{{ hostvars.localhost.boot_mode }}"
   roles:
-    - { role: localisation, tags: 'localisation' }
-    - { role: kernel, tags: 'kernel' }
-    - { role: network, tags: 'network' }
-    - { role: systemd-boot, tags: 'bootloader', when: boot_mode == 'uefi' }
-    - { role: syslinux, tags: 'bootloader', when: boot_mode == 'bios' }
-    - { role: microcode, tags: 'microcode' }
+    - { role: localisation, tags: "localisation" }
+    - { role: kernel, tags: "kernel" }
+    - { role: network, tags: "network" }
+    - { role: systemd-boot, tags: "bootloader", when: boot_mode == 'uefi' }
+    - { role: syslinux, tags: "bootloader", when: boot_mode == 'bios' }
+    - { role: microcode, tags: "microcode" }
   tasks:
     - name: Set root password
       user:
@@ -54,23 +52,23 @@
   tasks:
     - name: Unmount partitions
       command: "umount -Rf {{ arch_root }}"
-      tags: 'cleanup'
+      tags: "cleanup"
 
     - name: unmount swap
       command: swapoff -a
-      tags: 'cleanup'
+      tags: "cleanup"
 
     - name: close LUKS swap
       luks_device:
         device: "{{ lvm.lv_swap.dev }}"
         state: closed
-      tags: 'cleanup'
+      tags: "cleanup"
 
     - name: close LUKS root
       luks_device:
         device: "{{ lvm.lv_root.dev }}"
         state: closed
-      tags: 'cleanup'
+      tags: "cleanup"
 
     - name: Reboot
       command: reboot now

@@ -1,4 +1,3 @@
-
 bootloader: grub
 
 sata_drives:
@@ -93,4 +92,3 @@ logical_volumes:
     encrypt: true
     use_passphrase: true
     shrink: no
-

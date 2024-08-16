@@ -1,55 +1,56 @@
-hostname: 'ThinkR'
+hostname: "ThinkR"
 
 system:
-    processor: intel
+  processor: intel
 
 timezone: Europe/Stockholm
 
 partitions:
-    boot:
-        label: 'BOOT'
-        dev: "/dev/disk/by-partlabel/BOOT"
-    luks:
-        label: 'LUKS'
-        dev: '/dev/disk/by-partlabel/LUKS'
-        mapper_name: 'cryptlvm'
+  boot:
+    label: "BOOT"
+    dev: "/dev/disk/by-partlabel/BOOT"
+  luks:
+    label: "LUKS"
+    dev: "/dev/disk/by-partlabel/LUKS"
+    mapper_name: "cryptlvm"
 
 lvm:
-    vg_main: 'vg.main'
-    lv_root:
-        name: 'root'
-        label: 'ROOT'
-        dev: '/dev/vg.main/root'
-    lv_swap:
-        name: 'swap'
-        label: 'SWAP'
-        dev: '/dev/vg.main/swap'
+  vg_main: "vg.main"
+  lv_root:
+    name: "root"
+    label: "ROOT"
+    dev: "/dev/vg.main/root"
+  lv_swap:
+    name: "swap"
+    label: "SWAP"
+    dev: "/dev/vg.main/swap"
 
 user:
-    name: macgyves
-    group: users
-    shell: /bin/zsh
+  name: macgyves
+  group: users
+  shell: /bin/zsh
 
 packages:
-    essential:
-        - base
-        - base-devel
-        - linux
-        - linux-firmware
-        - lvm2
-        - ansible
-        - neovim
-        - git
-        - zsh
-    more:
-        - curl
-        - openssh
-        - rsync
-        - man-db
-        - unzip
-        - zip
-        - keepassxc
-        - nnn
+  essential:
+    - base
+    - base-devel
+    - linux
+    - linux-firmware
+    - lvm2
+    - ansible
+    - neovim
+    - git
+    - zsh
+  more:
+    - curl
+    - openssh
+    - rsync
+    - man-db
+    - unzip
+    - zip
+    - keepassxc
+    - nnn
+    - python-pip
 #        - baobab
 #        - gramps
 #        - firefox

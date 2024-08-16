@@ -1,5 +1,4 @@
 ---
-
 - name: Install sway
   pacman:
     name:
@@ -7,22 +6,22 @@
       - swaylock
       - swayidle
       - brightnessctl
-      - gammastep   # auto-colour temperature adjustment tool
-      - grim        # screenshot tool
+      - gammastep # auto-colour temperature adjustment tool
+      - grim # screenshot tool
       - waybar
-      - jq          # needed for keyboard-layout-changer
-#      - amixer      # audio volume control
+      - jq # needed for keyboard-layout-changer
+      #      - amixer      # audio volume control
       - pavucontrol
     state: present
 
 - name: Install sway dependencies from AUR
   aur:
     name:
-      - swappy        # screenshot-manipulating tool
-      - azote         # wallpaper manager
+      - swappy # screenshot-manipulating tool
+      - azote # wallpaper manager
       - nwg-launchers # grid/bar launchers
-      - autotiling    # script for opening new windows more space-efficiently
-      - wdisplays     # tool for changing screen layouts dynamically
+      - autotiling # script for opening new windows more space-efficiently
+      - wdisplays # tool for changing screen layouts dynamically
     use: makepkg
     state: present
   become: yes

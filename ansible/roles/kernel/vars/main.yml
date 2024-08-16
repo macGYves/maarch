@@ -1,5 +1,4 @@
 ---
-
 initrd_mods: "i915"
 initrd_bin: ""
 initrd_files: ""

@@ -1,21 +1,19 @@
 ---
-
 - name: Ensure group {{ user.group }} exists
   group:
     name: "{{ user.group }}"
     state: present
   when: user.name is defined and user.group is defined
 
-
 - name: Ensure the user {{ user.name }} exists
   user:
     name: "{{ user.name }}"
     shell: "{{ user.shell }}"
     groups:
-        - "{{ user.group }}"
-        - wheel
-        - lock
-        - uucp
+      - "{{ user.group }}"
+      - wheel
+      - lock
+      - uucp
     append: yes
     system: no
     createhome: yes
@@ -23,7 +21,6 @@
     password: "{{ macgyves_password }}"
   when: user.name is defined
   no_log: true
-
 
 - name: Give sudo rights to users in wheel group
   copy:
@@ -36,8 +33,8 @@
     name: aur_builder
     group: wheel
 
-- name:  Grant AUR user permissions to run pacman
+- name: Grant AUR user permissions to run pacman
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: yes

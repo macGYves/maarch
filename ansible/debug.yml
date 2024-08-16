@@ -1,5 +1,4 @@
 ---
-
 - name: Spielplatz
   hosts: localhost
   tasks:
@@ -9,5 +8,3 @@
 
     - debug:
         msg: "{{lsblk_info.stdout | from_json | json_query('blockdevices.disc-gran') }}"
-
-
