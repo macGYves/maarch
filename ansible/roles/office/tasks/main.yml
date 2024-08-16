@@ -1,5 +1,5 @@
 ---
-- name: Install office packages
+- name: Install terminal mail/office packages
   become: true
   community.general.pacman:
     pkg:
@@ -12,7 +12,13 @@
       - msmtp
       - pass
       - lynx
-    state: present
+
+- name: Install messengers
+  become: true
+  community.general.pacman:
+    pkg:
+      - signal-desktop
+      - telegram-desktop
 
 - import_tasks: nextcloud.yml
 - import_tasks: vdirsyncer.yml
