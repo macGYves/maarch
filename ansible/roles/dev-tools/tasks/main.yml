@@ -24,8 +24,8 @@
         versions: "{{ nodejs.versions }}"
         global: "{{ nodejs.versions[0] }}"
       - name: "awscli"
-        versions: ["latest"]
-        global: "latest"
+        versions: ["2.11.16"]
+        global: "2.11.16"
 
 - include_tasks: aws-cli.yml
 
