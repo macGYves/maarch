@@ -22,5 +22,3 @@
     name: pcscd.service
     state: started
     enabled: yes
-
-- import_tasks: ykfde.yml
