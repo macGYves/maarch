@@ -6,23 +6,24 @@ My Automated ARCH linux Installation
 
 1. Create and start an [arch linux installation medium](https://wiki.archlinux.org/title/Installation_guide#Prepare_an_installation_medium)
 
-2. Install ansible
+2. Install archinstall
 
-   mount -o remount,size=1G /run/archiso/cowspace
-   pacman -Sy ansible git
+   pacman -S archinstall
 
-3. Download maarch repo
+3. archinstall --config https://github.com/macGYves/maarch/blob/main/archinstall/thinx.config.json
+
+
+Restart the system, login as ordinary user and continue below.
+
+4. Download maarch repo
 
    git clone https://github.com/macGYves/maarch.git
 
-4. Run ansible playbook "install-os.yml"
+5. Install ansible roles and collections 
 
    cd maarch/ansible
-   ansible-playbook install-os.yml
+   ansible-galaxy install -r requirements.yml
 
-After the system restart, login as ordinary user and run
+6. Run "configure.yml" playbook
 
-   ansible-galaxy install kewlfft.aur
-
-   cd /opt/maarch/ansible
    ansible-playbook configure.yml --ask-become-pass
