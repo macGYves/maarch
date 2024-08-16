@@ -1,0 +1,2 @@
+---
+disable_ibt: "{{ has_intel_cpu and intel_cpu_gen | int >= 11 }}"
