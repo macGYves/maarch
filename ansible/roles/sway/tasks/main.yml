@@ -25,6 +25,7 @@
       - autotiling # script for opening new windows more space-efficiently
       - wdisplays # tool for changing screen layouts dynamically
       - kanshi-git
+      - wob       # wayland overlay bar
     use: makepkg
     state: present
   become: yes
@@ -45,3 +46,5 @@
     - gammastep-indicator.service
     - autotiling.service
     - mako.service
+    - wob.socket
+    - wob.service
