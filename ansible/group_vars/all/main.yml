@@ -52,6 +52,7 @@ packages:
     - sof-firmware
     - pipewire
     - pipewire-pulse
+    - wireplumber # declared here to avoid installing pipewire-media-session
     - youtube-dl
     - task # taskwarrior
   headless:
