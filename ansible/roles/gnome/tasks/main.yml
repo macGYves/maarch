@@ -21,6 +21,13 @@
       - gnome-terminal
     state: absent
 
+- name: Install gnome-shell-pomodoro from AUR
+  kewlfft.aur.aur:
+    name:
+      - gnome-shell-pomodoro
+  become: yes
+  become_user: aur_builder
+
 - name: Enable gdm.service
   become: true
   ansible.builtin.systemd:
