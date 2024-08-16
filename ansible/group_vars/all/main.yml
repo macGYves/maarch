@@ -41,6 +41,7 @@ packages:
     - youtube-dl
     - task # taskwarrior
     - fwupd # firmware-update daemon
+    - transmission-gtk
 
 partitions:
   luks:
