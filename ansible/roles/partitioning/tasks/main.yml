@@ -1,50 +1,54 @@
 ---
+- name: Update the system clock
+  command: timedatectl set-ntp true
+
 - name: "Read device information"
   parted:
-    device: "{{ disk_dev }}"
+    device: "{{ install_disk }}"
     unit: MiB
-  register: disk_dev_info
-  tags: [ 'lol' ]
+  register: install_disk_info
 
 - name: "Remove all partitions from disk"
   parted:
-    device: "{{ disk_dev }}"
+    device: "{{ install_disk }}"
     number: "{{ item.num }}"
     state: absent
-  loop: "{{ disk_dev_info.partitions }}"
-  tags: [ 'lol' ]
+  loop: "{{ install_disk_info.partitions }}"
 
 - name: Create ESP
   parted:
-    device: "{{ disk_dev }}"
+    device: "{{ install_disk }}"
     name: EFI System Partition
     number: 1
     label: gpt
     flags: [ esp, boot ]
     state: present
     part_end: 551MiB
-  tags: [ 'lol' ]
-
-- name: Format ESP as FAT32
-  filesystem:
-    fstype: vfat
-    dev: "{{ disk_dev }}1"
-    opts: -F32 -n EFI
 
 - name: Create system partition
   parted:
-    device: "{{ disk_dev }}"
+    device: "{{ install_disk }}"
     name: system
     number: 2
     label: gpt
     state: present
     part_start: 551MiB
 
+- name: Enumerate created partitions
+  shell: lsblk -n -o PATH "{{ install_disk }}" | tail -n +2
+  register: _partitions
+  changed_when: no
+
+- name: Assign partitions to variables
+  set_fact:
+    efi_system_partition: "{{ _partitions.stdout_lines[0] }}"
+    encrypted_lvm_partition: "{{ _partitions.stdout_lines[1] }}"
+
 - name: Encrypt system partition
-  shell: printf {{ root_password }} |cryptsetup luksFormat --type luks2 {{ disk_dev }}2 -
+  shell: printf {{ luks_password }} |cryptsetup luksFormat --type luks2 {{ encrypted_lvm_partition }} -
 
 - name: Open encrypted system partition
-  shell: 'echo -n {{ root_password }} |cryptsetup open {{ disk_dev }}2 cryptlvm -'
+  shell: 'echo -n {{ luks_password }} |cryptsetup open {{ encrypted_lvm_partition }} cryptlvm -'
 
 - name: Create LVM volume group "vg.main"
   lvg:
@@ -63,6 +67,12 @@
     lv: root
     size: 100%FREE
 
+- name: Format ESP as FAT32
+  filesystem:
+    fstype: vfat
+    dev: "{{ efi_system_partition }}"
+    opts: -F32 -n EFI
+
 - name: Format vg.main-swap
   command: mkswap /dev/vg.main/swap
 
@@ -71,10 +81,10 @@
     fstype: ext4
     dev : /dev/vg.main/root
 
-- name: Activate swap volume
+- name: Format swap
   command: swapon /dev/vg.main/swap
 
-- name: Mount root volume
+- name: Mount root
   mount:
     path: /mnt
     src: /dev/vg.main/root
@@ -84,6 +94,6 @@
 - name: Mount ESP
   mount:
     name: /mnt/boot
-    src: "{{ disk_dev }}1"
+    src: "{{ efi_system_partition }}"
     fstype: vfat
     state: mounted
