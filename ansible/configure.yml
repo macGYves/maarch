@@ -12,14 +12,30 @@
   roles:
     - network
     - base
-    - { role: 'plasma', tags: 'plasma' }
+    - { role: plasma, tags: 'plasma' }
+    - { role: shell, tags: 'shell' }
+    - { role: dev-tools, tags: 'dev-tools' }
   tasks:
     - name: Install more packages
       pacman:
         name: "{{ more_packages }}"
         state: present
       tags: 'install-packages'
-    - name: Install mytourbook
-      aur:
-        name: mytourbook_bin
-        user: "{{ user.name }}"
+
+# Grafikkartentreiber
+#idea
+# git-extras
+
+# kde hotkeys
+# bluetooth
+# kde tastaturen
+
+# yubikey
+# ssh-key
+
+# localectl set-x11-keymap sv-latin1
+# git config
+# git signing config
+
+
+
