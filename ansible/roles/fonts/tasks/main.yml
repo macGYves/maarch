@@ -9,6 +9,7 @@
       - ttf-hack
       - otf-font-awesome
       - inter-font
+      - noto-fonts-emoji
 
 - name: Install fonts from AUR
   aur:
@@ -18,7 +19,12 @@
   become: yes
   become_user: aur_builder
 
+- name: Ensure ~/.config/fontconfig directory exists
+  ansible.builtin.file:
+    path: ~/.config/fontconfig
+    state: directory
+
 - name: Copy fontconfig configuration
   ansible.builtin.copy:
     dest: ~/.config/fontconfig/fonts.conf
-    src: local.conf
+    src: font.conf

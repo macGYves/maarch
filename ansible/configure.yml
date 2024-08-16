@@ -4,6 +4,7 @@
   roles:
     - { role: network, tags: "network" }
     - base
+    - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
     - { role: dotfiles, tags: "dotfiles" }
     - { role: dev-tools, tags: "dev-tools" }
