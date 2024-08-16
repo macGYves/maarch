@@ -64,7 +64,7 @@ org_gnome_dconf:
   "/org/gnome/shell/favorite-apps": "['org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Console.desktop', 'jetbrains-idea.desktop', 'thunderbird.desktop']"
   "/org/gnome/shell/welcome-dialog-last-shown-version": "'43.4'"
   "/org/gnome/shell/app-switcher/current-workspace-only": "true"
-  "/org/gnome/shell/extensions/auto-move-windows/application-list": "['thunderbird.desktop:2', 'jetbrains-idea.desktop:3', 'signal-desktop.desktop:2', 'org.telegram.desktop.desktop:2', 'org.keepassxc.KeePassXC.desktop:4', 'org.gnome.Calendar.desktop:2']"
+  "/org/gnome/shell/extensions/auto-move-windows/application-list": "['thunderbird.desktop:2', 'jetbrains-idea.desktop:3', 'signal-desktop.desktop:2', 'org.telegram.desktop.desktop:2', 'org.keepassxc.KeePassXC.desktop:4', 'org.gnome.Calendar.desktop:2', 'com.slack.Slack.desktop:2']"
   "/org/gnome/shell/extensions/gtile/show-toggle-tiling-alt": "['<Control><Super>KP_Enter']"
   "/org/gnome/shell/extensions/gtile/theme": "'Default'"
   "/org/gnome/shell/keybindings/screenshot": "['<Super>Print']"
