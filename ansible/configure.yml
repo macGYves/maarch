@@ -29,6 +29,7 @@
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
     - { role: docker, tags: "docker" }
+    - { role: virtualbox, tags: "virtualbox" }
   handlers:
     - name: "regenerate initramfs"
       become: yes
