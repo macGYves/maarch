@@ -12,6 +12,7 @@ partitions:
     luks:
         label: 'LUKS'
         dev: '/dev/disk/by-partlabel/LUKS'
+        mapper_name: 'cryptlvm'
 
 lvm:
     vg_main: 'vg.main'
