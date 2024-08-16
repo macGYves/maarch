@@ -1,5 +1,15 @@
 - hosts: localhost
   become: true
   tasks:
-    - name: Install htop
-      pacman: name=htop
+    - name: Install packages
+      pacman: name={{item}}
+      with_items:
+        - firefox
+        - libreoffice-fresh
+        - calibre
+        - keepassxc
+        - digikam
+        - virtualbox
+        - nextcloud-client
+        - zsh
+        - openssh
