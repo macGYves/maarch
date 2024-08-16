@@ -3,6 +3,7 @@
   become: yes
   community.general.pacman:
     name:
+      - pamixer
       - sway
       - swaylock
       - swayidle
