@@ -1,29 +1,42 @@
 ---
-- name: Fetch resident key from YubiKey
-  # The command below places the keys in the "current" folder, i.e. the ansible "playbook_dir"
-  ansible.builtin.expect:
-    command: "ssh-keygen -K"
-    responses:
-      Enter PIN for authenticator: "{{ yubikey_pin }}"
-      Overwrite: "y"
-      Enter passphrase: ""
-      Enter same passphrase again: ""
+- name: Register if private ssh resident key exist
+  ansible.builtin.stat:
+    path: ~/.ssh/id_ed25519_sk
+  register: private_ssh_key_stat
 
-- name: Move fetched resident key to ~/.ssh
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/id_ed25519_sk_rk"
-    dest: "~/.ssh/id_ed25519_sk"
-    mode: "0600"
+- name: Register if public ssh resident key exist
+  ansible.builtin.stat:
+    path: ~/.ssh/id_ed25519_sk.pub
+  register: public_ssh_key_stat
 
-- name: Move fetched resident public key to ~/.ssh
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
-    dest: "~/.ssh/id_ed25519_sk.pub"
+- name: Setup ssh to use resident keys on YubiKey
+  block:
+    - name: Fetch resident key from YubiKey
+      # The command below places the keys in the "current" folder, i.e. the ansible "playbook_dir"
+      ansible.builtin.expect:
+        command: "ssh-keygen -K"
+        responses:
+          Enter PIN for authenticator: "{{ yubikey_pin }}"
+          Overwrite: "y"
+          Enter passphrase: ""
+          Enter same passphrase again: ""
 
-- name: Cleanup fetched resident keys from temp dir
-  ansible.builtin.file:
-    state: absent
-    path: "{{ item }}"
-  loop:
-    - "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
-    - "{{ playbook_dir }}/id_ed25519_sk_rk"
+    - name: Move fetched resident key to ~/.ssh
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/id_ed25519_sk_rk"
+        dest: "~/.ssh/id_ed25519_sk"
+        mode: "0600"
+
+    - name: Move fetched resident public key to ~/.ssh
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
+        dest: "~/.ssh/id_ed25519_sk.pub"
+
+    - name: Cleanup fetched resident keys from temp dir
+      ansible.builtin.file:
+        state: absent
+        path: "{{ item }}"
+      loop:
+        - "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
+        - "{{ playbook_dir }}/id_ed25519_sk_rk"
+  when: not private_ssh_key_stat.stat.exists or not public_ssh_key_stat.stat.exists
