@@ -1,0 +1,38 @@
+---
+
+- name: Install syslinux
+  package:
+    name: syslinux gptfdisk mtools
+
+- name: Ensure syslinux dir exists
+  file:
+    path: /boot/syslinux
+    state: directory
+
+- name: Copy c32 into place
+  copy:
+    src: "{{ item }}"
+    dest: /boot/syslinux
+    mode: 640
+    force: no
+  with_fileglob:
+    - /usr/lib/syslinux/bios/*.c32
+
+- name: Install bootloader
+  shell: extlinux --install /boot/syslinux
+
+- name: Install MBR
+  shell: "dd bs=440 count=1 conv=notrunc if=/usr/lib/syslinux/bios/gptmbr.bin of=/dev/sda"
+
+- name: Get LUKS partition UUID
+  command: blkid "/dev/disk/by-partlabel/{{ partitions.encrypted }}" -s UUID -o value
+  register: _uuid
+  changed_when: false
+
+- name: Copy syslinux.cfg
+  vars:
+    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  template:
+    src: syslinux.cfg.j2
+    dest: /boot/syslinux/syslinux.cfg
+    mode: 0640

@@ -2,6 +2,7 @@ hostname: 'ThinkR'
 
 system:
     processor: intel
+    boot_mode: bios
 
 timezone: Europe/Stockholm
 

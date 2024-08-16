@@ -6,9 +6,22 @@
     name: "{{ partitions.esp }}"
     number: 1
     label: gpt
-    flags: [ esp, boot ]
+    flags: [ esp ]
     state: present
     part_end: 551MiB
+  when: system.boot_mode == 'uefi'
+
+
+- name: Create Boot Partition
+  parted:
+    device: "{{ install_disk }}"
+    name: "{{ partitions.esp }}"
+    number: 1
+    label: gpt
+    flags: [ legacy_boot ]
+    state: present
+    part_end: 551MiB
+  when: system.boot_mode == 'bios'
 
 - name: Create LUKS2 encrypted partition
   parted:

@@ -31,10 +31,20 @@
     - { role: localisation, tags: 'localisation' }
     - { role: kernel, tags: 'kernel' }
     - { role: network, tags: 'network' }
-    - { role: bootloader, tags: 'bootloader' }
+    - { role: systemd-boot, tags: 'bootloader', when: system.boot_mode == 'uefi' }
+    - { role: syslinux, tags: 'bootloader', when: system.boot_mode == 'bios' }
     - { role: microcode, tags: 'microcode' }
   tasks:
     - name: Set root password
       user:
         name: root
         password: "{{ hostvars.localhost.root_password }}"
+
+- name: Finish installation
+  hosts: localhost
+  tasks:
+    - name: unmount partitions with the new system
+      command: umount -Rf /mnt
+
+    - name: unmount swap
+      command: swapoff -a

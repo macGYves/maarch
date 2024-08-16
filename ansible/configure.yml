@@ -1,6 +1,6 @@
 ---
 
-- name: Customises a basic arch linux installation
+- name: Customise a basic arch linux installation
   hosts: localhost
   user: root
   vars_prompt:
@@ -41,3 +41,5 @@
 
 
 # security
+# https://wiki.archlinux.org/index.php/Docker
+# https://wiki.archlinux.org/index.php/TLP

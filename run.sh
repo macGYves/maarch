@@ -134,3 +134,21 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard encrypt lvm2 fsck
 pacman -Sy --noconfirm pacman-contrib
 curl -s "https://www.archlinux.org/mirrorlist/?country=DK&country=FI&country=DE&country=IS&country=NO&country=SE&country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
 
+
+
+
+## BIOS/GPT
+#gdisk
+#n
+#n
+#
+#a
+#1
+#2
+#
+#
+#/dev/sda1
+#/dev/sda2
+#
+#pacman -S syslinux gptfdisk
+#syslinux-install_update -i -a -m
