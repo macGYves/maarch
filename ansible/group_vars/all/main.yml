@@ -40,6 +40,7 @@ packages:
     - pipewire-pulse
     - youtube-dl
     - task # taskwarrior
+    - fwupd # firmware-update daemon
 
 partitions:
   luks:
