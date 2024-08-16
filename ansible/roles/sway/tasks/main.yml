@@ -29,3 +29,24 @@
   become_user: aur_builder
 
 - import_tasks: nwg-launchers.yml
+
+- name: Enable and start kanshi systemd user service
+  ansible.builtin.systemd:
+    name: kanshi.service
+    scope: user
+    state: started
+    enabled: yes
+
+- name: Enable and start udiskie systemd user service
+  ansible.builtin.systemd:
+    name: udiskie.service
+    scope: user
+    state: started
+    enabled: yes
+
+- name: Enable and start gammastep systemd user service
+  ansible.builtin.systemd:
+    name: gammastep-indicator.service
+    scope: user
+    state: started
+    enabled: yes
