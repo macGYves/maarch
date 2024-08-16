@@ -12,7 +12,6 @@
   roles:
     - { role: network, tags: 'network' }
     - base
-    #  - { role: plasma, tags: 'plasma' }
     - { role: shell, tags: 'shell' }
     - { role: dev-tools, tags: 'dev-tools' }
     - { role: firewall, tags: 'firewall' }
@@ -20,6 +19,7 @@
     - { role: alacritty, tags: 'alacritty' }
     - { role: sway, tags: 'sway' }
     - { role: bluetooth, tags: 'bluetooth' }
+    - { role: themes, tags: 'themes' }
   tasks:
     - name: Install more packages
       pacman:
