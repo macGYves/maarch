@@ -1,7 +1,7 @@
 ---
 - name: Push mkinitcpio configuration and regenerate initramfs
   become: yes
-  template:
+  ansible.builtin.template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf
   notify:
