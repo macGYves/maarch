@@ -32,8 +32,6 @@
   become: yes
   become_user: aur_builder
 
-- import_tasks: nwg-launchers.yml
-
 - name: Enable and start systemd user services
   ansible.builtin.systemd:
     name: "{{ item }}"
