@@ -8,6 +8,8 @@
   roles:
     - time
     - users
+    - { role: l10n, tags: "l10n" }
+    - { role: reflector, tags: "reflector" }
     - { role: ssd, tags: "ssd" }
     - { role: power_management, tags: "power_mgmt" }
     - { role: firewall, tags: "firewall" }
