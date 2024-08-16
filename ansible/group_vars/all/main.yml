@@ -48,7 +48,6 @@ packages:
     - vlc
     - firefox
     - chromium
-    - sof-firmware
     - pipewire
     - pipewire-pulse
     - wireplumber # declared here to avoid installing pipewire-media-session

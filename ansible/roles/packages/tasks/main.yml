@@ -9,3 +9,9 @@
   become: true
   community.general.pacman:
     pkg: "{{ packages.essential }}"
+
+- name: Install host-specific packages
+  become: true
+  community.general.pacman:
+    pkg: "{{ host_specific_packages }}"
+  when: host_specific_packages | length > 0
