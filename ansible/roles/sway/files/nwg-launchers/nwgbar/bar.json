@@ -1,10 +1,5 @@
 [
   {
-    "name": "Lock screen",
-    "exec": "swaylock -f -c 000000",
-    "icon": "system-lock-screen"
-  },
-  {
     "name": "Logout",
     "exec": "swaymsg exit",
     "icon": "system-log-out"
