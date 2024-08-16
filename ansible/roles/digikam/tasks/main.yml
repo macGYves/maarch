@@ -1,0 +1,6 @@
+---
+
+- name: Install digikam as flatpak
+  community.general.flatpak:
+    name: digiKam
+    method: user
