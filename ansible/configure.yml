@@ -8,6 +8,9 @@
     - name: user_email
       prompt: "Your email address"
       private: no
+    - name: yubikey_pin
+      prompt: "YubiKey authenticator PIN"
+      private: yes
   roles:
     - time
     - packages
@@ -26,6 +29,7 @@
     - { role: dev-tools, tags: "dev-tools" }
     - { role: themes, tags: "themes" }
     - { role: yubikey, tags: "yubikey" }
+    - { role: ssh, tags: "ssh" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
     - { role: docker, tags: "docker" }
