@@ -1,8 +1,4 @@
 #!/usr/bin/sh
-set -x
-set -v
-
-
 
 # = Variables
 printf 'Installation device (e.g. /dev/sda):'
