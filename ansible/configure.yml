@@ -21,7 +21,6 @@
     - { role: dotfiles, tags: "dotfiles" }
     - { role: sway, tags: "sway" }
     - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
-    - { role: sway, tags: "sway" }
     - { role: flatpak, tags: "flatpak" }
     - { role: dev-tools, tags: "dev-tools" }
     - { role: themes, tags: "themes" }
