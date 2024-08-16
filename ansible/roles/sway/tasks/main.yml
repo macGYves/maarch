@@ -1,0 +1,6 @@
+---
+
+- name: Install sway
+  pacman:
+    name: sway
+    state: present

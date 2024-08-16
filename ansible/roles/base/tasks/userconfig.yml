@@ -20,6 +20,7 @@
     system: no
     createhome: yes
     home: /home/{{ user.name }}
+    password: "{{ macgyves_password }}"
   when: user.name is defined
 
 

@@ -1,11 +1,5 @@
 ---
 
-- name: Install linux-hardened and hardened headers
-  pacman:
-    name:
-      - linux
-    state: present
-
 - name: Push mkinitcpio configuration and regenerate initramfs
   template:
     src: mkinitcpio.conf.j2

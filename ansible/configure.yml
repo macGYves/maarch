@@ -3,6 +3,23 @@
 - name: Customises a basic arch linux installation
   hosts: localhost
   user: root
+  vars_prompt:
+    - name: macgyves_password
+      prompt: 'macgyves password'
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
   roles:
     - network
     - base
+    - { role: 'plasma', tags: 'plasma' }
+  tasks:
+    - name: Install more packages
+      pacman:
+        name: "{{ more_packages }}"
+        state: present
+      tags: 'install-packages'
+    - name: Install mytourbook
+      aur:
+        name: mytourbook_bin
+        user: "{{ user.name }}"
