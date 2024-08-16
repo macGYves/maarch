@@ -12,15 +12,6 @@
     src: "{{ partitions.boot.dev }}"
     fstype: vfat
     state: mounted
-  when: boot_mode == 'uefi'
-
-- name: Mount legacy Boot partition
-  mount:
-    name: "{{ arch_root }}/boot"
-    src: "{{ partitions.boot.dev }}"
-    fstype: ext4
-    state: mounted
-  when: boot_mode == 'bios'
 
 - name: Activate swapping on swap volume
   command: "swapon {{ lvm.lv_swap.dev }}"

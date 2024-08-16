@@ -1,19 +1,17 @@
 ---
 - name: Customise a basic arch linux installation
   hosts: localhost
-  user: root
   vars_prompt:
     - name: macgyves_password
       prompt: "macgyves password"
       private: yes
       encrypt: "sha512_crypt"
       confirm: yes
-  # vars:
-  #   ansible_become_pass: "{{ macgyves_password }}"
   roles:
     - { role: network, tags: "network" }
     - base
     - { role: shell, tags: "shell" }
+    - { role: dotfiles, tags: "dotfiles" }
     - { role: dev-tools, tags: "dev-tools" }
     - { role: firewall, tags: "firewall" }
     - { role: ssd, tags: "ssd" }
