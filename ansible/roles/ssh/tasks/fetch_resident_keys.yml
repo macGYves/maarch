@@ -1,12 +1,12 @@
 ---
 - name: Register if private ssh resident key exist
   ansible.builtin.stat:
-    path: ~/.ssh/id_ed25519_sk
+    path: "{{ private_ssh_key.path }}"
   register: private_ssh_key_stat
 
 - name: Register if public ssh resident key exist
   ansible.builtin.stat:
-    path: ~/.ssh/id_ed25519_sk.pub
+    path: "{{ public_ssh_key.path }}"
   register: public_ssh_key_stat
 
 - name: Setup ssh to use resident keys on YubiKey
@@ -24,13 +24,13 @@
     - name: Move fetched resident key to ~/.ssh
       ansible.builtin.copy:
         src: "{{ playbook_dir }}/id_ed25519_sk_rk"
-        dest: "~/.ssh/id_ed25519_sk"
+        dest: "{{ private_ssh_key.path }}"
         mode: "0600"
 
     - name: Move fetched resident public key to ~/.ssh
       ansible.builtin.copy:
         src: "{{ playbook_dir }}/id_ed25519_sk_rk.pub"
-        dest: "~/.ssh/id_ed25519_sk.pub"
+        dest: "{{ public_ssh_key.path }}"
 
     - name: Cleanup fetched resident keys from temp dir
       ansible.builtin.file:
