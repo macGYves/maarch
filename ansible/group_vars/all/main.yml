@@ -49,6 +49,7 @@ packages:
     - unzip
     - zip
     - keepassxc
+    - qt5-wayland # needed for keepassxc
     - nnn
     - python-pip
     - vlc
@@ -56,3 +57,4 @@ packages:
     - chromium
     - pipewire
     - pipewire-pulse
+    
