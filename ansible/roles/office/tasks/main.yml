@@ -16,4 +16,3 @@
 
 - import_tasks: nextcloud.yml
 - import_tasks: vdirsyncer.yml
-- import tasks: neomutt.yml
