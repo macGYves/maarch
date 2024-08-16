@@ -1,0 +1,12 @@
+---
+
+- name: Install util-linux package
+  pacman:
+    name: util-linux
+    state: present
+
+
+- name: Schedule weekly SSD TRIM
+  systemd:
+    name: fstrim.timer
+    enabled: yes
