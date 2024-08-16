@@ -1,5 +1,5 @@
 ---
-- name: Create mkinitcpio.conf
+- name: create mkinitcpio.conf
   copy:
     dest: /etc/mkinitcpio.conf
     content: |
@@ -7,8 +7,6 @@
       BINARIES=()
       FILES=()
       HOOKS=(base udev autodetect keyboard keymap modconf block filesystems encrypt lvm2 resume fsck)
-  tags: 'debug'
 
-- name: mkinitcpio
+- name: run mkinitcpio
   command: mkinitcpio -P
-  tags: 'debug'
