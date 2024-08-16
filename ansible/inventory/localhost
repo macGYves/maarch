@@ -1,4 +1,4 @@
-[hosts]
+[localhost]
 localhost   ansible_connection=local
 
 [localhost_chroot]

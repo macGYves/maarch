@@ -1,7 +1,7 @@
 ---
 - name: bootstrap Arch Linux system
   hosts: localhost
-  user: root
+  remote_user: root
   vars_prompt:
     - name: luks_password
       prompt: "luks password"
@@ -17,13 +17,16 @@
       confirm: yes
   roles:
     - os-install
+  pre_tasks:
+    - set_fact:
+        root_password: "{{ root_password }}"
+      tags: ['configure-base-os']
 
 
 - name: configure bootstrapped Arch Linux installation
   hosts: localhost_chroot
-  user: root
+  remote_user: root
   connection: chroot
-  gather_facts: false
   vars:
     ansible_chroot_exe: arch-chroot
   roles:
