@@ -44,7 +44,7 @@
   become: yes
   ansible.builtin.lineinfile:
     path: /boot/loader/entries/arch.conf
-    regexp: '^options (.*?)(resume=UUID={{ swap_file_uuid.stdout }}\s+resume_offset={{ swap_file_offset.stdout }})?$'
+    regexp: '^options (.*?)( resume=UUID={{ swap_file_uuid.stdout }}\s+resume_offset={{ swap_file_offset.stdout }})?$'
     line: 'options \1 resume=UUID={{ swap_file_uuid.stdout }} resume_offset={{ swap_file_offset.stdout }}'
     backrefs: yes
 
