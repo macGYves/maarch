@@ -10,8 +10,12 @@
   register: chezmoi_dir
 
 - name: Init chezmoi
-  ansible.builtin.command: chezmoi init https://github.com/macGYves/dotfiles.git
-  when: not chezmoi_dir.stat.exists 
+  ansible.builtin.expect:
+    command: chezmoi init https://github.com/macGYves/dotfiles.git
+    responses:
+      (email): "{{ user_email }}"
+  ansible.builtin.command:
+  when: not chezmoi_dir.stat.exists
 
 - name: chezmoi apply
   ansible.builtin.command: chezmoi apply

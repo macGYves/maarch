@@ -4,18 +4,17 @@
   community.general.pacman:
     pkg:
       - brightnessctl
-      - sway
       - gammastep # auto-colour temperature adjustment tool
       - grim # screenshot tool
       - jq # needed for keyboard-layout-changer
       - mako # notification daemon
       - pamixer
       - pavucontrol
+      - sway
       - swayidle
       - swaylock
       - udiskie
       - waybar
-    state: present
 
 #- name: Install sway dependencies from AUR
 #  kewlfft.aur.aur:
