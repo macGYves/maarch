@@ -1,7 +1,7 @@
 ---
-- name: Install antibody (zsh plugin manager)
+- name: Install antidote (zsh plugin manager)
   kewlfft.aur.aur:
-    name: antibody
+    name: zsh-antidote
     use: makepkg
     state: present
   become: yes
