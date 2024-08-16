@@ -1,5 +1,5 @@
 [hosts]
 localhost   ansible_connection=local
 
-[chroot]
+[localhost_chroot]
 /mnt ansible_connection=chroot
