@@ -1,3 +1,0 @@
----
-- name: regenerate initramfs
-  ansible.builtin.command: mkinitcpio -P

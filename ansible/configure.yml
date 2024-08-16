@@ -1,6 +1,10 @@
 ---
 - name: Customise a basic arch linux installation
   hosts: localhost
+  vars_prompt:
+    - name: luks_password
+      prompt: "luks password"
+      private: yes
   roles:
     - kewlfft.aur # Necessary for installing packages from AUR
     - { role: network, tags: "network" }
@@ -28,3 +32,7 @@
         name: "{{ packages.more }}"
         state: present
       tags: "install-packages"
+  handlers: 
+    - name: "regenerate initramfs"
+      become: yes
+      ansible.builtin.command: mkinitcpio -P
