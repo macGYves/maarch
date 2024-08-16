@@ -34,6 +34,7 @@
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
     - { role: virtualbox, tags: "virtualbox" }
+    - { role: cleanup, tags: "cleanup" }
   handlers:
     - name: "regenerate initramfs"
       become: yes
