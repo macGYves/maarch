@@ -2,7 +2,7 @@
 - name: Install YubiKey Personalization GUI
   become: yes
   community.general.pacman:
-    pkg: 
+    pkg:
       - yubikey-personalization-gui
       - yubikey-manager
 

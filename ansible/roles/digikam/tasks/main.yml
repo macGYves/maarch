@@ -1,5 +1,4 @@
 ---
-
 - name: Install digikam as flatpak
   community.general.flatpak:
     name: org.kde.digikam

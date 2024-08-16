@@ -20,7 +20,6 @@
       - gnome-terminal
     state: absent
 
-
 - name: Start/Enable gdm.service
   become: true
   ansible.builtin.systemd:

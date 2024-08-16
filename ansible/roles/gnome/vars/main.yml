@@ -55,4 +55,3 @@ org_gnome_dconf:
   "/org/gnome/shell/keybindings/screenshot-window": "['<Shift><Super>Print']"
   "/org/gnome/shell/weather/automatic-location": "true"
   "/org/gnome/shell/weather/locations": "[<(uint32 2, <('Göteborg', 'ESGP', true, [(1.0085094136262927, 0.2074032869608953)], [(1.007345872427158, 0.20885773963975227)])>)>]"
-
