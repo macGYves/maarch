@@ -13,3 +13,10 @@
   community.general.flatpak:
     name: com.slack.Slack
     method: user
+
+- name: Install gnome-shell-pomodoro from AUR
+  kewlfft.aur.aur:
+    name:
+      - gnome-shell-pomodoro
+  become: yes
+  become_user: aur_builder
