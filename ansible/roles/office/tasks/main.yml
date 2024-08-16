@@ -5,7 +5,15 @@
     name:
       - vdirsyncer
       - khard
+      - neomutt
+      - notmuch
+      - urlview
+      - isync
+      - msmtp
+      - pass
+      - lynx
     state: present
 
 - import_tasks: nextcloud.yml
 - import_tasks: vdirsyncer.yml
+- import tasks: neomutt.yml

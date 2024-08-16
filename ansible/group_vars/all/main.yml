@@ -59,4 +59,5 @@ packages:
     - pipewire-pulse
     - youtube-dl
     - task # taskwarrior
+    - neomutt
     
