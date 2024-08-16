@@ -30,10 +30,10 @@
     src: sudoers
     mode: 0440
 
-- name: Create drop-in-snippet for getty@tty1.service
-  ansible.builtin.template:
-    dest: /etc/systemd/system/getty@tty1.service.d/override.conf
-    src: getty@tty1.service.override.conf.j2
+#- name: Create drop-in-snippet for getty@tty1.service
+#  ansible.builtin.template:
+#    dest: /etc/systemd/system/getty@tty1.service.d/override.conf
+#    src: getty@tty1.service.override.conf.j2
 
 - name: Create AUR user
   become: yes
