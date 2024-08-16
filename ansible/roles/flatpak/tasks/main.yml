@@ -1,9 +1,11 @@
 ---
-
 - name: Install flatpak
   become: yes
-  community.general.pacman: 
-    pkg: flatpak
+  community.general.pacman:
+    pkg:
+      - flatpak
+      - xdg-desktop-portal-wlr
+      - pipewire-media-session
 
 - name: Add the flathub flatpak repository remote to the user installation
   community.general.flatpak_remote:
