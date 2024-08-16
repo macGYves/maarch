@@ -57,3 +57,8 @@ packages:
   headless:
     - alacritty
     - nnn
+
+features:
+  ssd: true
+  hibernation: false
+  vbox_guest: false

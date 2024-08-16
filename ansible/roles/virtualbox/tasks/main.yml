@@ -15,3 +15,8 @@
       - vboxusers
     append: yes
   when: user.name is defined
+
+- include_tasks: fix_ibt_bug.yml
+
+- include_tasks: configure_as_vbox_guest.yml
+  when: features.vbox_guest

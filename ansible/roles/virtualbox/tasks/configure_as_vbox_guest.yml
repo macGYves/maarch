@@ -1,0 +1,12 @@
+---
+- name: Install vbox guest additions
+  become: true
+  community.general.pacman:
+    pkg: virtualbox-guest-utils
+
+- name: Enable & start vboxservice systemd service
+  become: true
+  ansible.builtin.systemd:
+    name: vboxservice.service
+    state: started
+    enabled: yes
