@@ -1,9 +1,5 @@
 ---
-- name: List installed asdf plugins
-  command: "{{ asdf.bin }} plugin list"
-  register: installed_asdf_plugins
-  failed_when: false
-  changed_when: false
+
 
 - name: Add maven plugin to asdf
   ansible.builtin.command: "{{ asdf.bin }} plugin add maven"
