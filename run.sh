@@ -80,8 +80,7 @@ mount ${BOOT_PARTITION} /mnt/boot
 
 # install essential packages
 # --------------------------
-pacstrap /mnt base linux linux-firmware \
-          git ansible
+pacstrap /mnt base linux linux-firmware git ansible
 
 # = Configure the system
 
