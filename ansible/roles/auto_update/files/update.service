@@ -1,0 +1,5 @@
+[Unit]
+Description="A script to update the system"
+
+[Service]
+ExecStart=sudo pacman -Syu --noconfirm
