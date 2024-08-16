@@ -47,6 +47,7 @@
     - { role: bluetooth, tags: "bluetooth" }
     - { role: yubikey, tags: "yubikey" }
     - { role: packages, tags: "packages" }
+    - { role: firefox, tags: "firefox" }
     - { role: yay, tags: "yay" }
     - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }

@@ -1,0 +1,8 @@
+---
+- name: "Install firefox"
+  ansible.builtin.package:
+    pkg: firefox
+
+- name: "Configure firefox profiles and preferences"
+  ansible.builtin.include_role:
+    name: basvandenbrink.firefox

@@ -4,3 +4,4 @@ collections:
 
 roles:
   - name: markosamuli.asdf
+  - name: basvandenbrink.firefox
