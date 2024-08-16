@@ -58,3 +58,7 @@ alias -g pacman-provides-="pacman -Qo"          # Show package(s) owning the spe
 alias btctl="bluetoothctl"
 
 alias -g sctl="systemctl"
+
+
+# taskmanager
+alias ta="task add"
