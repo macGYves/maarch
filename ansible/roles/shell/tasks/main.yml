@@ -6,3 +6,9 @@
     state: present
   become: yes
   become_user: aur_builder
+
+## Needed for syntax highlighting in less
+- name: Install GNU syntax-highlighting
+  become: yes
+  community.general.pacman:
+    package: source-highlight
