@@ -17,6 +17,7 @@
       - epiphany
       - totem
       - gnome-photos
+      - gnome-software
       - gnome-terminal
     state: absent
 
