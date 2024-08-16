@@ -2,12 +2,14 @@
 - name: Setup swap file
   ansible.builtin.include_role:
     name: geerlingguy.swap
+    apply:
+      become: yes
   vars:
     swap_file_path: "{{ swapfile.path }}"
     swap_file_size_mb: "{{ swapfile.size }}"
     swap_swappiness: "5"
     swap_file_state: present
-    swap_file_create_command: "btrfs filesystem mkswapfile --size {{ swap_file_path }} --uuid clear {{ swap_file_path }}"
+    swap_file_create_command: "btrfs filesystem mkswapfile --size {{ swapfile.size }} --uuid clear {{ swap_file_path }}"
 
 - name: Register swap_file_offset
   become: yes
