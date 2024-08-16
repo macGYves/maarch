@@ -67,3 +67,7 @@ alias -g sctl="systemctl"
 # taskmanager
 alias ta="task add"
 alias t="task"
+
+{{- if eq (substr 0 5 .chezmoi.hostname) "WCAR-" }}
+alias moin="we auth && aws sso login"
+{{- end }}
