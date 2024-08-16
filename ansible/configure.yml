@@ -10,13 +10,16 @@
       encrypt: "sha512_crypt"
       confirm: yes
   roles:
-    - network
+    - { role: network, tags: 'network' }
     - base
-    - { role: plasma, tags: 'plasma' }
+    #  - { role: plasma, tags: 'plasma' }
     - { role: shell, tags: 'shell' }
     - { role: dev-tools, tags: 'dev-tools' }
     - { role: firewall, tags: 'firewall' }
     - { role: ssd, tags: 'ssd' }
+    - { role: alacritty, tags: 'alacritty' }
+    - { role: sway, tags: 'sway' }
+    - { role: bluetooth, tags: 'bluetooth' }
   tasks:
     - name: Install more packages
       pacman:

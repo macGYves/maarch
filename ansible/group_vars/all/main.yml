@@ -38,7 +38,7 @@ packages:
         - linux-firmware
         - lvm2
         - ansible
-        - wpa_supplicant
+#        - wpa_supplicant
         - neovim
         - git
         - zsh
@@ -46,35 +46,27 @@ packages:
         - curl
         - openssh
         - rsync
-        - kate
-        - dolphin
-        - konsole
-        - okular
-        - gwenview
-        - spectacle
-        - ark
+        - man-db
         - unzip
         - zip
-        - openssh
-        - baobab
-        - gramps
-        - firefox
-        - chromium
-        - vlc
-        - libreoffice-fresh
-        - calibre
         - keepassxc
-        - digikam
-        - freemind
-        - gimp
-        - ttf-hack
-        - docker
-        - docker-compose
-        # 3G modem
-        #- modem-manager-gui
-        # smartcard
-        - ccid
-        - opensc
-        - xloadimage
-        # firewall
-        - nextcloud-client
+        - nnn
+#        - baobab
+#        - gramps
+#        - firefox
+#        - chromium
+#        - vlc
+#        - libreoffice-fresh
+#        - calibre
+#        - freemind
+#        - gimp
+#        - docker
+#        - docker-compose
+#        # 3G modem
+#        #- modem-manager-gui
+#        # smartcard
+#        - ccid
+#        - opensc
+#        - xloadimage
+#        # firewall
+#        - nextcloud-client

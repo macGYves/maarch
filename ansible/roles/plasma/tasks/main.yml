@@ -4,13 +4,13 @@
   pacman:
     name:
       - sddm
-#      - sddm-kcm
+    #      - sddm-kcm
     state: present
 
 - name: Enable sddm
   systemd:
     name: sddm.service
-#    state: started
+    #    state: started
     enabled: yes
 
 - name: Assert sddm.conf.d config directory exists
@@ -33,6 +33,15 @@
 
 - name: Install plasma
   pacman:
-    name: plasma-desktop
+    name:
+      - plasma-desktop
+      - kate
+      - dolphin
+      - konsole
+      - okular
+      - ark
+      - digikam
+      - gwenview
+      - spectacle
     state: present
 

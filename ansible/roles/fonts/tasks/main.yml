@@ -1,0 +1,19 @@
+---
+
+- name: Install fonts
+  pacman:
+    name:
+      - text-gyre-fonts
+      - ttf-dejavu
+      - ttf-linux-libertine
+      - ttf-hack
+      - otf-font-awesome
+      - inter-font
+
+- name: Install fonts from AUR
+  aur:
+    name: nerd-fonts-fira-code
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder

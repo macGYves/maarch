@@ -2,5 +2,44 @@
 
 - name: Install sway
   pacman:
-    name: sway
+    name:
+      - sway
+      - swaylock
+      - swayidle
+      - brightnessctl
+      - gammastep   # auto-colour temperature adjustment tool
+      - grim        # screenshot tool
+      - waybar
+      - jq          # needed for keyboard-layout-changer
+      - amixer      # audio volume control
+      - pavucontrol
     state: present
+
+- name: Install sway dependencies from AUR
+  aur:
+    name:
+      - swappy
+      - azote
+      - nwg-launchers
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Ensure sway config directory exists
+  file:
+    path: "/home/{{ user.name }}/.config/sway"
+    state: directory
+    owner: "{{ user.name }}"
+    mode: 0750
+
+- name: Copy sway configuration files
+  copy:
+    dest: "/home/{{ user.name }}/.config/sway/config"
+    src: sway/config
+    owner: "{{ user.name }}"
+    mode: 0640
+
+- import_tasks: waybar.yml
+- import_tasks: nwg-launchers.yml
+- import_tasks: swaylock.yml
