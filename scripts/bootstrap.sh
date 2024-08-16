@@ -1,17 +1,21 @@
-#!/usr/bin/zsh
+#!/usr/bin/sh
+set -x
+set -v
 
+
+
+# = Variables
 printf 'Installation device (e.g. /dev/sda):'
 read -r INSTALL_DEV
 
-# = Variables
-export TIMEZONE="Europe/Stockholm"
+TIMEZONE="Europe/Stockholm"
 
 ESP_LABEL="ESP" # _E_FI _S_ystem _P_artition
 EFI_PARTITION="/dev/disk/by-partlabel/${ESP_LABEL}"
 
 LUKS_PARTITION_LABEL="CRYPTROOT"
-export LUKS_PARTITION="/dev/disk/by-partlabel/${LUKS_PARTITION_LABEL}"
-export LUKS_MAPPING_NAME=archroot
+LUKS_PARTITION="/dev/disk/by-partlabel/${LUKS_PARTITION_LABEL}"
+LUKS_MAPPING_NAME=archroot
 
 
 # = Set keyboard layout during live session
@@ -48,6 +52,7 @@ sgdisk --clear \
        --new=1:0:+550MiB --typecode=1:${TYPECODE_ESP} --change-name=1:${ESP_LABEL} \
        --new=2:0:0 --typecode=2:${TYPECODE_LUKS} --change-name=2:${LUKS_PARTITION_LABEL}\
        "${INSTALL_DEV}"
+
 
 
 # = Setup disk encryption following LUKS_on_a_partition approach
@@ -96,6 +101,74 @@ pacstrap /mnt base linux linux-firmware neovim zsh git ansible btrfs-progs netwo
 
 genfstab -U /mnt > /mnt/etc/fstab
 
-script_dir=$(dirname "$0")
-cp "${script_dir}/bootstrap_os.sh" /mnt/bootstrap_os.sh
-arch-chroot /mnt ./bootstrap_os.sh
+
+CRYPTROOT_UUID=$(blkid -s UUID -o value "${LUKS_PARTITION}")
+echo "cryptroot uuid: ${CRYPTROOT_UUID}"
+HOSTNAME="archlinux"
+
+install_script=bootstrap_os.sh
+cat << EOF > "/mnt/${install_script}"
+#!/bin/sh
+# == Time zone
+# === timedatectl does not work in chroot
+ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
+hwclock --systohc --utc
+
+# == Localisation
+echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+
+echo "LANG=de_DE.UTF-8" > /etc/locale.conf
+
+printf "KEYMAP=uk" > /etc/vconsole.conf
+
+# == Network configuration
+# === hostname
+echo "$HOSTNAME" > /etc/hostname
+
+# === hosts file
+printf \
+"127.0.0.1   localhost
+::1          localhost
+127.0.1.1    ${HOSTNAME}.localdomain  ${HOSTNAME}" \
+> /etc/hosts
+
+# === Enable NetworkManager systemd service
+systemctl enable NetworkManager.service
+
+# == initramfs
+# ---- add sd-encrypt bootctl
+printf \
+"MODULES=()
+BINARIES=()
+FILES=()
+HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block sd-encrypt filesystems fsck)" \
+> /etc/mkinitcpio.conf
+
+echo "Setting root password..."
+passwd
+
+
+# Install systemd-boot
+bootctl install
+
+echo \
+"title          Arch Linux
+linux          /vmlinuz-linux
+initrd         /intel-ucode.img
+initrd         /initramfs-linux.img
+options        rd.luks.name=${CRYPTROOT_UUID}=${LUKS_MAPPING_NAME} root=/dev/mapper/${LUKS_MAPPING_NAME} rootflags=subvol=@ rw rootfstype=btrfs" \
+> /boot/loader/entries/arch.conf
+
+echo \
+"default       arch.conf
+ timeout       1
+ editor        no
+ console-mode  max" \
+> /boot/loader/loader.conf
+
+mkinitcpio -P
+EOF
+chmod +x "/mnt/${install_script}"
+
+arch-chroot /mnt "./${install_script}"
