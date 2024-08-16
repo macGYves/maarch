@@ -29,13 +29,17 @@
         versions: ["2.11.16"]
         global: "2.11.16"
 
-- name: "Install IDEs"
+- name: "Install vscodium"
   kewlfft.aur.aur:
     name:
       - vscodium-bin
-  #      - intellij-idea-ultimate-edition
   become: true
   become_user: aur_builder
+
+- name: Install IntelliJ IDEA Ultimate
+  community.general.snap:
+    name: intellij-idea-ultimate
+    classic: true
 
 - name: "Setup docker"
   ansible.builtin.include_tasks: docker.yml

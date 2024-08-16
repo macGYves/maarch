@@ -55,7 +55,7 @@
     - { role: snapd, tags: "snapd" }
     - { role: gnome, tags: "gnome" }
     - { role: xdg_user_dirs, tags: "xdg_user_dirs" }
-    - { role: dev_tools, tags: "dev-tools" }
+    - { role: dev_tools, tags: "dev_tools" }
     - { role: themes, tags: "themes" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
