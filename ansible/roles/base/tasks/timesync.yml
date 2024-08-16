@@ -1,10 +1,12 @@
 ---
-- name: Copy systemd-timesyncd.conf
+- name: Init /etc/systemd/timesyncd.conf
+  become: yes
   copy:
     dest: /etc/systemd/timesyncd.conf
     src: timesyncd.conf
 
 - name: Enable systemd-timesyncd
+  become: yes
   systemd:
     name: systemd-timesyncd.service
     state: started

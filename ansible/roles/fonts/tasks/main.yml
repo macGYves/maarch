@@ -1,5 +1,6 @@
 ---
 - name: Install fonts
+  become: yes
   pacman:
     name:
       - tex-gyre-fonts
@@ -19,5 +20,5 @@
 
 - name: Copy fontconfig configuration
   copy:
-    dest: /etc/fonts/local.conf
+    dest: ~/.config/fontconfig/fonts.conf
     src: local.conf

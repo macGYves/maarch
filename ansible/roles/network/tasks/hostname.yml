@@ -1,5 +1,6 @@
 ---
-- name: Set hostname
+- name: "Set hostname to {{ hostname }}"
+  become: yes
   copy:
     dest: /etc/hostname
     content: "{{ hostname }}"

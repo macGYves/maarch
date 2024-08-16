@@ -1,5 +1,6 @@
 ---
 - name: Install sway
+  become: yes
   pacman:
     name:
       - sway
@@ -10,7 +11,6 @@
       - grim # screenshot tool
       - waybar
       - jq # needed for keyboard-layout-changer
-      #      - amixer      # audio volume control
       - pavucontrol
     state: present
 
@@ -29,14 +29,14 @@
 
 - name: Ensure sway config directory exists
   file:
-    path: "/home/{{ user.name }}/.config/sway"
+    path: "~/.config/sway"
     state: directory
     owner: "{{ user.name }}"
     mode: 0750
 
 - name: Copy sway configuration files
   copy:
-    dest: "/home/{{ user.name }}/.config/sway/config"
+    dest: "~/.config/sway/config"
     src: sway/config
     owner: "{{ user.name }}"
     mode: 0640

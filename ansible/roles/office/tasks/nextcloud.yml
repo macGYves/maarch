@@ -1,4 +1,5 @@
 ---
 - name: Install nextcloud desktop sync client
+  become: yes
   pacman:
     name: nextcloud-client

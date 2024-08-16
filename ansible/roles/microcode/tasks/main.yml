@@ -1,5 +1,6 @@
 ---
 - name: Install intel microcode
+  become: yes
   pacman:
     name: intel-ucode
     state: present

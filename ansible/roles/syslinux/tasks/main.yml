@@ -1,14 +1,17 @@
 ---
 - name: Install syslinux
+  become: yes
   package:
     name: syslinux gptfdisk
 
 - name: Ensure syslinux dir exists
+  become: yes
   file:
     path: /boot/syslinux
     state: directory
 
 - name: Copy c32 into place
+  become: yes
   copy:
     src: "{{ item }}"
     dest: /boot/syslinux
@@ -18,19 +21,15 @@
     - /usr/lib/syslinux/bios/*.c32
 
 - name: Install bootloader
-  shell: extlinux --install /boot/syslinux
+  become: yes
+  command: extlinux --install /boot/syslinux
 
 - name: Install MBR
+  become: yes
   shell: "dd bs=440 count=1 conv=notrunc if=/usr/lib/syslinux/bios/gptmbr.bin of=/dev/sda"
 
-#- name: Get LUKS partition UUID
-#  command: blkid "/dev/disk/by-partlabel/{{ partitions.encrypted }}" -s UUID -o value
-#  register: _uuid
-#  changed_when: false
-
 - name: Copy syslinux.cfg
-  #  vars:
-  #    root_uuid: "{{ _uuid.stdout_lines[0] }}"
+  become: yes
   template:
     src: syslinux.cfg.j2
     dest: /boot/syslinux/syslinux.cfg

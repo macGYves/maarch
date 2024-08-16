@@ -1,10 +1,12 @@
 ---
-- name: Install iwd
+- name: Install iNet wireless daemon (iwd)
+  become: yes
   pacman:
     name: iwd
     state: present
 
 - name: Start and enable iwd systemd service
+  become: yes
   systemd:
     name: iwd.service
     enabled: yes

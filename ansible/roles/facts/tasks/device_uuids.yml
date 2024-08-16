@@ -1,5 +1,6 @@
 ---
 - name: Gathering hardware facts
+  become: yes
   setup:
     gather_subset:
       - "!all"
@@ -7,6 +8,7 @@
       - hardware
 
 - name: Save LUKS device UUID in fact
+  become: yes
   set_fact:
     luks_device_uuid: "{{ ansible_device_links.uuids[item.key] | first}}"
   with_dict: "{{ ansible_device_links.labels }}"

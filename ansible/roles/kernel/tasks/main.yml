@@ -1,5 +1,6 @@
 ---
 - name: Push mkinitcpio configuration and regenerate initramfs
+  become: yes
   template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf

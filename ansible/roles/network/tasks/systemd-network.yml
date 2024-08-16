@@ -1,8 +1,10 @@
 ---
 - name: Enable systemd-networkd
+  become: yes
   command: "systemctl enable systemd-networkd.service"
 
 - name: Copy systemd-networkd config files
+  become: yes
   copy:
     dest: /etc/systemd/network/
     src: "{{ item }}"
@@ -10,14 +12,17 @@
     - "*.network"
 
 - name: Enable systemd-resolved
+  become: yes
   command: "systemctl enable systemd-resolved.service"
 
 - name: Ensure systemd-resolved config folder exists
+  become: yes
   file:
     path: /etc/systemd/resolved.conf.d
     state: directory
 
 - name: Copy systemd-resolved config file
+  become: yes
   copy:
     dest: /etc/systemd/resolved.conf.d/dns_servers.conf
     src: resolved/dns_servers.conf
