@@ -1,0 +1,22 @@
+---
+- name: Install snapd
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name:
+      - snapd
+
+- name: Start and enable snapd systemd socket
+  become: true
+  ansible.builtin.systemd:
+    name: snapd.socket
+    state: started
+    enabled: true
+
+- name: Create symlink /snap -> /var/lib/snapd/snap
+  become: true
+  ansible.builtin.file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+    mode: "0777"

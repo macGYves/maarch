@@ -52,6 +52,7 @@
     - { role: fonts, tags: "fonts" }
     - { role: shell, tags: "shell" }
     - { role: flatpak, tags: "flatpak" }
+    - { role: snapd, tags: "snapd" }
     - { role: gnome, tags: "gnome" }
     - { role: xdg_user_dirs, tags: "xdg_user_dirs" }
     - { role: dev_tools, tags: "dev-tools" }
