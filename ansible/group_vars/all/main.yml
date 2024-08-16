@@ -1,4 +1,7 @@
 ---
+system:
+  locale: de_DE
+
 timezone: Europe/Stockholm
 
 user:
