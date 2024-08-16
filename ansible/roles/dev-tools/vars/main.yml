@@ -1,21 +1,17 @@
 ---
-
 asdf:
   install_dir: "~/.asdf"
-  bin: "~/.asdf/bin/asdf"
-  version: "v0.8.1"
-  
-
+  version: "v0.9.0"
 
 maven:
-  versions: 
-    - "3.8.1"
+  versions:
+    - "3.8.5"
 
 jdk:
-  versions: 
-    - "adoptopenjdk-11.0.11+9"
-    - "graalvm-21.1.0+java16"
+  versions:
+    - "adoptopenjdk-11.0.14+9"
+    - "graalvm-22.0.0.2+java17"
 
-node: 
+nodejs:
   versions:
     - "lts"
