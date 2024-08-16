@@ -85,7 +85,7 @@ org_gnome_dconf:
   "/org/gnome/shell/extensions/materialshell/bindings/kill-focused-window": "['<Shift><Alt>q']"
   "/org/gnome/shell/extensions/materialshell/layouts/default-layout": "'ratio'"
   "/org/gnome/shell/extensions/materialshell/layouts/float": "false"
-  "/org/gnome/shell/extensions/materialshell/layouts/gap": "8"
+  "/org/gnome/shell/extensions/materialshell/layouts/gap": "0"
   "/org/gnome/shell/extensions/materialshell/layouts/grid": "false"
   "/org/gnome/shell/extensions/materialshell/layouts/half": "false"
   "/org/gnome/shell/extensions/materialshell/layouts/half-horizontal": "false"
