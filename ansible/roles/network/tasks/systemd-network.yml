@@ -20,9 +20,3 @@
   ansible.builtin.file:
     path: /etc/systemd/resolved.conf.d
     state: directory
-
-- name: Copy systemd-resolved config file
-  become: yes
-  ansible.builtin.copy:
-    dest: /etc/systemd/resolved.conf.d/dns_servers.conf
-    src: resolved/dns_servers.conf
