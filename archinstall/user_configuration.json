@@ -1,0 +1,95 @@
+{
+  "archinstall-language": "German",
+  "config_version": "2.5.5",
+  "debug": false,
+  "disk_encryption": {
+    "encryption_type": "partition",
+    "partitions": {
+      "/dev/sda": [
+        {
+          "btrfs": {
+            "subvolumes": [
+              {
+                "compress": false,
+                "mountpoint": "/",
+                "name": "@",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/home",
+                "name": "@home",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/var/log",
+                "name": "@log",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/var/cache/pacman/pkg",
+                "name": "@pkg",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/.snapshots",
+                "name": "@.snapshots",
+                "nodatacow": false
+              }
+            ]
+          },
+          "encrypted": false,
+          "filesystem": {
+            "format": "btrfs",
+            "mount_options": ["compress=zstd"]
+          },
+          "mountpoint": null,
+          "size": "100%",
+          "start": "513MiB",
+          "type": "primary",
+          "wipe": true
+        }
+      ]
+    }
+  },
+  "harddrives": ["/dev/sda"],
+  "hostname": "varc",
+  "keyboard-layout": "uk",
+  "mirror-region": {
+    "Sweden": {
+      "http://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch": true,
+      "http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch": true,
+      "http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch": true,
+      "http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch": true,
+      "https://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch": true,
+      "https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch": true,
+      "https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch": true,
+      "https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch": true,
+      "https://mirror.osbeck.com/archlinux/$repo/os/$arch": true
+    }
+  },
+  "nic": {
+    "dhcp": true,
+    "dns": null,
+    "gateway": null,
+    "iface": null,
+    "ip": null,
+    "type": "nm"
+  },
+  "no_pkg_lookups": false,
+  "offline": false,
+  "packages": ["git", "ansible", "neovim"],
+  "profile": {
+    "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/minimal.py"
+  },
+  "script": "guided",
+  "silent": false,
+  "swap": false,
+  "sys-encoding": "utf-8",
+  "sys-language": "de_DE.UTF-8",
+  "timezone": "Europe/Stockholm",
+  "version": "2.5.5"
+}

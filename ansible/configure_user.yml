@@ -2,9 +2,6 @@
 - name: Customise a basic arch linux installation
   hosts: localhost
   vars_prompt:
-    - name: luks_password
-      prompt: "luks password"
-      private: yes
     - name: user_email
       prompt: "Your email address"
       private: no
@@ -12,25 +9,18 @@
       prompt: "YubiKey authenticator PIN"
       private: yes
   roles:
-    - time
     - { role: packages, tags: "packages" }
-    - users
     - yay
-    - { role: dotfiles, tags: "dotfiles" }
-    - { role: ssd, tags: "ssd" }
-    - { role: power_management, tags: "power_mgmt" }
-    - { role: firewall, tags: "firewall" }
-    - { role: bluetooth, tags: "bluetooth" }
-    - { role: fonts, tags: "fonts" }
-    - { role: shell, tags: "shell" }
-      #- { role: sway, tags: "sway" }
-    - { role: gnome, tags: "gnome" }
-    - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
-    - { role: flatpak, tags: "flatpak" }
-    - { role: dev-tools, tags: "dev-tools" }
-    - { role: themes, tags: "themes" }
     - { role: yubikey, tags: "yubikey" }
     - { role: ssh, tags: "ssh" }
+    - { role: dotfiles, tags: "dotfiles" }
+    - { role: fonts, tags: "fonts" }
+    - { role: shell, tags: "shell" }
+    - { role: flatpak, tags: "flatpak" }
+    - { role: gnome, tags: "gnome" }
+    - { role: xdg-user-dirs, tags: "xdg-user-dirs" }
+    - { role: dev-tools, tags: "dev-tools" }
+    - { role: themes, tags: "themes" }
     - { role: office, tags: "office" }
     - { role: digikam, tags: "digikam" }
     - { role: virtualbox, tags: "virtualbox" }

@@ -1,4 +1,1 @@
 localhost   ansible_connection=local
-
-[localhost_chroot]
-/mnt ansible_connection=chroot ansible_chroot_exe=arch-chroot

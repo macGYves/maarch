@@ -15,7 +15,6 @@ packages:
     - base-devel
     - linux
     - linux-firmware
-    - lvm2
     - ansible
     - neovim
     - git
