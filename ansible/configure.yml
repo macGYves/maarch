@@ -17,6 +17,7 @@
     - { role: office, tags: "office" }
   tasks:
     - name: Install more packages
+      become: true
       pacman:
         name: "{{ packages.more }}"
         state: present
