@@ -1,3 +1,0 @@
----
-- name: Generate mirrorlist
-  command: reflector --country Sweden --country Norway --country Danmark --country Germany --country Finland --age 12 --protocol https --sort rate -n 10 --save /mnt/etc/pacman.d/mirrorlist

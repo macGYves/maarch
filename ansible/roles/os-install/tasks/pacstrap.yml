@@ -1,3 +1,7 @@
 ---
+
+- name: Generate pacman mirrorlist
+  command: reflector --country Sweden --country Norway --country Danmark --country Germany --country Finland --age 12 --protocol https --sort rate -n 5 --save /etc/pacman.d/mirrorlist
+
 - name: Install essential packages
   command: "pacstrap /mnt base linux linux-firmware intel-ucode lvm2 ansible wpa_supplicant"

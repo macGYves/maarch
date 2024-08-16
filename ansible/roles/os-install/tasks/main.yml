@@ -1,6 +1,6 @@
 ---
 
-- import_tasks: erase_disk.yml
+- import_tasks: erase_install_disk.yml
 - import_tasks: create_partitions.yml
 - import_tasks: setup_lvm_on_luks.yml
 - import_tasks: format_partitions.yml
