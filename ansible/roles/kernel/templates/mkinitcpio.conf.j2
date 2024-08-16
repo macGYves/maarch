@@ -1,4 +1,4 @@
-MODULES=({{ initrd_mods }})
-BINARIES=({{ initrd_bin }})
-FILES=({{ initrd_files }})
-HOOKS=({{ initrd_hooks }})
+MODULES="btrfs"
+BINARIES="/usr/bin/btrfs"
+FILES=""
+HOOKS="base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt filesystems {% if has_resume_hook %}resume {% endif %}fsck"

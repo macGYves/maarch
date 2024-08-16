@@ -1,5 +1,2 @@
 ---
-initrd_mods: "btrfs"
-initrd_bin: "/usr/bin/btrfs"
-initrd_files: ""
-initrd_hooks: "base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt filesystems resume fsck"
+has_resume_hook: "{{ features.hibernation | default(false) }}"

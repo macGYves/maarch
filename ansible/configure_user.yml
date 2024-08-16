@@ -29,3 +29,5 @@
     - name: "regenerate initramfs"
       become: yes
       ansible.builtin.command: mkinitcpio -P
+    - name: "update boot loader entries"
+      become: yes
