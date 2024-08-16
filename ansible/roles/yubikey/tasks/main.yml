@@ -1,14 +1,14 @@
 ---
 - name: Install YubiKey Personalization GUI
   become: yes
-  pacman:
+  community.general.pacman:
     name: 
       - yubikey-personalization-gui
       - yubikey-manager
 
 - name: Install smartcard libs/tools
   become: yes
-  pacman:
+  community.general.pacman:
     name:
       - pcsclite
       - libusb-compat
@@ -23,5 +23,5 @@
 
 - name: Install gcr  # pinentry-gnome3 depends on this
   become: yes
-  pacman: 
+  community.general.pacman: 
     pkg: gcr

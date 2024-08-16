@@ -1,7 +1,7 @@
 ---
 - name: Install Uncomplicated Firewall
   become: yes
-  pacman:
+  community.general.pacman:
     name: ufw
     state: present
 

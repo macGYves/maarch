@@ -1,7 +1,7 @@
 ---
 - name: Install iNet wireless daemon (iwd)
   become: yes
-  pacman:
+  community.general.pacman:
     name: iwd
     state: present
 

@@ -1,7 +1,7 @@
 ---
 - name: Install office packages
   become: true
-  pacman:
+  community.general.pacman:
     name:
       - vdirsyncer
       - khard

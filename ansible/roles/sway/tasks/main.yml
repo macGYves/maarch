@@ -1,7 +1,7 @@
 ---
 - name: Install sway
   become: yes
-  pacman:
+  community.general.pacman:
     name:
       - sway
       - swaylock

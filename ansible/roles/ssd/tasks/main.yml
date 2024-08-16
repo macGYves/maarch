@@ -1,7 +1,7 @@
 ---
 - name: Install util-linux package
   become: yes
-  pacman:
+  community.general.pacman:
     name: util-linux
     state: present
 
