@@ -1,28 +1,19 @@
 ---
 
-
-
-- name: bootstrap Arch Linux system
+- name: Spielplatz
   hosts: localhost
   tasks:
-#    - name: Get LUKS device UUID
-#      set_fact:
-#        luks_device_uuid: "{{ansible_facts.device_links.uuids[item.key] | first}}"
-#      with_dict: "{{ ansible_device_links.labels }}"
-#      when: partitions.luks.label in item.value
-#      changed_when: false
-#
-#    - name: show luks uuid
-#      debug: var=luks_device_uuid
-    - name: Obtain boot mode
-      stat:
-        path: /sys/firmware/efi/efivars
-      register: efivars_info
-    - name: Set boot mode to BIOS
-      set_fact:
-        boot_mode: 'bios'
-      when: not efivars_info.stat.exists
-    - name: Set boot mode to UEFI
-      set_fact:
-        boot_mode: 'uefi'
-      when: efivars_info.stat.exists
+    - name: Create LUKS container
+      community.crypto.luks_device:
+        device: "/dev/sda2"
+        state: "present"
+        passphrase: "lol"
+        type: luks2
+
+    - name: close the LUKS container
+      community.crypto.luks_device:
+        device: "/dev/sda2"
+        state: "closed"
+        name: "cryptlvm"
+        passphrase: "g"
+
