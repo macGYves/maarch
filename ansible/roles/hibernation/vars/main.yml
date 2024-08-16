@@ -1,0 +1,4 @@
+---
+swapfile:
+  path: /swapfile
+  size: 32g

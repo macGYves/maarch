@@ -20,6 +20,7 @@
     - { role: yubikey, tags: "yubikey" }
     - { role: systemd-boot, tags: "systemd-boot" }
     - { role: kernel, tags: "kernel" }
+    - { role: hibernation, tags: "hibernation" }
   handlers:
     - name: "regenerate initramfs"
       become: yes
