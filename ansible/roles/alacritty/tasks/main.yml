@@ -3,14 +3,3 @@
   become: yes
   pacman:
     name: alacritty
-    state: present
-
-- name: Ensure alacritty config folder exists
-  file:
-    path: "~/.config/alacritty"
-    state: directory
-
-- name: Copy alacritty config file
-  ansible.builtin.copy:
-    dest: "~/.config/alacritty/alacritty.yml"
-    src: "alacritty.yml"
