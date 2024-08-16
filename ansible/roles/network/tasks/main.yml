@@ -6,8 +6,22 @@
     content: "{{ hostname }}"
     mode: 0644
 
+
 - name: Init /etc/hosts
   template:
     src: hosts.j2
     dest: /etc/hosts
     mode: 0644
+
+
+- name: Install NetworkManager
+  pacman:
+    name: networkmanager
+    state: present
+
+
+- name: Enable NetworkManager
+  systemd:
+    name: NetworkManager.service
+    state: started
+    enabled: yes
