@@ -33,3 +33,5 @@
     key: "{{ item.key }}"
     value: "{{ item.value | string }}"
   loop: "{{ org_gnome_dconf | dict2items }}"
+
+- include_tasks: material_shell.yml

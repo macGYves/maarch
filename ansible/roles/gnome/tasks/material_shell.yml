@@ -1,0 +1,15 @@
+---
+- name: Install fonts
+  become: true
+  community.general.pacman:
+    pkg:
+      - ttf-roboto
+      - ttf-roboto-mono-nerd
+
+- name: Install packages from AUR
+  kewlfft.aur.aur:
+    name:
+      - gnome-shell-extension-material-shell-git
+      - tela-icon-theme
+  become: yes
+  become_user: aur_builder
