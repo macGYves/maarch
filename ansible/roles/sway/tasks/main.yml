@@ -1,4 +1,9 @@
 ---
+- name: Install packages for keyboard-centric WMs
+  become: true
+  community.general.pacman:
+    pkg: "{{ packages.headless }}"
+
 - name: Install sway
   become: yes
   community.general.pacman:
@@ -50,3 +55,19 @@
     - mako.service
     - wob.socket
     - wob.service
+
+- name: Install terminal mail/office packages
+  become: true
+  community.general.pacman:
+    pkg:
+      - vdirsyncer
+      - khard
+      - neomutt
+      - notmuch
+      # - urlview // <- from AUR!
+      - isync
+      - msmtp
+      - pass
+      - lynx
+
+- import_tasks: vdirsyncer.yml

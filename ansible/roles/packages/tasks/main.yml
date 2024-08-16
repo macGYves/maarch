@@ -9,8 +9,3 @@
   become: true
   community.general.pacman:
     pkg: "{{ packages.essential }}"
-
-- name: Install more packages
-  become: true
-  community.general.pacman:
-    pkg: "{{ packages.more }}"
