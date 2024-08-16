@@ -7,7 +7,7 @@
 
 - name: Create systemd-boot loader.conf
   become: yes
-  copy:
+  ansible.builtin.copy:
     src: files/loader.conf
     dest: /boot/loader/loader.conf
     mode: 0644

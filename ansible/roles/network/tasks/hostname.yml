@@ -1,7 +1,7 @@
 ---
 - name: "Set hostname to {{ hostname }}"
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/hostname
     content: "{{ hostname }}"
     mode: 0644

@@ -1,10 +1,9 @@
 ---
 - name: Init /etc/locale.gen
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/locale.gen
-    src: files/locale.gen
-    mode: 0644
+    src: locale.gen
 
 - name: run locale-gen
   become: yes
@@ -12,14 +11,12 @@
 
 - name: Init /etc/locale.conf
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/locale.conf
-    src: files/locale.conf
-    mode: 0644
+    src: locale.conf
 
 - name: Init /etc/vconsole.conf
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/vconsole.conf
-    src: files/vconsole.conf
-    mode: 0644
+    src: vconsole.conf

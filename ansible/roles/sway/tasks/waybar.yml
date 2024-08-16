@@ -7,7 +7,7 @@
     mode: 0750
 
 - name: Copy waybar config files
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "/home/{{ user.name }}/.config/waybar/"
     owner: "{{ user.name }}"

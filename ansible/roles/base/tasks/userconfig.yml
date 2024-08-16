@@ -26,7 +26,7 @@
 
 - name: Init /etc/sudoers
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/sudoers
     src: sudoers
     mode: 0440

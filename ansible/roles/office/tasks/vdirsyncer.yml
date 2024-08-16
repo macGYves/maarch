@@ -16,12 +16,12 @@
     state: directory
 
 - name: Ensure vdirsyncer.service systemd unit is installed
-  copy:
+  ansible.builtin.copy:
     dest: "~/.config/systemd/user"
     src: .config/systemd/user/vdirsyncer.service
 
 - name: Ensure vdirsyncer.timer systemd unit is installed
-  copy:
+  ansible.builtin.copy:
     dest: "~/.config/systemd/user"
     src: .config/systemd/user/vdirsyncer.timer
 

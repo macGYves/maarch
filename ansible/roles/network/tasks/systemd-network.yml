@@ -5,7 +5,7 @@
 
 - name: Copy systemd-networkd config files
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/systemd/network/
     src: "{{ item }}"
   with_fileglob:
@@ -23,6 +23,6 @@
 
 - name: Copy systemd-resolved config file
   become: yes
-  copy:
+  ansible.builtin.copy:
     dest: /etc/systemd/resolved.conf.d/dns_servers.conf
     src: resolved/dns_servers.conf
