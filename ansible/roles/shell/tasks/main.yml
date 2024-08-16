@@ -1,8 +1,9 @@
 ---
-- name: Install antidote (zsh plugin manager)
+- name: Install shell tools/customizations
   kewlfft.aur.aur:
-    name: zsh-antidote
-    state: present
+    name:
+      - zsh-antidote
+      - git-extras
   become: yes
   become_user: aur_builder
 
