@@ -48,6 +48,7 @@ export ZSHZ_DATA=~/.local/share/zsh-z
 export EDITOR=nvim
 export VISUAL=nvim
 
+export HISTFILE=${ZCACHEDIR:-~}/zsh_history
 
 # turn off all beeps
 unsetopt BEEP
