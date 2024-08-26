@@ -7,4 +7,5 @@ lukechilds/zsh-better-npm-completion
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/asdf
 ohmyzsh/ohmyzsh path:plugins/git-extras
+ohmyzsh/ohmyzsh path:plugins/mvn
 ohmyzsh/ohmyzsh path:themes/ys.zsh-theme
