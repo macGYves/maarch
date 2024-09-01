@@ -1,0 +1,8 @@
+profile home_office {
+        output eDP-1 disable
+        output DP-3 enable scale 2
+}
+
+profile undocked {
+        output eDP-1 enable
+}
