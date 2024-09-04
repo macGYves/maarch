@@ -13,5 +13,7 @@ cmap w!! :SudaWrite
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'https://github.com/lambdalisue/suda.vim.git'
+Plug 'godlygeek/tabular'
+Plug 'f-person/git-blame.nvim'
 
 call plug#end()
