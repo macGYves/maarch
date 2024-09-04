@@ -9,6 +9,8 @@
       - ttf-hack-nerd
       - inter-font
       - noto-fonts-emoji
+      - ttf-roboto
+      - ttf-roboto-mono-nerd
 
 - name: Ensure ~/.config/fontconfig directory exists
   ansible.builtin.file:

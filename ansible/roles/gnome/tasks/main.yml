@@ -29,6 +29,14 @@
   become: true
   become_user: aur_builder
 
+- name: Install icon themes from AUR
+  kewlfft.aur.aur:
+    name:
+      - tela-icon-theme
+      - tela-circle-icon-theme-all
+  become: true
+  become_user: aur_builder
+
 - name: Enable gdm.service
   become: true
   ansible.builtin.systemd:

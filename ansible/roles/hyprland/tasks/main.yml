@@ -1,0 +1,23 @@
+---
+
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    pkg:
+      - hyprland
+      - alacritty
+      - brightnessctl
+      - pamixer
+      - playerctl
+      - dunst
+      - hyprpaper
+      - hypridle
+      - hyprlock
+      - xdg-desktop-portal-hyprland
+      - polkit-kde-agent
+      - qt5-wayland
+      - qt6-wayland
+      - waybar
+      - kanshi
+      - nwg-look
+      - flameshot

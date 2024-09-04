@@ -1,11 +1,22 @@
 ---
-- name: Install nordic gtk3 theme
+
+- name: Install icon themes from AUR
   kewlfft.aur.aur:
-    name: nordic-theme
+    name:
+      - nordic-theme
+      - tela-icon-theme
+      - tela-circle-icon-theme-all
   become: true
   become_user: aur_builder
 
-- name: Install papirus icon theme
+- name: Install icon themes
   become: true
   ansible.builtin.package:
     pkg: papirus-icon-theme
+
+- name: Install cursor themes
+  become: true
+  ansible.builtin.package:
+    pkg:
+      - capitaine-cursors
+

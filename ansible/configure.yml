@@ -55,6 +55,7 @@
     - { role: flatpak, tags: "flatpak" }
     - { role: snapd, tags: "snapd" }
     - { role: gnome, tags: "gnome" }
+    - { role: hyprland, tags: "hyprland" }
     - { role: xdg_user_dirs, tags: "xdg_user_dirs" }
     - { role: dev_tools, tags: "dev_tools" }
     - { role: themes, tags: "themes" }
