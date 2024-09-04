@@ -1,0 +1,9 @@
+provider:  duckduckgo
+
+customProviders [
+  {
+    name: mvn
+    url: "https://mvnrepository.com/search?q=%s"
+    tags: [mvn]
+  }
+]
