@@ -13,7 +13,7 @@ alias gb="git branch"
 alias gbd="git branch -d"
 alias gbD="git branch -D"
 alias gco="git checkout"
-alias gcom="git checkout {{ .git.defaultbranch }}"
+alias gcom="git checkout master"
 alias gcam="git commit --all -m"
 alias gd="git diff"
 alias gf="git fetch"
@@ -23,6 +23,10 @@ alias gp="git pull"
 alias gpu="git push"
 alias grh="git reset --hard"
 alias gst="git status"
+
+# github cli
+alias ghprm='gh pr list --author "@me" --state open'
+alias linktopr="gh pr list --author "@me" --state open --json url | jq '.[] | .url'"
 
 ## chezmoi
 alias che="chezmoi"
@@ -63,11 +67,11 @@ alias btctl="bluetoothctl"
 
 alias -g sctl="systemctl"
 
+# s-search
+alias smvn="s -p mvn"
 
 # taskmanager
 alias ta="task add"
 alias t="task"
+alias moin="kinit && we auth"
 
-{{- if eq (substr 0 5 .chezmoi.hostname) "WCAR-" }}
-alias moin="we auth && aws sso login"
-{{- end }}
