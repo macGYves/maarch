@@ -21,3 +21,10 @@
       - kanshi
       - nwg-look
       - flameshot
+
+- name: Install packages from yay
+  kewlfft.aur.aur:
+    name: s-bin
+    state: present
+  become: true
+  become_user: aur_builder
